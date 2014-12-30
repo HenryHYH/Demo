@@ -1,24 +1,24 @@
 $(function () {
     var game = new Game();
-    game.Start();
-    Show(game.data);
+    Show(game.Start());
+    // Show(game.Test());
 
     $(document).delegate('body', 'keyup', function (e) {
         switch (e.keyCode) {
             case 37: //left
-                game.Move(false, false, true, false);
+                game.Move(game.direction.left);
                 Show(game.data);
                 break;
             case 38: //up
-                game.Move(true, false, false, false);
+                game.Move(game.direction.up);
                 Show(game.data);
                 break;
             case 39: //right
-                game.Move(false, false, false, true);
+                game.Move(game.direction.right);
                 Show(game.data);
                 break;
             case 40: //down
-                game.Move(false, true, false, false);
+                game.Move(game.direction.down);
                 Show(game.data);
                 break;
             default :
