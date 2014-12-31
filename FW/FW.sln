@@ -21,9 +21,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoDBIntIDGenerator", "References\MongoDBIntIDGenerator\MongoDBIntIDGenerator.csproj", "{5310FD26-C517-4C35-A6A8-CE35BDF9FF2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FW.Web.Framework", "Presentation\FW.Web.Framework\FW.Web.Framework.csproj", "{0E54718D-3067-4364-A15A-B6388A644C46}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FW.Web.Framework", "Presentations\FW.Web.Framework\FW.Web.Framework.csproj", "{0E54718D-3067-4364-A15A-B6388A644C46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FW.Web", "Presentation\FW.Web\FW.Web.csproj", "{A0EAB126-B14C-4D3D-A387-03A84C5DE40F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FW.Web", "Presentations\FW.Web\FW.Web.csproj", "{A0EAB126-B14C-4D3D-A387-03A84C5DE40F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
