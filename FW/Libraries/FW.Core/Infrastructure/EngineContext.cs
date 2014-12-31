@@ -1,4 +1,4 @@
-﻿namespace FW.Domain.Infrastructure
+﻿namespace FW.Core.Infrastructure
 {
     /// <summary>
     /// Provides access to the singleton instance of the Nop engine.

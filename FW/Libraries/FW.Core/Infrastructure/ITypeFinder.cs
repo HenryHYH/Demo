@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace FW.Domain.Infrastructure
+namespace FW.Core.Infrastructure
 {
     /// <summary>
     /// Classes implementing this interface provide information about types 

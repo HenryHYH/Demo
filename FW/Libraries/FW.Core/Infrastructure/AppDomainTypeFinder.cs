@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace FW.Domain.Infrastructure
+namespace FW.Core.Infrastructure
 {
     /// <summary>
     /// A class that finds types needed by Nop by looping assemblies in the 

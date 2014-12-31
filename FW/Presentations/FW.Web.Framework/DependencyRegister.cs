@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using FW.Core;
 using FW.Core.Data;
-using FW.Domain.Infrastructure;
+using FW.Core.Infrastructure;
 
 namespace FW.Web.Framework
 {

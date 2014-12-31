@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Hosting;
 
-namespace FW.Domain.Infrastructure
+namespace FW.Core.Infrastructure
 {
     /// <summary>
     /// Provides information about types in the current web application. 

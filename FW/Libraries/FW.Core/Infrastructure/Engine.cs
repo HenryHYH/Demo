@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
-namespace FW.Domain.Infrastructure
+namespace FW.Core.Infrastructure
 {
     public class Engine : IEngine
     {

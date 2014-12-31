@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FW.Domain.Infrastructure
+namespace FW.Core.Infrastructure
 {
     public class Singleton<T> where T : class
     {

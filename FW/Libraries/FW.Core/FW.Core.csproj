@@ -7,8 +7,8 @@
     <ProjectGuid>{F06366DE-C1E3-4793-896C-DCAE184BECDF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FW.Domain</RootNamespace>
-    <AssemblyName>FW.Domain</AssemblyName>
+    <RootNamespace>FW.Core</RootNamespace>
+    <AssemblyName>FW.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -86,6 +86,7 @@
     <Compile Include="Infrastructure\WebAppTypeFinder.cs" />
     <Compile Include="IPagedList.cs" />
     <Compile Include="Data\IRepository.cs" />
+    <Compile Include="PagedList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

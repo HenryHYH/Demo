@@ -1,6 +1,7 @@
 ﻿using FW.Core;
 using FW.Core.Data;
 using FW.Core.Domain.Users;
+using System;
 using System.Linq;
 
 namespace FW.Service.Users
@@ -22,29 +23,32 @@ namespace FW.Service.Users
                 .FirstOrDefault();
         }
 
-        public IPagedList<User> GetUsers(System.DateTime? createdFrom, System.DateTime? createdTo)
+        public IPagedList<User> GetUsers(DateTime? createdFrom = null,
+            DateTime? createdTo = null,
+            int pageIndex = 0,
+            int pageSize = 50)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public User GetUserById(int id)
         {
-            throw new System.NotImplementedException();
+            return userRepository.Table.Where(x => x.Id == id).FirstOrDefault();
         }
 
         public void InsertUser(User user)
         {
-            throw new System.NotImplementedException();
+            userRepository.Insert(user);
         }
 
         public void UpdateUser(User user)
         {
-            throw new System.NotImplementedException();
+            userRepository.Update(user);
         }
 
         public void DeleteUser(User user)
         {
-            throw new System.NotImplementedException();
+            userRepository.Delete(user);
         }
 
         #endregion

@@ -1,6 +1,6 @@
 ﻿using Autofac;
 
-namespace FW.Domain.Infrastructure
+namespace FW.Core.Infrastructure
 {
     public interface IDependencyRegister
     {

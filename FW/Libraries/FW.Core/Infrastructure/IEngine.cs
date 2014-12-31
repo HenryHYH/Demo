@@ -1,4 +1,4 @@
-﻿namespace FW.Domain.Infrastructure
+﻿namespace FW.Core.Infrastructure
 {
     public interface IEngine
     {
