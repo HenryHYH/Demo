@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FW.Service.Users;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,23 @@ namespace FW.Web.Controllers
 {
     public class HomeController : Controller
     {
+        #region Fields
+
+        private readonly IUserService userService;
+
+        #endregion
+
+        #region Ctor
+
+        public HomeController(IUserService userService)
+        {
+            this.userService = userService;
+        }
+
+        #endregion
+
+        #region Mehtods
+
         public ActionResult Index()
         {
             return View();
@@ -26,5 +44,14 @@ namespace FW.Web.Controllers
 
             return View();
         }
+
+        public ActionResult Test()
+        {
+            var list = userService.GetUsers();
+
+            return Json(list);
+        }
+
+        #endregion
     }
 }

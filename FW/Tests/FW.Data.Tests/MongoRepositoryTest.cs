@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using FluentAssertions;
+using FW.Core.Data;
+using FW.Core.Domain.Users;
+using FW.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 using Xunit.Extensions;
-using FluentAssertions;
-using Moq;
-using FW.Core.Domain.Users;
-using FW.Core.Data;
 
 namespace FW.Core.Tests
 {

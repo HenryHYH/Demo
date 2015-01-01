@@ -1,7 +1,10 @@
 ﻿using Autofac;
-using FW.Core;
+using Autofac.Integration.Mvc;
 using FW.Core.Data;
 using FW.Core.Infrastructure;
+using FW.Data;
+using FW.Service.Users;
+using System.Linq;
 
 namespace FW.Web.Framework
 {
@@ -9,7 +12,14 @@ namespace FW.Web.Framework
     {
         public void Register(ContainerBuilder builder, ITypeFinder typeFinder)
         {
-            builder.RegisterType(typeof(MongoRepository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
+            //controllers
+            builder.RegisterControllers(typeFinder.GetAssemblies().ToArray());
+
+            // Repository
+            builder.RegisterGeneric(typeof(MongoRepository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
+
+            // Services
+            builder.RegisterType<UserService>().As<IUserService>().InstancePerLifetimeScope();
         }
 
         public int Order

@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FW.Core
+namespace FW.Data
 {
     public partial class MongoRepository<T> : IRepository<T> where T : BaseEntity
     {
