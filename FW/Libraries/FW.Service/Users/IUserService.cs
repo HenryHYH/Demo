@@ -6,7 +6,10 @@ namespace FW.Service.Users
 {
     public interface IUserService
     {
-        IPagedList<User> GetUsers(DateTime? createdFrom, DateTime? createdTo);
+        IPagedList<User> GetUsers(DateTime? createdFrom = null,
+            DateTime? createdTo = null,
+            int pageIndex = 1,
+            int pageSize = 50);
 
         User GetUserByRealName(string realName);
 

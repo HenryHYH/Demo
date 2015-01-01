@@ -14,6 +14,15 @@ namespace FW.Service.Users
 
         #endregion
 
+        #region Ctor
+
+        public UserService(IRepository<User> userRepository)
+        {
+            this.userRepository = userRepository;
+        }
+
+        #endregion
+
         #region Methods
 
         public User GetUserByRealName(string realName)
@@ -25,7 +34,7 @@ namespace FW.Service.Users
 
         public IPagedList<User> GetUsers(DateTime? createdFrom = null,
             DateTime? createdTo = null,
-            int pageIndex = 0,
+            int pageIndex = 1,
             int pageSize = 50)
         {
             throw new NotImplementedException();
@@ -52,7 +61,5 @@ namespace FW.Service.Users
         }
 
         #endregion
-
-
     }
 }
