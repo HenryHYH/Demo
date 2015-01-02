@@ -164,6 +164,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
