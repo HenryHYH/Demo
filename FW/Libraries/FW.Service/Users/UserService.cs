@@ -34,10 +34,19 @@ namespace FW.Service.Users
 
         public IPagedList<User> GetUsers(DateTime? createdFrom = null,
             DateTime? createdTo = null,
-            int pageIndex = 1,
+            int pageIndex = 0,
             int pageSize = 50)
         {
-            throw new NotImplementedException();
+            var query = userRepository.Table;
+
+            if (createdFrom.HasValue)
+            {
+            }
+            if (createdTo.HasValue)
+            {
+            }
+
+            return new PagedList<User>(query, pageIndex, pageSize);
         }
 
         public User GetUserById(int id)

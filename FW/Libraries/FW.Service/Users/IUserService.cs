@@ -8,7 +8,7 @@ namespace FW.Service.Users
     {
         IPagedList<User> GetUsers(DateTime? createdFrom = null,
             DateTime? createdTo = null,
-            int pageIndex = 1,
+            int pageIndex = 0,
             int pageSize = 50);
 
         User GetUserByRealName(string realName);

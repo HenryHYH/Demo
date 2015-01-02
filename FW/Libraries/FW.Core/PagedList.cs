@@ -13,6 +13,14 @@ namespace FW.Core
         {
             int total = source.Count();
             this.TotalCount = total;
+            this.TotalPages = total / pageSize;
+
+            if (total % pageSize > 0)
+                this.TotalPages++;
+
+            this.PageSize = pageSize;
+            this.PageIndex = pageIndex;
+            this.AddRange(source.Skip(pageSize * pageIndex).Take(pageSize).ToList());
         }
 
         public int PageIndex { get; private set; }
@@ -23,8 +31,8 @@ namespace FW.Core
 
         public int TotalPages { get; private set; }
 
-        public bool HasPreviousPage { get; private set; }
+        public bool HasPreviousPage { get { return PageIndex > 0; } }
 
-        public bool HasNextPage { get; private set; }
+        public bool HasNextPage { get { return PageIndex + 1 < TotalPages; } }
     }
 }

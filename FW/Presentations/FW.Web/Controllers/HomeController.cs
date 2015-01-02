@@ -49,7 +49,7 @@ namespace FW.Web.Controllers
         {
             var list = userService.GetUsers();
 
-            return Json(list);
+            return Json(list, JsonRequestBehavior.AllowGet);
         }
 
         #endregion

@@ -5,6 +5,9 @@ using FW.Data;
 using System.Linq;
 using Xunit;
 using Xunit.Extensions;
+using Moq;
+using FW.Core.Infrastructure;
+using System.Collections.Generic;
 
 namespace FW.Core.Tests
 {
@@ -14,7 +17,12 @@ namespace FW.Core.Tests
 
         public MongoRepositoryTest()
         {
-            userRepository = new MongoRepository<User>();
+            Settings settings = new Settings(new Dictionary<string, string>() { 
+                { "ConnectionString", "mongodb://localhost:27017" },
+                { "DatabaseName", "TestFW" }
+            });
+
+            userRepository = new MongoRepository<User>(settings);
         }
 
         [Theory]

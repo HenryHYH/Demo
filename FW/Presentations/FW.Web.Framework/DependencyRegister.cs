@@ -15,6 +15,9 @@ namespace FW.Web.Framework
             //controllers
             builder.RegisterControllers(typeFinder.GetAssemblies().ToArray());
 
+            // Settings
+            builder.Register(x => new SettingsManager().LoadSettings()).As<Settings>();
+
             // Repository
             builder.RegisterGeneric(typeof(MongoRepository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
 

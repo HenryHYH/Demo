@@ -1,5 +1,6 @@
 ﻿using FW.Core;
 using FW.Core.Data;
+using FW.Core.Infrastructure;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.IdGenerators;
 using MongoDB.Driver;
@@ -18,19 +19,21 @@ namespace FW.Data
     {
         #region Fields
 
-        private MongoDatabase database;
         private MongoCollection<T> collection;
+        private Settings settings;
 
         #endregion
 
         #region Ctor
 
-        public MongoRepository()
+        public MongoRepository(Settings settings)
         {
-            var connectionString = "mongodb://localhost:27017";
-            var client = new MongoClient(connectionString);
+            this.settings = settings;
+
+            var client = new MongoClient(settings.GetSetting("ConnectionString"));
             var server = client.GetServer();
-            this.database = server.GetDatabase("Test");
+
+            var database = server.GetDatabase(settings.GetSetting("DatabaseName"));
 
             if (!database.CollectionExists(typeof(T).Name))
             {
