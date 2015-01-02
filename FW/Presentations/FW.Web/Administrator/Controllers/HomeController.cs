@@ -26,7 +26,7 @@ namespace FW.Admin.Controllers
 
         public ActionResult Index()
         {
-            return Content("Admin index");
+            return View();
         }
 
         public ActionResult Test2()

@@ -1,13 +1,15 @@
-﻿<!DOCTYPE html>
+﻿@{
+    string pageTitle = ViewBag.Title ?? "Admin";
+}
+
+<!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title></title>
+    <title>@pageTitle</title>
 </head>
 <body>
-    <div>
-
-    </div>
+    @RenderBody()
 </body>
 </html>
