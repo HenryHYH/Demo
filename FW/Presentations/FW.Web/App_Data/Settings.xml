@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Settings>
+  <ConnectionString>mongodb://localhost:27017</ConnectionString>
+  <DatabaseName>FW</DatabaseName>
+</Settings>

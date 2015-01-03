@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FW.Core.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,6 +13,8 @@ namespace FW.Web
     {
         protected void Application_Start()
         {
+            EngineContext.Current.Initialize();
+
             AreaRegistration.RegisterAllAreas();
 
             ViewEngines.Engines.Clear();
