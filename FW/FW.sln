@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
+# Visual Studio Express 2013 for Web
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{448F5218-3369-4309-93ED-19CA1BCCE105}"
@@ -26,6 +26,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FW.Admin", "Presentations\FW.Web\Administrator\FW.Admin.csproj", "{F6D37EDD-2FE7-4C4F-B099-64BABC06182B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FW.Web.Framework", "Presentations\FW.Web.Framework\FW.Web.Framework.csproj", "{69DAC26B-1261-42BD-944E-4D684A2E342D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FW.Web.Framework.Tests", "Tests\FW.Web.Framework.Tests\FW.Web.Framework.Tests.csproj", "{7F8A0C81-FFAD-4C84-992A-37D154D1E62C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +67,10 @@ Global
 		{69DAC26B-1261-42BD-944E-4D684A2E342D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69DAC26B-1261-42BD-944E-4D684A2E342D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69DAC26B-1261-42BD-944E-4D684A2E342D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F8A0C81-FFAD-4C84-992A-37D154D1E62C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F8A0C81-FFAD-4C84-992A-37D154D1E62C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F8A0C81-FFAD-4C84-992A-37D154D1E62C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F8A0C81-FFAD-4C84-992A-37D154D1E62C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,6 +83,7 @@ Global
 		{F6D37EDD-2FE7-4C4F-B099-64BABC06182B} = {70251698-81A9-4B64-8ADB-BA82B45180BB}
 		{69DAC26B-1261-42BD-944E-4D684A2E342D} = {70251698-81A9-4B64-8ADB-BA82B45180BB}
 		{9A94388E-F566-47A7-A9DA-207F3C040030} = {B7A9238F-7E36-4A56-A259-C8EB9E19A3BF}
+		{7F8A0C81-FFAD-4C84-992A-37D154D1E62C} = {B7A9238F-7E36-4A56-A259-C8EB9E19A3BF}
 		{5310FD26-C517-4C35-A6A8-CE35BDF9FF2D} = {DC5AF30A-F75E-4C6C-A2BF-7C8FAB943FFC}
 	EndGlobalSection
 EndGlobal

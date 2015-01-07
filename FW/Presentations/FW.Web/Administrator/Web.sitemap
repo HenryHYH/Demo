@@ -1,10 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
   <siteMapNode title="Administrator">
-    <siteMapNode url="/" title="Dashboard"  description="Dashboard" />
+    <siteMapNode url="/" title="Dashboard"  description="Dashboard" controller="" />
     <siteMapNode url="/" title="User" description="User">
-      <siteMapNode url="/" title="User"  description="User" />
-      <siteMapNode url="/" title="Import" description="Import" />
+      <siteMapNode url="/" title="User"  description="User"></siteMapNode>
+      <siteMapNode url="/" title="Import" description="Import"></siteMapNode>
+    </siteMapNode>
+    <siteMapNode url="/" title="System config" description="System config">
+      <siteMapNode url="/" title="Language" description="Language"></siteMapNode>
+      <siteMapNode url="/" title="Schedule" description="Schedule"></siteMapNode>
     </siteMapNode>
   </siteMapNode>
 </siteMap>

@@ -1,15 +1,15 @@
 ﻿@{
     Layout = null;
 }
-@model IList<FW.Admin.Models.Common.NavigationModel>
-@if (null != Model && Model.Count > 0)
+@model FW.Web.Framework.Menu.SiteMapNode
+@if (null != Model && Model.Children.Any())
 {
     <ul class="nav navbar-nav">
-        @ShowMenu(Model)
+        @ShowMenu(Model.Children)
     </ul>
 }
 
-@helper ShowMenu(IList<FW.Admin.Models.Common.NavigationModel> list)
+@helper ShowMenu(IList<FW.Web.Framework.Menu.SiteMapNode> list)
 {
     foreach (var item in list)
     {
