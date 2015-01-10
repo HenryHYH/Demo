@@ -82,6 +82,7 @@
     <Compile Include="UI\IPageBulider.cs" />
     <Compile Include="UI\PageBulider.cs" />
     <Compile Include="UI\ResourceLocation.cs" />
+    <Compile Include="UI\ResourcePriority.cs" />
     <Compile Include="UI\ResourceType.cs" />
   </ItemGroup>
   <ItemGroup>

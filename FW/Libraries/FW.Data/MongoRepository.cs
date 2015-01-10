@@ -30,19 +30,16 @@ namespace FW.Data
         {
             this.settings = settings;
 
-            if (false)
+            var client = new MongoClient(settings.GetSetting("ConnectionString"));
+            var server = client.GetServer();
+
+            var database = server.GetDatabase(settings.GetSetting("DatabaseName"));
+
+            if (!database.CollectionExists(typeof(T).Name))
             {
-                var client = new MongoClient(settings.GetSetting("ConnectionString"));
-                var server = client.GetServer();
-
-                var database = server.GetDatabase(settings.GetSetting("DatabaseName"));
-
-                if (!database.CollectionExists(typeof(T).Name))
-                {
-                    database.CreateCollection(typeof(T).Name);
-                }
-                this.collection = database.GetCollection<T>(typeof(T).Name);
+                database.CreateCollection(typeof(T).Name);
             }
+            this.collection = database.GetCollection<T>(typeof(T).Name);
 
             BsonSerializer.RegisterIdGenerator(typeof(int), IntIdGenerator.Instance);
         }

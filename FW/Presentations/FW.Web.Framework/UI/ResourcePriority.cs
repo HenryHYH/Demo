@@ -6,26 +6,21 @@ using System.Threading.Tasks;
 
 namespace FW.Web.Framework.UI
 {
-    public enum ResourceType
+    public enum ResourcePriority
     {
         /// <summary>
-        /// 空
+        /// 高
         /// </summary>
-        Null,
+        High = 10,
 
         /// <summary>
-        /// 原样
+        /// 普通
         /// </summary>
-        Raw,
+        Normal = 20,
 
         /// <summary>
-        /// 样式
+        /// 低
         /// </summary>
-        StyleSheet,
-
-        /// <summary>
-        /// 脚本
-        /// </summary>
-        Script
+        Low = 30
     }
 }

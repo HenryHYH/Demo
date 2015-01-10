@@ -11,7 +11,18 @@ namespace FW.Web.Framework.UI
     {
         #region Fields
 
-        private Dictionary<ResourceType, Dictionary<ResourceLocation, IList<string>>> resources;
+        private IList<Resource> resources;
+
+        private class Resource
+        {
+            public ResourceType Type { get; set; }
+
+            public ResourcePriority Priority { get; set; }
+
+            public ResourceLocation Location { get; set; }
+
+            public string Path { get; set; }
+        }
 
         #endregion
 
@@ -19,7 +30,7 @@ namespace FW.Web.Framework.UI
 
         public PageBulider()
         {
-            resources = new Dictionary<ResourceType, Dictionary<ResourceLocation, IList<string>>>();
+            resources = new List<Resource>();
         }
 
         #endregion
@@ -30,61 +41,30 @@ namespace FW.Web.Framework.UI
         {
             StringBuilder sb = new StringBuilder();
 
-            foreach (var type in resources.Keys)
+            var list = resources.Where(x => x.Location == location);
+            var types = list.Select(x => x.Type).Distinct();
+            foreach (var type in types)
             {
-                var typeResources = resources[type];
-                if (typeResources.ContainsKey(location))
+                var paths = list.Where(x => x.Type == type).OrderBy(x => x.Priority);
+                foreach (var path in paths)
                 {
-                    var paths = resources[type][location];
-                    foreach (var path in paths)
-                    {
-                        sb.Append(GenerateContent(type, urlHelper, path));
-                        sb.Append(Environment.NewLine);
-                    }
+                    sb.Append(GenerateContent(urlHelper, path.Type, path.Path));
+                    sb.Append(Environment.NewLine);
                 }
             }
 
             return sb.ToString();
         }
 
-        public void AddResource(string path, ResourceType type, ResourceLocation location)
+        public void AddResource(string path, ResourcePriority priority, ResourceType type, ResourceLocation location)
         {
-            if (!resources.ContainsKey(type))
+            resources.Add(new Resource()
             {
-                resources.Add(type, new Dictionary<ResourceLocation, IList<string>>());
-            }
-
-            var typeResources = resources[type];
-            if (!typeResources.ContainsKey(location))
-            {
-                typeResources.Add(location, new List<string>());
-            }
-
-            var locationResouces = typeResources[location];
-            if (!locationResouces.Contains(path))
-            {
-                locationResouces.Add(path);
-            }
-        }
-
-        public void AppendResource(string path, ResourceType type, ResourceLocation location)
-        {
-            if (!resources.ContainsKey(type))
-            {
-                resources.Add(type, new Dictionary<ResourceLocation, IList<string>>());
-            }
-
-            var typeResources = resources[type];
-            if (!typeResources.ContainsKey(location))
-            {
-                typeResources.Add(location, new List<string>());
-            }
-
-            var locationResouces = typeResources[location];
-            if (!locationResouces.Contains(path))
-            {
-                locationResouces.Insert(0, path);
-            }
+                Path = path,
+                Priority = priority,
+                Type = type,
+                Location = location
+            });
         }
 
         public ResourceType GetResourceType(string path)
@@ -109,7 +89,7 @@ namespace FW.Web.Framework.UI
 
         #region Utilities
 
-        private string GenerateContent(ResourceType type, UrlHelper urlHelper, string path)
+        private string GenerateContent(UrlHelper urlHelper, ResourceType type, string path)
         {
             string content = string.Empty;
 
@@ -120,6 +100,9 @@ namespace FW.Web.Framework.UI
                     break;
                 case ResourceType.StyleSheet:
                     content = string.Format("<link type=\"text/css\" rel=\"stylesheet\" href=\"{0}\" />", urlHelper.Content(path));
+                    break;
+                case ResourceType.Raw:
+                    content = path;
                     break;
                 case ResourceType.Null:
                 default:
