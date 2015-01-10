@@ -4,6 +4,7 @@ using FW.Core.Data;
 using FW.Core.Infrastructure;
 using FW.Data;
 using FW.Service.Users;
+using FW.Web.Framework.UI;
 using System.Linq;
 
 namespace FW.Web.Framework
@@ -12,6 +13,9 @@ namespace FW.Web.Framework
     {
         public void Register(ContainerBuilder builder, ITypeFinder typeFinder)
         {
+            //Framework.UI
+            builder.RegisterType<PageBulider>().As<IPageBulider>().InstancePerLifetimeScope();
+
             //controllers
             builder.RegisterControllers(typeFinder.GetAssemblies().ToArray());
 

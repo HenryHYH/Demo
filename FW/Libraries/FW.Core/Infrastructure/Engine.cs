@@ -9,6 +9,12 @@ namespace FW.Core.Infrastructure
 {
     public class Engine : IEngine
     {
+        #region Fields
+
+        private ContainerManager containerManager;
+
+        #endregion
+
         public void Initialize()
         {
             var builder = new ContainerBuilder();
@@ -30,7 +36,15 @@ namespace FW.Core.Infrastructure
                 dependencyRegister.Register(builder, typeFinder);
             builder.Update(container);
 
+            containerManager = new ContainerManager(container);
+
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+        }
+
+
+        public T Resolve<T>() where T : class
+        {
+            return containerManager.Resolve<T>();
         }
     }
 }

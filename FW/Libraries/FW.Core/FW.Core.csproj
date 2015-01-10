@@ -80,6 +80,7 @@
     <Compile Include="Caching\MemoryCacheManager.cs" />
     <Compile Include="Domain\Users\User.cs" />
     <Compile Include="Infrastructure\AppDomainTypeFinder.cs" />
+    <Compile Include="Infrastructure\ContainerManager.cs" />
     <Compile Include="Infrastructure\Engine.cs" />
     <Compile Include="Infrastructure\EngineContext.cs" />
     <Compile Include="Infrastructure\IDependencyRegister.cs" />
