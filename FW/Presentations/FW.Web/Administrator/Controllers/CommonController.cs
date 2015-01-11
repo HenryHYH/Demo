@@ -58,6 +58,12 @@
             return PartialView(pager);
         }
 
+        [ChildActionOnly]
+        public ActionResult Table()
+        {
+            return PartialView();
+        }
+
         #endregion Methods
     }
 }

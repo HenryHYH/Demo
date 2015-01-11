@@ -1,0 +1,27 @@
+﻿@{
+    Layout = null;
+
+    Html.AddResource("~/Scripts/template.js");
+    Html.AddResource("~/Scripts/table.js");
+}
+@using FW.Web.Framework.UI
+
+<table class="table table-condensed table-striped table-bordered" id="tb"></table>
+<script id="tb-tmpl" type="text/html">
+    <thead>
+        <tr>
+            {{each head as value i}}
+            <th>{{value}}</th>
+            {{/each}}
+        </tr>
+    </thead>
+    <tbody>
+        {{each data as row i}}
+        <tr>
+            {{each row as cell j}}
+            <td>{{cell}}</td>
+            {{/each}}
+        </tr>
+        {{/each}}
+    </tbody>
+</script>

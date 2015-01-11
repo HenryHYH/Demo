@@ -111,6 +111,7 @@
     <Content Include="Views\Common\Navigation.cshtml" />
     <Content Include="Views\Common\Pagination.cshtml" />
     <Content Include="Views\Common\BreadCrumb.cshtml" />
+    <Content Include="Views\Common\Table.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -27,27 +27,28 @@
 
 @helper TabHome()
 {
-    <table class="table table-condensed table-striped table-bordered">
-        <thead>
-            <tr>
-                <th>No.</th>
-                <th>Name</th>
-                <th>Age</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Henry</td>
-                <td>28</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Test</td>
-                <td>1000</td>
-            </tr>
-        </tbody>
-    </table>
+    @*<table class="table table-condensed table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Henry</td>
+                    <td>28</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Test</td>
+                    <td>1000</td>
+                </tr>
+            </tbody>
+        </table>*@
+    @Html.Action("Table", "Common", new { area = "Administrator" })
     @Html.Action("Pagination", "Common", new { area = "Administrator", pageIndex = 1, totalRecords = 1 })
 }
 
