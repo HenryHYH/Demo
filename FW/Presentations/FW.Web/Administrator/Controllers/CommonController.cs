@@ -61,6 +61,7 @@
         [ChildActionOnly]
         public ActionResult Table()
         {
+            ViewBag.Columns = "[{ title: 'No.', field: 'index' }, { title: 'Name', field: 'name' }, { title: 'Age', field: 'age' }]";
             return PartialView();
         }
 
