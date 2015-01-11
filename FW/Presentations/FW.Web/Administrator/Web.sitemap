@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
   <siteMapNode title="Administrator">
-    <siteMapNode url="/" title="Dashboard"  description="Dashboard" controller="" />
-    <siteMapNode url="/" title="User" description="User">
-      <siteMapNode url="/" title="User"  description="User"></siteMapNode>
-      <siteMapNode url="/" title="Import" description="Import"></siteMapNode>
+    <siteMapNode url="/" title="Dashboard"  description="Dashboard" controller="" icon="fa fa-dashboard" />
+    <siteMapNode url="/" title="User" description="User" icon="fa fa-users">
+      <siteMapNode url="/" title="User"  description="User" icon="fa fa-list"></siteMapNode>
+      <siteMapNode url="/" title="Import" description="Import" icon="fa fa-upload"></siteMapNode>
     </siteMapNode>
-    <siteMapNode url="/" title="System config" description="System config">
-      <siteMapNode url="/" title="Language" description="Language"></siteMapNode>
-      <siteMapNode url="/" title="Schedule" description="Schedule"></siteMapNode>
+    <siteMapNode url="/" title="System config" description="System config" icon="fa fa-gears">
+      <siteMapNode url="/" title="Language" description="Language" icon="fa fa-language"></siteMapNode>
+      <siteMapNode url="/" title="Schedule" description="Schedule" icon="fa fa-calendar-o"></siteMapNode>
     </siteMapNode>
-    <siteMapNode url="/" title="User" position="right">
-      <siteMapNode url="/" title="Use info"></siteMapNode>
-      <siteMapNode url="/" title="Change password"></siteMapNode>
-      <siteMapNode url="/" title="Logout"></siteMapNode>
+    <siteMapNode url="/" title="User" position="right" icon="fa fa-user">
+      <siteMapNode url="/" title="Use info" icon="fa fa-file-o"></siteMapNode>
+      <siteMapNode url="/" title="Change password" icon="fa fa-lock"></siteMapNode>
+      <siteMapNode url="/" title="Logout" icon="fa fa-sign-out"></siteMapNode>
     </siteMapNode>
   </siteMapNode>
 </siteMap>

@@ -16,37 +16,15 @@ namespace FW.Web.Framework.Menu
 
         public Dictionary<string, string> Attributes { get; private set; }
 
-        public string Title
-        {
-            get
-            {
-                return GetValue("title");
-            }
-        }
+        public string Title { get { return GetValue("title"); } }
 
-        public string Url
-        {
-            get
-            {
-                return GetValue("url");
-            }
-        }
+        public string Url { get { return GetValue("url"); } }
 
-        public string Description
-        {
-            get
-            {
-                return GetValue("description");
-            }
-        }
+        public string Description { get { return GetValue("description"); } }
 
-        public string Position
-        {
-            get
-            {
-                return GetValue("position");
-            }
-        }
+        public string Position { get { return GetValue("position"); } }
+
+        public string Icon { get { return GetValue("icon"); } }
 
         public IList<SiteMapNode> Children { get; private set; }
 
