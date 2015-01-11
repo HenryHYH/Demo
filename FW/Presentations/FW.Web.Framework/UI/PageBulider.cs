@@ -1,41 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-
-namespace FW.Web.Framework.UI
+﻿namespace FW.Web.Framework.UI
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Web.Mvc;
+
+    using FW.Web.Framework.UI.BreadCrumb;
+
     public class PageBulider : IPageBulider
     {
         #region Fields
 
+        private IList<BreadCrumbNode> breadCrumbs;
         private IList<Resource> resources;
 
-        private class Resource
-        {
-            public ResourceType Type { get; set; }
+        #endregion Fields
 
-            public ResourcePriority Priority { get; set; }
-
-            public ResourceLocation Location { get; set; }
-
-            public string Path { get; set; }
-        }
-
-        #endregion
-
-        #region Ctor
+        #region Constructors
 
         public PageBulider()
         {
             resources = new List<Resource>();
+            breadCrumbs = new List<BreadCrumbNode>();
         }
 
-        #endregion
+        #endregion Constructors
 
-        #region Mehtods
+        #region Methods
+
+        public void AddBreadCrumb(string title, string url)
+        {
+            breadCrumbs.Add(new BreadCrumbNode()
+            {
+                Title = title,
+                Url = url
+            });
+        }
+
+        public void AddResource(string path, ResourcePriority priority, ResourceType type, ResourceLocation location)
+        {
+            resources.Add(new Resource()
+            {
+                Path = path,
+                Priority = priority,
+                Type = type,
+                Location = location
+            });
+        }
 
         public string GenerateResourcesPath(UrlHelper urlHelper, ResourceLocation location)
         {
@@ -56,15 +69,17 @@ namespace FW.Web.Framework.UI
             return sb.ToString();
         }
 
-        public void AddResource(string path, ResourcePriority priority, ResourceType type, ResourceLocation location)
+        public IList<BreadCrumbNode> GetBreadCrumbs()
         {
-            resources.Add(new Resource()
-            {
-                Path = path,
-                Priority = priority,
-                Type = type,
-                Location = location
-            });
+            return breadCrumbs.Reverse().ToList();
+        }
+
+        public ResourceLocation GetResourceLocation(string path)
+        {
+            if (GetResourceType(path) == ResourceType.Script)
+                return ResourceLocation.Footer;
+            else
+                return ResourceLocation.Head;
         }
 
         public ResourceType GetResourceType(string path)
@@ -76,18 +91,6 @@ namespace FW.Web.Framework.UI
 
             return ResourceType.Null;
         }
-
-        public ResourceLocation GetResourceLocation(string path)
-        {
-            if (GetResourceType(path) == ResourceType.Script)
-                return ResourceLocation.Footer;
-            else
-                return ResourceLocation.Head;
-        }
-
-        #endregion
-
-        #region Utilities
 
         private string GenerateContent(UrlHelper urlHelper, ResourceType type, string path)
         {
@@ -112,6 +115,37 @@ namespace FW.Web.Framework.UI
             return content;
         }
 
-        #endregion
+        #endregion Methods
+
+        #region Nested Types
+
+        private class Resource
+        {
+            #region Properties
+
+            public ResourceLocation Location
+            {
+                get; set;
+            }
+
+            public string Path
+            {
+                get; set;
+            }
+
+            public ResourcePriority Priority
+            {
+                get; set;
+            }
+
+            public ResourceType Type
+            {
+                get; set;
+            }
+
+            #endregion Properties
+        }
+
+        #endregion Nested Types
     }
 }

@@ -10,6 +10,11 @@
 
     // font-awesome
     Html.AddResource("~/Content/font-awesome.min.css", ResourcePriority.High);
+
+    // admin style
+    Html.AddResource("~/Administrator/Content/style.css", ResourcePriority.High);
+
+    Html.AddBreadCrumb("Home", "/");
 }
 <!DOCTYPE html>
 <html lang="chn">
@@ -20,24 +25,38 @@
     @Html.GenerateResources(this.Url, ResourceLocation.Head)
 </head>
 <body>
-    <div class="container">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-navigation">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/"><i class="fa fa-home"></i></a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-navigation">
+                @Html.Action("Navigation", "Common", new { area = "Administrator" })
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid" id="tool-bar">
         <div class="row">
-            <nav class="navbar navbar-default navbar-fixed-top">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-navigation">
-                            <span class="sr-only"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="/">FW</a>
-                    </div>
-                    <div class="collapse navbar-collapse" id="navbar-navigation">
-                        @Html.Action("Navigation", "Common", new { area = "Administrator" })
-                    </div>
+            <div class="col-md-12">
+                <div class="pull-left">
+                    @Html.Action("BreadCrumb", "Common", new { area = "Administrator" })
                 </div>
-            </nav>
+                <div class="pull-right">
+                    <input type="button" class="btn btn-default" value="Default" />
+                    <input type="button" class="btn btn-primary" value="Primary" />
+                    <input type="button" class="btn btn-success" value="Success" />
+                    <input type="button" class="btn btn-info" value="Info" />
+                    <input type="button" class="btn btn-warning" value="Warning" />
+                    <input type="button" class="btn btn-danger" value="Danger" />
+                </div>
+            </div>
         </div>
     </div>
     @RenderBody()

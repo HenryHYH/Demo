@@ -1,36 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
-using System.Xml.Linq;
-
-namespace FW.Web.Framework.Menu
+﻿namespace FW.Web.Framework.UI.Menu
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Xml;
+    using System.Xml.Linq;
+
     public class XmlSiteMap
     {
-        #region Ctor
+        #region Constructors
 
         public XmlSiteMap(string path)
         {
             LoadSitMap(path);
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Properties
 
-        public SiteMapNode Node { get; private set; }
-
-        #endregion
-
-        #region Utilities
-
-        private void LoadSitMap(string path)
+        public SiteMapNode Node
         {
-            Node = GetNode(XElement.Load(path).Elements().FirstOrDefault());
+            get; private set;
         }
+
+        #endregion Properties
+
+        #region Methods
 
         private SiteMapNode GetNode(XElement element)
         {
@@ -47,6 +45,11 @@ namespace FW.Web.Framework.Menu
             return node;
         }
 
-        #endregion
+        private void LoadSitMap(string path)
+        {
+            Node = GetNode(XElement.Load(path).Elements().FirstOrDefault());
+        }
+
+        #endregion Methods
     }
 }

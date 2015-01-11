@@ -1,0 +1,8 @@
+﻿#tool-bar { margin-top: 65px; }
+#breadcrumb-bar { margin-bottom: 10px; }
+
+.tab-pane { border: 1px solid #ccc; border-top: 0; padding: 20px 20px 15px; }
+
+.table { margin-bottom: 10px; }
+
+.pagination { margin: 0; }

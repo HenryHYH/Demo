@@ -1,3 +1,67 @@
 ﻿@{
     ViewBag.Title = "Index";
+    Html.AddBreadCrumb("Index", "/");
+}
+@using FW.Web.Framework.UI
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home">@TabHome()</div>
+                <div role="tabpanel" class="tab-pane" id="profile">@TabProfile()</div>
+                <div role="tabpanel" class="tab-pane" id="messages">@TabMessage()</div>
+                <div role="tabpanel" class="tab-pane" id="settings">@TabSetting()</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@helper TabHome()
+{
+    <table class="table table-condensed table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Henry</td>
+                <td>28</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Test</td>
+                <td>1000</td>
+            </tr>
+        </tbody>
+    </table>
+    @Html.Action("Pagination", "Common", new { area = "Administrator", pageIndex = 1, totalRecords = 1 })
+}
+
+@helper TabProfile()
+{
+    <text>Profile</text>
+}
+
+@helper TabMessage()
+{
+    <text>Messages</text>
+}
+
+@helper TabSetting()
+{
+    <text>Settings</text>
 }

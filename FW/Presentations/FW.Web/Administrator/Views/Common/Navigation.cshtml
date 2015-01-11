@@ -1,7 +1,7 @@
 ﻿@{
     Layout = null;
 }
-@model FW.Web.Framework.Menu.SiteMapNode
+@model FW.Web.Framework.UI.Menu.SiteMapNode
 @if (null != Model && Model.Children.Any())
 {
     <ul class="nav navbar-nav">
@@ -12,7 +12,7 @@
     </ul>
 }
 
-@helper ShowMenu(IEnumerable<FW.Web.Framework.Menu.SiteMapNode> list)
+@helper ShowMenu(IEnumerable<FW.Web.Framework.UI.Menu.SiteMapNode> list)
 {
     foreach (var item in list)
     {

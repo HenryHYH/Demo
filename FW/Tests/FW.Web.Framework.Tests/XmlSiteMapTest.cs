@@ -1,4 +1,4 @@
-﻿using FW.Web.Framework.Menu;
+﻿using FW.Web.Framework.UI.Menu;
 using System;
 using System.Collections.Generic;
 using System.Linq;

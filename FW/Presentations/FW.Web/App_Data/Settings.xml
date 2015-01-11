@@ -2,4 +2,5 @@
 <Settings>
   <ConnectionString>mongodb://localhost:27017</ConnectionString>
   <DatabaseName>FW</DatabaseName>
+  <AdminSiteMapPath>~/Administrator/Web.sitemap</AdminSiteMapPath>
 </Settings>

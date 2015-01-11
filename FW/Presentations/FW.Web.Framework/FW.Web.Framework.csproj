@@ -75,12 +75,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DependencyRegister.cs" />
-    <Compile Include="Menu\SiteMapNode.cs" />
-    <Compile Include="Menu\XmlSiteMap.cs" />
+    <Compile Include="UI\BreadCrumb\BreadCrumbNode.cs" />
+    <Compile Include="UI\Menu\SiteMapNode.cs" />
+    <Compile Include="UI\Menu\XmlSiteMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\HtmlExtension.cs" />
     <Compile Include="UI\IPageBulider.cs" />
     <Compile Include="UI\PageBulider.cs" />
+    <Compile Include="UI\Pagination\Pager.cs" />
     <Compile Include="UI\ResourceLocation.cs" />
     <Compile Include="UI\ResourcePriority.cs" />
     <Compile Include="UI\ResourceType.cs" />
@@ -103,6 +105,7 @@
       <Name>FW.Service</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

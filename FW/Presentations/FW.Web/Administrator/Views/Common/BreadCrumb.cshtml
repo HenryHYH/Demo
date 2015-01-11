@@ -1,0 +1,22 @@
+﻿@{
+    Layout = null;
+}
+@using FW.Web.Framework.UI.BreadCrumb
+@model IList<BreadCrumbNode>
+
+@helper ShowBreadCrumbs()
+{
+    int iMax = Model.Count - 1;
+    for (int i = 0; i < iMax; i++)
+    {
+        <li><a href="@Model[i].Url">@Model[i].Title</a></li>
+    }
+    <li class="active">@Model[iMax].Title</li>
+}
+
+@if (null != Model && Model.Any())
+{
+    <ul class="breadcrumb" id="breadcrumb-bar">
+        @ShowBreadCrumbs()
+    </ul>
+}

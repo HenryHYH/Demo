@@ -1,0 +1,36 @@
+﻿@{
+    Layout = null;
+}
+@model Pager
+@using FW.Web.Framework.UI.Pagination
+
+@helper ShowPages()
+{
+    for (int i = 1, iMax = Model.TotalPages; i <= iMax; i++)
+    {
+        if (i == Model.PageIndex)
+        {
+            <li class="active"><span>@(i)</span></li>
+        }
+        else
+        {
+            <li><a href="#">@(i)</a></li>
+        }
+    }
+}
+
+<nav>
+    <ul class="pagination pagination-sm">
+        <li class="@(Model.HasPrevious ? "" : "disabled")">
+            <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        @ShowPages()
+        <li class="@(Model.HasNext ? "" : "disabled")">
+            <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
