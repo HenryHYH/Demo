@@ -1,9 +1,15 @@
 ﻿@using FW.Web.Framework.UI
 @{
+    // jquery
     Html.AddResource("~/Scripts/jquery-1.11.2.min.js", ResourcePriority.High);
-    Html.AddResource("~/Content/Bootstrap/css/bootstrap-theme.min.css", ResourcePriority.High);
-    Html.AddResource("~/Content/Bootstrap/css/bootstrap.min.css", ResourcePriority.High);
-    Html.AddResource("~/Content/Bootstrap/js/bootstrap.min.js", ResourcePriority.High);
+
+    // bootstrap
+    Html.AddResource("~/Content/bootstrap.min.css", ResourcePriority.High);
+    Html.AddResource("~/Content/bootstrap-theme.min.css", ResourcePriority.High);
+    Html.AddResource("~/Scripts/bootstrap.min.js", ResourcePriority.High);
+
+    // font-awesome
+    Html.AddResource("~/Content/font-awesome.min.css", ResourcePriority.High);
 }
 <!DOCTYPE html>
 <html lang="chn">
@@ -18,35 +24,19 @@
         <div class="row">
             <nav class="navbar navbar-default navbar-fixed-top">
                 <div class="container-fluid">
-                    <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-navigation">
+                            <span class="sr-only"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">FW</a>
+                        <a class="navbar-brand" href="/">FW</a>
                     </div>
-
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <div class="collapse navbar-collapse" id="navbar-navigation">
                         @Html.Action("Navigation", "Common", new { area = "Administrator" })
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Henry<span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Logout</a></li>
-                        </ul>
-                    </div><!-- /.navbar-collapse -->
-                </div><!-- /.container-fluid -->
+                    </div>
+                </div>
             </nav>
         </div>
     </div>

@@ -38,7 +38,7 @@ namespace FW.Web.Framework.Menu
 
             if (element.HasAttributes)
                 foreach (var attr in element.Attributes())
-                    node.Attributes.Add(attr.Name.LocalName, attr.Value);
+                    node.Attributes.Add(attr.Name.LocalName.ToLower(), attr.Value);
 
             if (element.HasElements)
                 foreach (var item in element.Elements())

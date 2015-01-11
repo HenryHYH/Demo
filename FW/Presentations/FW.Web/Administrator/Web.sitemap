@@ -10,5 +10,10 @@
       <siteMapNode url="/" title="Language" description="Language"></siteMapNode>
       <siteMapNode url="/" title="Schedule" description="Schedule"></siteMapNode>
     </siteMapNode>
+    <siteMapNode url="/" title="User" position="right">
+      <siteMapNode url="/" title="Use info"></siteMapNode>
+      <siteMapNode url="/" title="Change password"></siteMapNode>
+      <siteMapNode url="/" title="Logout"></siteMapNode>
+    </siteMapNode>
   </siteMapNode>
 </siteMap>

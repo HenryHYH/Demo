@@ -5,11 +5,14 @@
 @if (null != Model && Model.Children.Any())
 {
     <ul class="nav navbar-nav">
-        @ShowMenu(Model.Children)
+        @ShowMenu(Model.Children.Where(x => !"right".Equals(x.Position, StringComparison.OrdinalIgnoreCase)))
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        @ShowMenu(Model.Children.Where(x => "right".Equals(x.Position, StringComparison.OrdinalIgnoreCase)))
     </ul>
 }
 
-@helper ShowMenu(IList<FW.Web.Framework.Menu.SiteMapNode> list)
+@helper ShowMenu(IEnumerable<FW.Web.Framework.Menu.SiteMapNode> list)
 {
     foreach (var item in list)
     {

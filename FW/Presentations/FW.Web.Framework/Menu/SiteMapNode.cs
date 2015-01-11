@@ -40,6 +40,14 @@ namespace FW.Web.Framework.Menu
             }
         }
 
+        public string Position
+        {
+            get
+            {
+                return GetValue("position");
+            }
+        }
+
         public IList<SiteMapNode> Children { get; private set; }
 
         private string GetValue(string key)
