@@ -1,14 +1,17 @@
-﻿using FW.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FW.Core
+﻿namespace FW.Core
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    using FW.Core;
+
     public class PagedList<T> : List<T>, IPagedList<T>
     {
+        #region Constructors
+
         public PagedList(IQueryable<T> source, int pageIndex, int pageSize)
         {
             int total = source.Count();
@@ -23,16 +26,40 @@ namespace FW.Core
             this.AddRange(source.Skip(pageSize * pageIndex).Take(pageSize).ToList());
         }
 
-        public int PageIndex { get; private set; }
+        #endregion Constructors
 
-        public int PageSize { get; private set; }
+        #region Properties
 
-        public int TotalCount { get; private set; }
+        public bool HasNextPage
+        {
+            get { return PageIndex + 1 < TotalPages; }
+        }
 
-        public int TotalPages { get; private set; }
+        public bool HasPreviousPage
+        {
+            get { return PageIndex > 0; }
+        }
 
-        public bool HasPreviousPage { get { return PageIndex > 0; } }
+        public int PageIndex
+        {
+            get; private set;
+        }
 
-        public bool HasNextPage { get { return PageIndex + 1 < TotalPages; } }
+        public int PageSize
+        {
+            get; private set;
+        }
+
+        public int TotalCount
+        {
+            get; private set;
+        }
+
+        public int TotalPages
+        {
+            get; private set;
+        }
+
+        #endregion Properties
     }
 }

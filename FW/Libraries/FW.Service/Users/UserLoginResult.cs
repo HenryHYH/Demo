@@ -1,6 +1,7 @@
-﻿
-namespace FW.Service.Users
+﻿namespace FW.Service.Users
 {
+    #region Enumerations
+
     public enum UserLoginResult
     {
         Success = 1,
@@ -10,4 +11,6 @@ namespace FW.Service.Users
         Deleted = 5,
         NotRegister = 6
     }
+
+    #endregion Enumerations
 }

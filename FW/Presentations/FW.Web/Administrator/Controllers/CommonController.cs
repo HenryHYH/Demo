@@ -7,18 +7,17 @@
     using System.Web.Mvc;
 
     using FW.Core.Infrastructure;
-    using FW.Web.Framework.UI.Menu;
-    using FW.Web.Framework.UI.Pagination;
     using FW.Web.Framework.UI;
     using FW.Web.Framework.UI.BreadCrumb;
+    using FW.Web.Framework.UI.Menu;
+    using FW.Web.Framework.UI.Pagination;
 
     public class CommonController : Controller
     {
         #region Fields
 
-        private readonly Settings settings;
-
         private readonly IPageBulider pageBulider;
+        private readonly Settings settings;
 
         #endregion Fields
 

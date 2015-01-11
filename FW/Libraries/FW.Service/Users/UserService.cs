@@ -1,29 +1,40 @@
-﻿using FW.Core;
-using FW.Core.Data;
-using FW.Core.Domain.Users;
-using System;
-using System.Linq;
-
-namespace FW.Service.Users
+﻿namespace FW.Service.Users
 {
+    using System;
+    using System.Linq;
+
+    using FW.Core;
+    using FW.Core.Data;
+    using FW.Core.Domain.Users;
+
     public class UserService : IUserService
     {
         #region Fields
 
         private readonly IRepository<User> userRepository;
 
-        #endregion
+        #endregion Fields
 
-        #region Ctor
+        #region Constructors
 
         public UserService(IRepository<User> userRepository)
         {
             this.userRepository = userRepository;
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Methods
+
+        public void DeleteUser(User user)
+        {
+            userRepository.Delete(user);
+        }
+
+        public User GetUserById(int id)
+        {
+            return userRepository.Table.Where(x => x.Id == id).FirstOrDefault();
+        }
 
         public User GetUserByRealName(string realName)
         {
@@ -49,11 +60,6 @@ namespace FW.Service.Users
             return new PagedList<User>(query, pageIndex, pageSize);
         }
 
-        public User GetUserById(int id)
-        {
-            return userRepository.Table.Where(x => x.Id == id).FirstOrDefault();
-        }
-
         public void InsertUser(User user)
         {
             userRepository.Insert(user);
@@ -64,11 +70,6 @@ namespace FW.Service.Users
             userRepository.Update(user);
         }
 
-        public void DeleteUser(User user)
-        {
-            userRepository.Delete(user);
-        }
-
-        #endregion
+        #endregion Methods
     }
 }

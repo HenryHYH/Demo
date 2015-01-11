@@ -1,17 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Hosting;
-using System.Xml.Linq;
-
-namespace FW.Core.Infrastructure
+﻿namespace FW.Core.Infrastructure
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Web.Hosting;
+    using System.Xml.Linq;
+
     public class SettingsManager
     {
+        #region Fields
+
         private const string fileName = "Settings.xml";
+
+        #endregion Fields
 
         #region Methods
 
@@ -39,10 +43,6 @@ namespace FW.Core.Infrastructure
             return new Settings(settings);
         }
 
-        #endregion
-
-        #region Utilities
-
         private string MapPath(string path)
         {
             if (HostingEnvironment.IsHosted)
@@ -59,6 +59,6 @@ namespace FW.Core.Infrastructure
             }
         }
 
-        #endregion
+        #endregion Methods
     }
 }

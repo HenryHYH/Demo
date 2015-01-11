@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace FW.Admin
+﻿namespace FW.Admin
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Web.Mvc;
+
     public class AdminAreaRegistration : AreaRegistration
     {
+        #region Properties
+
         public override string AreaName
         {
             get
@@ -15,6 +17,10 @@ namespace FW.Admin
                 return "Administrator";
             }
         }
+
+        #endregion Properties
+
+        #region Methods
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
@@ -25,5 +31,7 @@ namespace FW.Admin
                 new[] { "FW.Admin.Controllers" }
             );
         }
+
+        #endregion Methods
     }
 }

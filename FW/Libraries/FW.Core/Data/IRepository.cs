@@ -1,10 +1,26 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace FW.Core.Data
+﻿namespace FW.Core.Data
 {
-    public interface IRepository<T> where T : BaseEntity
+    using System.Collections.Generic;
+    using System.Linq;
+
+    public interface IRepository<T>
+        where T : BaseEntity
     {
+        #region Properties
+
+        IQueryable<T> Table
+        {
+            get;
+        }
+
+        #endregion Properties
+
+        #region Methods
+
+        void Delete(T entity);
+
+        void Delete(IEnumerable<T> entities);
+
         T GetById(int id);
 
         void Insert(T entity);
@@ -15,10 +31,6 @@ namespace FW.Core.Data
 
         void Update(IEnumerable<T> entities);
 
-        void Delete(T entity);
-
-        void Delete(IEnumerable<T> entities);
-
-        IQueryable<T> Table { get; }
+        #endregion Methods
     }
 }

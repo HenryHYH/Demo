@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-
-namespace FW.Core.Infrastructure
+﻿namespace FW.Core.Infrastructure
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.IO;
+    using System.Linq;
+    using System.Reflection;
+    using System.Text;
+    using System.Text.RegularExpressions;
+    using System.Threading.Tasks;
+
     /// <summary>
     /// A class that finds types needed by Nop by looping assemblies in the 
     /// currently executing AppDomain. Only assemblies whose names matches
@@ -20,13 +20,13 @@ namespace FW.Core.Infrastructure
     {
         #region Fields
 
+        private IList<string> assemblyNames = new List<string>();
+        private string assemblyRestrictToLoadingPattern = ".*";
+        private string assemblySkipLoadingPattern = "^System|^mscorlib|^Microsoft|^AjaxControlToolkit|^Antlr3|^Autofac|^AutoMapper|^Castle|^ComponentArt|^CppCodeProvider|^DotNetOpenAuth|^EntityFramework|^EPPlus|^FluentValidation|^ImageResizer|^itextsharp|^log4net|^MaxMind|^MbUnit|^MiniProfiler|^Mono.Math|^MvcContrib|^Newtonsoft|^NHibernate|^nunit|^Org.Mentalis|^PerlRegex|^QuickGraph|^Recaptcha|^Remotion|^RestSharp|^Rhino|^Telerik|^Iesi|^TestDriven|^TestFu|^UserAgentStringLibrary|^VJSharpCodeProvider|^WebActivator|^WebDev|^WebGrease";
         private bool ignoreReflectionErrors = true;
         private bool loadAppDomainAssemblies = true;
-        private string assemblySkipLoadingPattern = "^System|^mscorlib|^Microsoft|^AjaxControlToolkit|^Antlr3|^Autofac|^AutoMapper|^Castle|^ComponentArt|^CppCodeProvider|^DotNetOpenAuth|^EntityFramework|^EPPlus|^FluentValidation|^ImageResizer|^itextsharp|^log4net|^MaxMind|^MbUnit|^MiniProfiler|^Mono.Math|^MvcContrib|^Newtonsoft|^NHibernate|^nunit|^Org.Mentalis|^PerlRegex|^QuickGraph|^Recaptcha|^Remotion|^RestSharp|^Rhino|^Telerik|^Iesi|^TestDriven|^TestFu|^UserAgentStringLibrary|^VJSharpCodeProvider|^WebActivator|^WebDev|^WebGrease";
-        private string assemblyRestrictToLoadingPattern = ".*";
-        private IList<string> assemblyNames = new List<string>();
 
-        #endregion
+        #endregion Fields
 
         #region Properties
 
@@ -36,25 +36,11 @@ namespace FW.Core.Infrastructure
             get { return AppDomain.CurrentDomain; }
         }
 
-        /// <summary>Gets or sets wether Nop should iterate assemblies in the app domain when loading Nop types. Loading patterns are applied when loading these assemblies.</summary>
-        public bool LoadAppDomainAssemblies
-        {
-            get { return loadAppDomainAssemblies; }
-            set { loadAppDomainAssemblies = value; }
-        }
-
         /// <summary>Gets or sets assemblies loaded a startup in addition to those loaded in the AppDomain.</summary>
         public IList<string> AssemblyNames
         {
             get { return assemblyNames; }
             set { assemblyNames = value; }
-        }
-
-        /// <summary>Gets the pattern for dlls that we know don't need to be investigated.</summary>
-        public string AssemblySkipLoadingPattern
-        {
-            get { return assemblySkipLoadingPattern; }
-            set { assemblySkipLoadingPattern = value; }
         }
 
         /// <summary>Gets or sets the pattern for dll that will be investigated. For ease of use this defaults to match all but to increase performance you might want to configure a pattern that includes assemblies and your own.</summary>
@@ -65,7 +51,21 @@ namespace FW.Core.Infrastructure
             set { assemblyRestrictToLoadingPattern = value; }
         }
 
-        #endregion
+        /// <summary>Gets the pattern for dlls that we know don't need to be investigated.</summary>
+        public string AssemblySkipLoadingPattern
+        {
+            get { return assemblySkipLoadingPattern; }
+            set { assemblySkipLoadingPattern = value; }
+        }
+
+        /// <summary>Gets or sets wether Nop should iterate assemblies in the app domain when loading Nop types. Loading patterns are applied when loading these assemblies.</summary>
+        public bool LoadAppDomainAssemblies
+        {
+            get { return loadAppDomainAssemblies; }
+            set { loadAppDomainAssemblies = value; }
+        }
+
+        #endregion Properties
 
         #region Methods
 
@@ -157,28 +157,19 @@ namespace FW.Core.Infrastructure
             return assemblies;
         }
 
-        #endregion
-
-        #region Utilities
-
         /// <summary>
-        /// Iterates all assemblies in the AppDomain and if it's name matches the configured patterns add it to our list.
+        /// Check if a dll is one of the shipped dlls that we know don't need to be investigated.
         /// </summary>
-        /// <param name="addedAssemblyNames"></param>
-        /// <param name="assemblies"></param>
-        private void AddAssembliesInAppDomain(List<string> addedAssemblyNames, List<Assembly> assemblies)
+        /// <param name="assemblyFullName">
+        /// The name of the assembly to check.
+        /// </param>
+        /// <returns>
+        /// True if the assembly should be loaded into Nop.
+        /// </returns>
+        public virtual bool Matches(string assemblyFullName)
         {
-            foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
-            {
-                if (Matches(assembly.FullName))
-                {
-                    if (!addedAssemblyNames.Contains(assembly.FullName))
-                    {
-                        assemblies.Add(assembly);
-                        addedAssemblyNames.Add(assembly.FullName);
-                    }
-                }
-            }
+            return !Matches(assemblyFullName, AssemblySkipLoadingPattern)
+                   && Matches(assemblyFullName, AssemblyRestrictToLoadingPattern);
         }
 
         /// <summary>
@@ -200,35 +191,30 @@ namespace FW.Core.Infrastructure
         }
 
         /// <summary>
-        /// Check if a dll is one of the shipped dlls that we know don't need to be investigated.
+        /// Does type implement generic?
         /// </summary>
-        /// <param name="assemblyFullName">
-        /// The name of the assembly to check.
-        /// </param>
-        /// <returns>
-        /// True if the assembly should be loaded into Nop.
-        /// </returns>
-        public virtual bool Matches(string assemblyFullName)
+        /// <param name="type"></param>
+        /// <param name="openGeneric"></param>
+        /// <returns></returns>
+        protected virtual bool DoesTypeImplementOpenGeneric(Type type, Type openGeneric)
         {
-            return !Matches(assemblyFullName, AssemblySkipLoadingPattern)
-                   && Matches(assemblyFullName, AssemblyRestrictToLoadingPattern);
-        }
+            try
+            {
+                var genericTypeDefinition = openGeneric.GetGenericTypeDefinition();
+                foreach (var implementedInterface in type.FindInterfaces((objType, objCriteria) => true, null))
+                {
+                    if (!implementedInterface.IsGenericType)
+                        continue;
 
-        /// <summary>
-        /// Check if a dll is one of the shipped dlls that we know don't need to be investigated.
-        /// </summary>
-        /// <param name="assemblyFullName">
-        /// The assembly name to match.
-        /// </param>
-        /// <param name="pattern">
-        /// The regular expression pattern to match against the assembly name.
-        /// </param>
-        /// <returns>
-        /// True if the pattern matches the assembly name.
-        /// </returns>
-        protected virtual bool Matches(string assemblyFullName, string pattern)
-        {
-            return Regex.IsMatch(assemblyFullName, pattern, RegexOptions.IgnoreCase | RegexOptions.Compiled);
+                    var isMatch = genericTypeDefinition.IsAssignableFrom(implementedInterface.GetGenericTypeDefinition());
+                    return isMatch;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -275,32 +261,42 @@ namespace FW.Core.Infrastructure
         }
 
         /// <summary>
-        /// Does type implement generic?
+        /// Check if a dll is one of the shipped dlls that we know don't need to be investigated.
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="openGeneric"></param>
-        /// <returns></returns>
-        protected virtual bool DoesTypeImplementOpenGeneric(Type type, Type openGeneric)
+        /// <param name="assemblyFullName">
+        /// The assembly name to match.
+        /// </param>
+        /// <param name="pattern">
+        /// The regular expression pattern to match against the assembly name.
+        /// </param>
+        /// <returns>
+        /// True if the pattern matches the assembly name.
+        /// </returns>
+        protected virtual bool Matches(string assemblyFullName, string pattern)
         {
-            try
-            {
-                var genericTypeDefinition = openGeneric.GetGenericTypeDefinition();
-                foreach (var implementedInterface in type.FindInterfaces((objType, objCriteria) => true, null))
-                {
-                    if (!implementedInterface.IsGenericType)
-                        continue;
+            return Regex.IsMatch(assemblyFullName, pattern, RegexOptions.IgnoreCase | RegexOptions.Compiled);
+        }
 
-                    var isMatch = genericTypeDefinition.IsAssignableFrom(implementedInterface.GetGenericTypeDefinition());
-                    return isMatch;
-                }
-                return false;
-            }
-            catch
+        /// <summary>
+        /// Iterates all assemblies in the AppDomain and if it's name matches the configured patterns add it to our list.
+        /// </summary>
+        /// <param name="addedAssemblyNames"></param>
+        /// <param name="assemblies"></param>
+        private void AddAssembliesInAppDomain(List<string> addedAssemblyNames, List<Assembly> assemblies)
+        {
+            foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
-                return false;
+                if (Matches(assembly.FullName))
+                {
+                    if (!addedAssemblyNames.Contains(assembly.FullName))
+                    {
+                        assemblies.Add(assembly);
+                        addedAssemblyNames.Add(assembly.FullName);
+                    }
+                }
             }
         }
 
-        #endregion
+        #endregion Methods
     }
 }

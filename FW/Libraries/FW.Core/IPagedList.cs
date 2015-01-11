@@ -1,23 +1,45 @@
-﻿using System.Collections.Generic;
-
-namespace FW.Core
+﻿namespace FW.Core
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// 分页列表接口
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public interface IPagedList<T> : IList<T>
     {
-        int PageIndex { get; }
+        #region Properties
 
-        int PageSize { get; }
+        bool HasNextPage
+        {
+            get;
+        }
 
-        int TotalCount { get; }
+        bool HasPreviousPage
+        {
+            get;
+        }
 
-        int TotalPages { get; }
+        int PageIndex
+        {
+            get;
+        }
 
-        bool HasPreviousPage { get; }
+        int PageSize
+        {
+            get;
+        }
 
-        bool HasNextPage { get; }
+        int TotalCount
+        {
+            get;
+        }
+
+        int TotalPages
+        {
+            get;
+        }
+
+        #endregion Properties
     }
 }

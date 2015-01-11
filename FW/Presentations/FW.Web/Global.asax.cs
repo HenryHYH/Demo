@@ -1,32 +1,19 @@
-﻿using FW.Core.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Routing;
-
-namespace FW.Web
+﻿namespace FW.Web
 {
-    public class MvcApplication : System.Web.HttpApplication
-    {
-        protected void Application_Start()
-        {
-            EngineContext.Current.Initialize();
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Web;
+    using System.Web.Mvc;
+    using System.Web.Routing;
 
-            AreaRegistration.RegisterAllAreas();
-
-            ViewEngines.Engines.Clear();
-            var viewEngine = new CustomViewLocationRazorViewEngine();
-            ViewEngines.Engines.Add(viewEngine);
-
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-        }
-    }
+    using FW.Core.Infrastructure;
 
     public class CustomViewLocationRazorViewEngine : RazorViewEngine
     {
+        #region Constructors
+
         public CustomViewLocationRazorViewEngine()
             : base()
         {
@@ -43,9 +30,13 @@ namespace FW.Web
             this.FileExtensions = new[] { "cshtml" };
         }
 
-        protected override bool FileExists(ControllerContext controllerContext, string virtualPath)
+        #endregion Constructors
+
+        #region Methods
+
+        public override ViewEngineResult FindPartialView(ControllerContext controllerContext, string partialViewName, bool useCache)
         {
-            return base.FileExists(controllerContext, virtualPath);
+            return FindView(controllerContext, partialViewName, null, useCache);
         }
 
         public override ViewEngineResult FindView(ControllerContext controllerContext, string viewName, string masterName, bool useCache)
@@ -73,9 +64,9 @@ namespace FW.Web
             return new ViewEngineResult(viewLocations);
         }
 
-        public override ViewEngineResult FindPartialView(ControllerContext controllerContext, string partialViewName, bool useCache)
+        protected override bool FileExists(ControllerContext controllerContext, string virtualPath)
         {
-            return FindView(controllerContext, partialViewName, null, useCache);
+            return base.FileExists(controllerContext, virtualPath);
         }
 
         protected virtual string GetAreaName(RouteData routeData)
@@ -102,5 +93,27 @@ namespace FW.Web
             }
             return null;
         }
+
+        #endregion Methods
+    }
+
+    public class MvcApplication : System.Web.HttpApplication
+    {
+        #region Methods
+
+        protected void Application_Start()
+        {
+            EngineContext.Current.Initialize();
+
+            AreaRegistration.RegisterAllAreas();
+
+            ViewEngines.Engines.Clear();
+            var viewEngine = new CustomViewLocationRazorViewEngine();
+            ViewEngines.Engines.Add(viewEngine);
+
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+        }
+
+        #endregion Methods
     }
 }

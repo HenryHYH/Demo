@@ -1,27 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Caching;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-
-namespace FW.Core.Caching
+﻿namespace FW.Core.Caching
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Runtime.Caching;
+    using System.Text;
+    using System.Text.RegularExpressions;
+    using System.Threading.Tasks;
+
     public class MemoryCacheManager : ICacheManager
     {
+        #region Fields
+
         private static readonly object _lock = new object();
 
-        private ObjectCache Cache { get { return MemoryCache.Default; } }
+        #endregion Fields
 
-        public void Set(string key, object value, int cacheTime = 30)
+        #region Properties
+
+        private ObjectCache Cache
         {
-            if (null == value)
-                return;
+            get { return MemoryCache.Default; }
+        }
 
-            var policy = new CacheItemPolicy();
-            policy.AbsoluteExpiration = DateTime.Now + TimeSpan.FromMinutes(cacheTime);
-            Cache.Set(new CacheItem(key, value), policy);
+        #endregion Properties
+
+        #region Methods
+
+        public void Clear()
+        {
+            foreach (var item in Cache)
+                Remove(item.Key);
+        }
+
+        public bool Contain(string key)
+        {
+            return Cache.Contains(key);
         }
 
         public T Get<T>(string key, Func<T> defaultValue = null)
@@ -44,11 +58,6 @@ namespace FW.Core.Caching
             }
         }
 
-        public bool Contain(string key)
-        {
-            return Cache.Contains(key);
-        }
-
         public void Remove(string key)
         {
             Cache.Remove(key);
@@ -63,10 +72,16 @@ namespace FW.Core.Caching
                     Remove(item.Key);
         }
 
-        public void Clear()
+        public void Set(string key, object value, int cacheTime = 30)
         {
-            foreach (var item in Cache)
-                Remove(item.Key);
+            if (null == value)
+                return;
+
+            var policy = new CacheItemPolicy();
+            policy.AbsoluteExpiration = DateTime.Now + TimeSpan.FromMinutes(cacheTime);
+            Cache.Set(new CacheItem(key, value), policy);
         }
+
+        #endregion Methods
     }
 }

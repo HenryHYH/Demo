@@ -1,28 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FW.Core
+﻿namespace FW.Core
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
     public abstract class BaseEntity
     {
-        public int Id { get; set; }
+        #region Properties
+
+        public int Id
+        {
+            get; set;
+        }
+
+        #endregion Properties
+
+        #region Methods
+
+        public static bool operator !=(BaseEntity x, BaseEntity y)
+        {
+            return !(x == y);
+        }
+
+        public static bool operator ==(BaseEntity x, BaseEntity y)
+        {
+            return Equals(x, y);
+        }
 
         public override bool Equals(object obj)
         {
             return Equals(obj as BaseEntity);
-        }
-
-        private static bool IsTransient(BaseEntity obj)
-        {
-            return obj != null && Equals(obj.Id, default(int));
-        }
-
-        private Type GetUnproxiedType()
-        {
-            return GetType();
         }
 
         public virtual bool Equals(BaseEntity other)
@@ -53,14 +62,16 @@ namespace FW.Core
             return Id.GetHashCode();
         }
 
-        public static bool operator ==(BaseEntity x, BaseEntity y)
+        private static bool IsTransient(BaseEntity obj)
         {
-            return Equals(x, y);
+            return obj != null && Equals(obj.Id, default(int));
         }
 
-        public static bool operator !=(BaseEntity x, BaseEntity y)
+        private Type GetUnproxiedType()
         {
-            return !(x == y);
+            return GetType();
         }
+
+        #endregion Methods
     }
 }

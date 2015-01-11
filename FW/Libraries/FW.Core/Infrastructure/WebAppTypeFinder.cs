@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Hosting;
-
-namespace FW.Core.Infrastructure
+﻿namespace FW.Core.Infrastructure
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Web;
+    using System.Web.Hosting;
+
     /// <summary>
     /// Provides information about types in the current web application. 
     /// Optionally this class can look at all assemblies in the bin folder.
@@ -17,19 +17,19 @@ namespace FW.Core.Infrastructure
     {
         #region Fields
 
-        private bool _ensureBinFolderAssembliesLoaded = true;
         private bool _binFolderAssembliesLoaded;
+        private bool _ensureBinFolderAssembliesLoaded = true;
 
-        #endregion
+        #endregion Fields
 
-        #region Ctor
+        #region Constructors
 
         public WebAppTypeFinder()
         {
             // this._ensureBinFolderAssembliesLoaded = config.DynamicDiscovery;
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Properties
 
@@ -42,9 +42,22 @@ namespace FW.Core.Infrastructure
             set { _ensureBinFolderAssembliesLoaded = value; }
         }
 
-        #endregion
+        #endregion Properties
 
         #region Methods
+
+        public override IList<Assembly> GetAssemblies()
+        {
+            if (this.EnsureBinFolderAssembliesLoaded && !_binFolderAssembliesLoaded)
+            {
+                _binFolderAssembliesLoaded = true;
+                string binPath = GetBinDirectory();
+                //binPath = _webHelper.MapPath("~/bin");
+                LoadMatchingAssemblies(binPath);
+            }
+
+            return base.GetAssemblies();
+        }
 
         /// <summary>
         /// Gets a physical disk path of \Bin directory
@@ -62,19 +75,6 @@ namespace FW.Core.Infrastructure
             return AppDomain.CurrentDomain.BaseDirectory;
         }
 
-        public override IList<Assembly> GetAssemblies()
-        {
-            if (this.EnsureBinFolderAssembliesLoaded && !_binFolderAssembliesLoaded)
-            {
-                _binFolderAssembliesLoaded = true;
-                string binPath = GetBinDirectory();
-                //binPath = _webHelper.MapPath("~/bin");
-                LoadMatchingAssemblies(binPath);
-            }
-
-            return base.GetAssemblies();
-        }
-
-        #endregion
+        #endregion Methods
     }
 }

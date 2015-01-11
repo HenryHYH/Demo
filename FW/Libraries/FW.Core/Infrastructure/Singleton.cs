@@ -1,12 +1,19 @@
-﻿using System;
-
-namespace FW.Core.Infrastructure
+﻿namespace FW.Core.Infrastructure
 {
-    public class Singleton<T> where T : class
+    using System;
+
+    public class Singleton<T>
+        where T : class
     {
-        private static T instance;
+        #region Fields
 
         private static readonly object locker = new object();
+
+        private static T instance;
+
+        #endregion Fields
+
+        #region Properties
 
         public static T Instance
         {
@@ -20,5 +27,7 @@ namespace FW.Core.Infrastructure
                 return instance;
             }
         }
+
+        #endregion Properties
     }
 }

@@ -1,42 +1,36 @@
-﻿using FW.Core.Caching;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
-using Xunit.Extensions;
-using FluentAssertions;
-
-namespace FW.Core.Tests
+﻿namespace FW.Core.Tests
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    using FluentAssertions;
+
+    using FW.Core.Caching;
+
+    using Xunit;
+    using Xunit.Extensions;
+
     public class MemoryCacheManagerTest
     {
+        #region Fields
+
         private readonly ICacheManager cacheManager;
+
+        #endregion Fields
+
+        #region Constructors
 
         public MemoryCacheManagerTest()
         {
             cacheManager = new MemoryCacheManager();
         }
 
-        [Fact]
-        public void GetNullTest()
-        {
-            cacheManager.Get<string>("GetNullTest")
-                .Should()
-                .BeNullOrEmpty();
-        }
+        #endregion Constructors
 
-
-        [Theory]
-        [InlineData(100)]
-        [InlineData("Hello world")]
-        public void GetTest(object expected)
-        {
-            cacheManager.Get(expected.ToString(), () => expected)
-                .Should()
-                .Be(expected);
-        }
+        #region Methods
 
         [Fact]
         public void GetCacheTest()
@@ -56,9 +50,40 @@ namespace FW.Core.Tests
                 .Be("B");
         }
 
+        [Fact]
+        public void GetNullTest()
+        {
+            cacheManager.Get<string>("GetNullTest")
+                .Should()
+                .BeNullOrEmpty();
+        }
+
+        [Theory]
+        [InlineData(100)]
+        [InlineData("Hello world")]
+        public void GetTest(object expected)
+        {
+            cacheManager.Get(expected.ToString(), () => expected)
+                .Should()
+                .Be(expected);
+        }
+
+        #endregion Methods
+
+        #region Nested Types
+
         private class Tmp
         {
-            public string Str { get; set; }
+            #region Properties
+
+            public string Str
+            {
+                get; set;
+            }
+
+            #endregion Properties
         }
+
+        #endregion Nested Types
     }
 }

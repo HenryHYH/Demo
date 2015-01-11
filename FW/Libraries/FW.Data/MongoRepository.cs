@@ -1,30 +1,34 @@
-﻿using FW.Core;
-using FW.Core.Data;
-using FW.Core.Infrastructure;
-using MongoDB.Bson.Serialization;
-using MongoDB.Bson.Serialization.IdGenerators;
-using MongoDB.Driver;
-using MongoDB.Driver.Builders;
-using MongoDB.Driver.Linq;
-using MongoDBIntIdGenerator;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FW.Data
+﻿namespace FW.Data
 {
-    public partial class MongoRepository<T> : IRepository<T> where T : BaseEntity
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    using FW.Core;
+    using FW.Core.Data;
+    using FW.Core.Infrastructure;
+
+    using MongoDB.Bson.Serialization;
+    using MongoDB.Bson.Serialization.IdGenerators;
+    using MongoDB.Driver;
+    using MongoDB.Driver.Builders;
+    using MongoDB.Driver.Linq;
+
+    using MongoDBIntIdGenerator;
+
+    public partial class MongoRepository<T> : IRepository<T>
+        where T : BaseEntity
     {
         #region Fields
 
         private MongoCollection<T> collection;
         private Settings settings;
 
-        #endregion
+        #endregion Fields
 
-        #region Ctor
+        #region Constructors
 
         public MongoRepository(Settings settings)
         {
@@ -44,9 +48,31 @@ namespace FW.Data
             BsonSerializer.RegisterIdGenerator(typeof(int), IntIdGenerator.Instance);
         }
 
-        #endregion
+        #endregion Constructors
+
+        #region Properties
+
+        public IQueryable<T> Table
+        {
+            get
+            {
+                return collection.AsQueryable<T>();
+            }
+        }
+
+        #endregion Properties
 
         #region Methods
+
+        public void Delete(T entity)
+        {
+            collection.Remove(Query<T>.EQ(x => x.Id, entity.Id));
+        }
+
+        public void Delete(IEnumerable<T> entities)
+        {
+            throw new NotImplementedException();
+        }
 
         public T GetById(int id)
         {
@@ -73,30 +99,6 @@ namespace FW.Data
             throw new NotImplementedException();
         }
 
-        public void Delete(T entity)
-        {
-            collection.Remove(Query<T>.EQ(x => x.Id, entity.Id));
-
-
-        }
-
-        public void Delete(IEnumerable<T> entities)
-        {
-            throw new NotImplementedException();
-        }
-
-        #endregion
-
-        #region Properties
-
-        public IQueryable<T> Table
-        {
-            get
-            {
-                return collection.AsQueryable<T>();
-            }
-        }
-
-        #endregion
+        #endregion Methods
     }
 }

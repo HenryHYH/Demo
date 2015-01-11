@@ -1,30 +1,46 @@
-﻿using Autofac;
-using Autofac.Core.Lifetime;
-using Autofac.Integration.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-
-namespace FW.Core.Infrastructure
+﻿namespace FW.Core.Infrastructure
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Web;
+
+    using Autofac;
+    using Autofac.Core.Lifetime;
+    using Autofac.Integration.Mvc;
+
     public class ContainerManager
     {
+        #region Fields
+
         private readonly IContainer _container;
+
+        #endregion Fields
+
+        #region Constructors
 
         public ContainerManager(IContainer container)
         {
             _container = container;
         }
 
+        #endregion Constructors
+
+        #region Properties
+
         public IContainer Container
         {
             get { return _container; }
         }
 
-        public T Resolve<T>(string key = "", ILifetimeScope scope = null) where T : class
+        #endregion Properties
+
+        #region Methods
+
+        public T Resolve<T>(string key = "", ILifetimeScope scope = null)
+            where T : class
         {
             if (scope == null)
             {
@@ -58,5 +74,7 @@ namespace FW.Core.Infrastructure
                 return Container.BeginLifetimeScope(MatchingScopeLifetimeTags.RequestLifetimeScopeTag);
             }
         }
+
+        #endregion Methods
     }
 }

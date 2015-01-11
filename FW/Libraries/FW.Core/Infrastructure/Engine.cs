@@ -1,19 +1,22 @@
-﻿using Autofac;
-using Autofac.Integration.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
-
-namespace FW.Core.Infrastructure
+﻿namespace FW.Core.Infrastructure
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web.Mvc;
+
+    using Autofac;
+    using Autofac.Integration.Mvc;
+
     public class Engine : IEngine
     {
         #region Fields
 
         private ContainerManager containerManager;
 
-        #endregion
+        #endregion Fields
+
+        #region Methods
 
         public void Initialize()
         {
@@ -41,10 +44,12 @@ namespace FW.Core.Infrastructure
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
 
-
-        public T Resolve<T>() where T : class
+        public T Resolve<T>()
+            where T : class
         {
             return containerManager.Resolve<T>();
         }
+
+        #endregion Methods
     }
 }

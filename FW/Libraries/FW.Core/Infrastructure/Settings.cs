@@ -1,31 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Hosting;
-using System.Xml.Linq;
-
-namespace FW.Core.Infrastructure
+﻿namespace FW.Core.Infrastructure
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Web.Hosting;
+    using System.Xml.Linq;
+
     public class Settings
     {
         #region Fields
 
         private const string fileName = "Setting.xml";
+
         private Dictionary<string, string> settings = new Dictionary<string, string>();
 
-        #endregion
+        #endregion Fields
 
-        #region Ctor
+        #region Constructors
 
         public Settings(Dictionary<string, string> settings)
         {
             this.settings = settings;
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Methods
 
@@ -36,6 +37,6 @@ namespace FW.Core.Infrastructure
                 string.Empty;
         }
 
-        #endregion
+        #endregion Methods
     }
 }
