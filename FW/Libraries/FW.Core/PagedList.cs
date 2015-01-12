@@ -23,7 +23,7 @@
 
             this.PageSize = pageSize;
             this.PageIndex = pageIndex;
-            this.AddRange(source.Skip(pageSize * pageIndex).Take(pageSize).ToList());
+            this.AddRange(source.Skip(pageSize * (pageIndex - 1)).Take(pageSize).ToList());
         }
 
         #endregion Constructors
@@ -42,22 +42,26 @@
 
         public int PageIndex
         {
-            get; private set;
+            get;
+            private set;
         }
 
         public int PageSize
         {
-            get; private set;
+            get;
+            private set;
         }
 
         public int TotalRecords
         {
-            get; private set;
+            get;
+            private set;
         }
 
         public int TotalPages
         {
-            get; private set;
+            get;
+            private set;
         }
 
         #endregion Properties

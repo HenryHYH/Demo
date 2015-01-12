@@ -42,6 +42,7 @@
                 url: '@Url.Action("UserList", "User")',
                 // template: "tb-tmpl1",
                 // customTemplate: true,
+                condition: { pageIndex: 1, pageSize: 5 },
                 columns: [{ title: "No.", field: "Id" }, { title: "Name", field: "Name" }, { title: "Age", field: "Age" }]
             });
         });

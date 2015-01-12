@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using FW.Web.Framework.Extensions;
 using FW.Core.Domain.Users;
 using FW.Admin.Models;
+using FW.Web.Framework.Datasource;
 
 namespace FW.Admin.Controllers
 {
@@ -26,9 +27,12 @@ namespace FW.Admin.Controllers
         }
 
         [HttpGet]
-        public ActionResult UserList()
+        public ActionResult UserList(DatasourceRequest command)
         {
-            var data = userService.GetUsers().ToResult<User, UserModel>();
+            var data = userService.GetUsers(
+                pageIndex: command.PageIndex,
+                pageSize: command.PageSize)
+                .ToResult<User, UserModel>();
 
             return Json(data, JsonRequestBehavior.AllowGet);
         }

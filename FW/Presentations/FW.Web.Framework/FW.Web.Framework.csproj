@@ -81,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Datasource\DatasourceRequest.cs" />
     <Compile Include="Datasource\DatasourceResult.cs" />
     <Compile Include="DependencyRegister.cs" />
     <Compile Include="Extensions\MappingExtensions.cs" />
