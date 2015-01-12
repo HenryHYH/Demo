@@ -11,8 +11,9 @@
     using FW.Web.Framework.UI.BreadCrumb;
     using FW.Web.Framework.UI.Menu;
     using FW.Web.Framework.UI.Pagination;
+    using FW.Web.Framework.Controllers;
 
-    public class CommonController : Controller
+    public class CommonController : BaseController
     {
         #region Fields
 
@@ -59,9 +60,8 @@
         }
 
         [ChildActionOnly]
-        public ActionResult Table()
+        public ActionResult Table(string url)
         {
-            ViewBag.Columns = "[{ title: 'No.', field: 'index' }, { title: 'Name', field: 'name' }, { title: 'Age', field: 'age' }]";
             return PartialView();
         }
 

@@ -98,6 +98,7 @@
     <Compile Include="AdminAreaRegistration.cs" />
     <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +113,7 @@
     <Content Include="Views\Common\Pagination.cshtml" />
     <Content Include="Views\Common\BreadCrumb.cshtml" />
     <Content Include="Views\Common\Table.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

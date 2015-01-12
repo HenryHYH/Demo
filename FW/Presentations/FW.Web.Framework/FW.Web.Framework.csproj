@@ -74,6 +74,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="DependencyRegister.cs" />
     <Compile Include="UI\BreadCrumb\BreadCrumbNode.cs" />
     <Compile Include="UI\Menu\SiteMapNode.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="UI\ResourceLocation.cs" />
     <Compile Include="UI\ResourcePriority.cs" />
     <Compile Include="UI\ResourceType.cs" />
+    <Compile Include="UI\SectionExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

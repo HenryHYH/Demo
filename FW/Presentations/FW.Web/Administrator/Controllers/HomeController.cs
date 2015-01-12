@@ -7,8 +7,9 @@
     using System.Web.Mvc;
 
     using FW.Service.Users;
+    using FW.Web.Framework.Controllers;
 
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         #region Fields
 

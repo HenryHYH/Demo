@@ -10,6 +10,7 @@
     using FW.Data;
     using FW.Service.Users;
     using FW.Web.Framework.UI;
+    using FW.Service.Logging;
 
     public class DependencyRegister : IDependencyRegister
     {
@@ -40,6 +41,7 @@
 
             // Services
             builder.RegisterType<UserService>().As<IUserService>().InstancePerLifetimeScope();
+            builder.RegisterType<DBLogger>().As<ILogger>().InstancePerLifetimeScope();
         }
 
         #endregion Methods

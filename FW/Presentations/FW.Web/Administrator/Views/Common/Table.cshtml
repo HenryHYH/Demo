@@ -2,27 +2,27 @@
     Layout = null;
 
     Html.AddResource("~/Scripts/template.js");
-    Html.AddResource("~/Scripts/table.js");
+    Html.AddResource("~/Scripts/jquery.table.js");
 }
 @using FW.Web.Framework.UI
 
-<table class="table table-condensed table-striped table-bordered" id="tb"></table>
-<input type="hidden" id="tb-columns" value="@ViewBag.Columns" />
 <script id="tb-tmpl" type="text/html">
-    <thead>
-        <tr>
-            {{each head as value i}}
-            <th>{{value}}</th>
+    <table class="table table-condensed table-striped table-bordered">
+        <thead>
+            <tr>
+                {{each columns as col i}}
+                <th>{{col.title}}</th>
+                {{/each}}
+            </tr>
+        </thead>
+        <tbody>
+            {{each data as row i}}
+            <tr>
+                {{each row as cell j}}
+                <td>{{cell}}</td>
+                {{/each}}
+            </tr>
             {{/each}}
-        </tr>
-    </thead>
-    <tbody>
-        {{each data as row i}}
-        <tr>
-            {{each row as cell j}}
-            <td>{{cell}}</td>
-            {{/each}}
-        </tr>
-        {{/each}}
-    </tbody>
+        </tbody>
+    </table>
 </script>
