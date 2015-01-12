@@ -18,13 +18,16 @@
     Html.AddResource("~/Administrator/Content/style.css", ResourcePriority.High);
 
     Html.AddBreadCrumb("Home", "/");
+
+    var defaultTitle = "FW";
+    var title = null == ViewBag.Title ? defaultTitle : (ViewBag.Title + " - " + defaultTitle);
 }
 <!DOCTYPE html>
 <html lang="chn">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - FW</title>
+    <title>@(title)</title>
     @Html.GenerateResources(this.Url, ResourceLocation.Head)
 </head>
 <body>
