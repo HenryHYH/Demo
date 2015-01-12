@@ -39,14 +39,14 @@
         public User GetUserByRealName(string realName)
         {
             return userRepository.Table
-                .Where(x => x.RealName == realName)
+                .Where(x => x.Name == realName)
                 .FirstOrDefault();
         }
 
         public IPagedList<User> GetUsers(DateTime? createdFrom = null,
             DateTime? createdTo = null,
             int pageIndex = 0,
-            int pageSize = 50)
+            int pageSize = 20)
         {
             var query = userRepository.Table;
 

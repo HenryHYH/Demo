@@ -15,7 +15,7 @@
         public PagedList(IQueryable<T> source, int pageIndex, int pageSize)
         {
             int total = source.Count();
-            this.TotalCount = total;
+            this.TotalRecords = total;
             this.TotalPages = total / pageSize;
 
             if (total % pageSize > 0)
@@ -50,7 +50,7 @@
             get; private set;
         }
 
-        public int TotalCount
+        public int TotalRecords
         {
             get; private set;
         }

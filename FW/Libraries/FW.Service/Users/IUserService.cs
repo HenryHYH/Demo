@@ -18,7 +18,7 @@
         IPagedList<User> GetUsers(DateTime? createdFrom = null,
             DateTime? createdTo = null,
             int pageIndex = 0,
-            int pageSize = 50);
+            int pageSize = 20);
 
         void InsertUser(User user);
 

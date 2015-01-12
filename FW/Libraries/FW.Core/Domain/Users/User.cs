@@ -12,13 +12,17 @@
 
         public string Password
         {
-            get; set;
+            get;
+            set;
         }
 
-        public string RealName
+        public string Name
         {
-            get; set;
+            get;
+            set;
         }
+
+        public int Age { get; set; }
 
         #endregion Properties
     }

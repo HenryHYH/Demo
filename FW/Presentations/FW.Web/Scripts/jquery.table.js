@@ -21,15 +21,15 @@
                 data: opts.condition,
                 success: function (result) {
 
-                    var data = result;
+                    var data = result.Data;
 
                     if (!opts.customTemplate) {
                         data = [];
 
-                        for (var i = 0, iMax = result.length; i < iMax; i++) {
+                        for (var i = 0, iMax = result.Data.length; i < iMax; i++) {
                             var row = [];
                             for (var j = 0, jMax = opts.columns.length; j < jMax; j++) {
-                                row.push(result[i][opts.columns[j].field]);
+                                row.push(result.Data[i][opts.columns[j].field]);
                             }
                             data.push(row);
                         }

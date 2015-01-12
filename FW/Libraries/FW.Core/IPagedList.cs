@@ -30,7 +30,7 @@
             get;
         }
 
-        int TotalCount
+        int TotalRecords
         {
             get;
         }

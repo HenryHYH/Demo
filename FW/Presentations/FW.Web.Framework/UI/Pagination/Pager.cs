@@ -37,12 +37,14 @@
 
         public int PageIndex
         {
-            get; private set;
+            get;
+            set;
         }
 
         public int PageSize
         {
-            get; private set;
+            get;
+            set;
         }
 
         public int TotalPages
@@ -56,7 +58,8 @@
 
         public int TotalRecords
         {
-            get; set;
+            get;
+            set;
         }
 
         #endregion Properties

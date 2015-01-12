@@ -20,6 +20,12 @@
 
         public void Initialize()
         {
+            RegisterDependencies();
+            RunStartupTasks();
+        }
+
+        protected virtual void RegisterDependencies()
+        {
             var builder = new ContainerBuilder();
             var container = builder.Build();
 
@@ -42,6 +48,19 @@
             containerManager = new ContainerManager(container);
 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+        }
+
+        protected virtual void RunStartupTasks()
+        {
+            var typeFinder = containerManager.Resolve<ITypeFinder>();
+            var startUpTaskTypes = typeFinder.FindClassesOfType<IStartupTask>();
+            var startUpTasks = new List<IStartupTask>();
+            foreach (var startUpTaskType in startUpTaskTypes)
+                startUpTasks.Add((IStartupTask)Activator.CreateInstance(startUpTaskType));
+            //sort
+            startUpTasks = startUpTasks.AsQueryable().OrderBy(st => st.Order).ToList();
+            foreach (var startUpTask in startUpTasks)
+                startUpTask.Execute();
         }
 
         public T Resolve<T>()

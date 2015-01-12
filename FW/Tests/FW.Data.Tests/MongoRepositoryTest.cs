@@ -46,7 +46,7 @@
         {
             userRepository.Insert(new User()
             {
-                RealName = realName,
+                Name = realName,
                 Password = password
             });
         }

@@ -87,6 +87,7 @@
     <Compile Include="Infrastructure\EngineContext.cs" />
     <Compile Include="Infrastructure\IDependencyRegister.cs" />
     <Compile Include="Infrastructure\IEngine.cs" />
+    <Compile Include="Infrastructure\IStartupTask.cs" />
     <Compile Include="Infrastructure\ITypeFinder.cs" />
     <Compile Include="Infrastructure\Settings.cs" />
     <Compile Include="Infrastructure\SettingsManager.cs" />
