@@ -27,27 +27,42 @@
     </table>
     {{include 'pager-tmpl' pager}}
 </script>
-@*<li class="active"><span>1</span></li>
-    <li><a href="#">2</a></li>*@
 <script id="pager-tmpl" type="text/html">
     <nav>
         <ul class="pagination pagination-sm">
+            <li class="{{PageIndex != 1 ? "" : "disabled"}}">
+                <a href="#" aria-label="First" data-page="1">
+                    <i class="fa fa-fast-backward"></i>
+                </a>
+            </li>
             <li class="{{HasPrevious ? "" : "disabled"}}">
-                <a href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
+                <a href="#" aria-label="Previous" data-page="{{PageIndex - 1}}">
+                    <i class="fa fa-backward"></i>
                 </a>
             </li>
             {{each Pages as page}}
             {{if page == PageIndex }}
             <li class="active"><span>{{page}}</span></li>
             {{else}}
-            <li><a href="#">{{page}}</a></li>
+            <li><a href="#" data-page="{{page}}">{{page}}</a></li>
             {{/if}}
             {{/each}}
             <li class="{{HasNext ? "" : "disabled"}}">
-                <a href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
+                <a href="#" aria-label="Next" data-page="{{PageIndex + 1}}">
+                    <i class="fa fa-forward"></i>
                 </a>
+            </li>
+            <li class="{{PageIndex != TotalPages ? "" : "disabled"}}">
+                <a href="#" aria-label="Last" data-page="{{TotalPages}}">
+                    <i class="fa fa-fast-forward"></i>
+                </a>
+            </li>
+        </ul>
+        <ul class="pagination pagination-sm">
+            <li>
+                <span class="label label-info">
+                    {{(PageIndex - 1) * PageSize + 1}} - {{PageIndex * PageSize}}&nbsp;of&nbsp;{{TotalRecords}}
+                </span>
             </li>
         </ul>
     </nav>

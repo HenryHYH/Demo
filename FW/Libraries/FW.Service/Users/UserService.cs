@@ -48,7 +48,8 @@
             int pageIndex = 1,
             int pageSize = 20)
         {
-            var query = userRepository.Table;
+            var query = userRepository.Table
+                                        .OrderBy(x => x.Id);
 
             if (createdFrom.HasValue)
             {

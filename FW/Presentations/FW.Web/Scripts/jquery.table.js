@@ -4,7 +4,6 @@
         this.defaults = {
             customTemplate: false,
             template: "tb-tmpl",
-            pagerTemplate: "pager-tmpl",
             url: "",
             columns: [],
             condition: null
@@ -13,10 +12,16 @@
     }
 
     Table.prototype = {
-        Load: function () {
+        Load: function (newPageIndex) {
+
             var options = this.options;
+            if (newPageIndex)
+                options.condition.pageIndex = newPageIndex;
+
             return this.current.each(function () {
+
                 if (options.url && options.template && options.columns && 0 < options.columns.length) {
+
                     var current = this;
 
                     $.ajax({
@@ -64,6 +69,7 @@
                             $(current).html(html);
                         }
                     });
+
                 }
             });
         }
@@ -71,6 +77,16 @@
 
     $.fn.table = function (options) {
         var plugin = new Table(this, options);
+
+        $(this).delegate(".pagination li:not(.disabled) a", "click", function () {
+
+            var pageIndex = parseInt($(this).attr("data-page"));
+            plugin.Load(pageIndex);
+
+            return false;
+
+        });
+
         return plugin.Load();
     }
 })(jQuery);
