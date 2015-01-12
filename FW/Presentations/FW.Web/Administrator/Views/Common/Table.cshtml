@@ -25,18 +25,26 @@
             {{/each}}
         </tbody>
     </table>
+    {{include 'pager-tmpl' pager}}
 </script>
+@*<li class="active"><span>1</span></li>
+    <li><a href="#">2</a></li>*@
 <script id="pager-tmpl" type="text/html">
     <nav>
         <ul class="pagination pagination-sm">
-            <li>
+            <li class="{{HasPrevious ? "" : "disabled"}}">
                 <a href="#" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
-            <li class="active"><span>1</span></li>
-            <li><a href="#">2</a></li>
-            <li>
+            {{each Pages as page}}
+            {{if page == PageIndex }}
+            <li class="active"><span>{{page}}</span></li>
+            {{else}}
+            <li><a href="#">{{page}}</a></li>
+            {{/if}}
+            {{/each}}
+            <li class="{{HasNext ? "" : "disabled"}}">
                 <a href="#" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                 </a>

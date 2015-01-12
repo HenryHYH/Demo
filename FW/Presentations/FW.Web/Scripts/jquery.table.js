@@ -3,6 +3,7 @@
         var defaults = {
             customTemplate: false,
             template: "tb-tmpl",
+            pagerTemplate: "pager-tmpl",
             url: "",
             columns: [],
             condition: null
@@ -21,7 +22,8 @@
                 data: opts.condition,
                 success: function (result) {
 
-                    var data = result.Data;
+                    var data = result.Data,
+                        pager = result.Pager;
 
                     if (!opts.customTemplate) {
                         data = [];
@@ -35,9 +37,27 @@
                         }
                     }
 
+                    var pageIndex = pager.PageIndex,
+                        totalPages = pager.TotalPages,
+                        firstPageIndex = 1,
+                        lastPageIndex = totalPages;
+
+                    if (pageIndex >= 5) {
+                        firstPageIndex = pageIndex - 4;
+                    }
+                    if (pageIndex <= lastPageIndex - 4) {
+                        lastPageIndex = pageIndex + 4;
+                    }
+
+                    pager.Pages = [];
+                    for (var i = firstPageIndex; i <= lastPageIndex; i++) {
+                        pager.Pages.push(i);
+                    }
+
                     current.html(template(opts.template, {
                         columns: opts.columns,
-                        data: data
+                        data: data,
+                        pager: pager
                     }));
                 }
             });
