@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
   <siteMapNode title="Administrator">
-    <siteMapNode url="/" title="Dashboard"  description="Dashboard" controller="" icon="fa fa-dashboard" />
-    <siteMapNode url="/" title="User" description="User" icon="fa fa-users">
-      <siteMapNode url="/" title="User"  description="User" icon="fa fa-list"></siteMapNode>
+    <siteMapNode title="Dashboard"  description="Dashboard" icon="fa fa-dashboard" controller="Home" action="Index" />
+    <siteMapNode title="User" description="User" icon="fa fa-users">
+      <siteMapNode title="User"  description="User" icon="fa fa-list" controller="User" action="Index"></siteMapNode>
       <siteMapNode url="/" title="Import" description="Import" icon="fa fa-upload"></siteMapNode>
     </siteMapNode>
     <siteMapNode url="/" title="System config" description="System config" icon="fa fa-gears">

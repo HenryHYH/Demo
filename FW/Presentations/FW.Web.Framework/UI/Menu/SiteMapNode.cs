@@ -22,12 +22,14 @@
 
         public Dictionary<string, string> Attributes
         {
-            get; private set;
+            get;
+            private set;
         }
 
         public IList<SiteMapNode> Children
         {
-            get; private set;
+            get;
+            private set;
         }
 
         public string Description
@@ -50,10 +52,11 @@
             get { return GetValue("title"); }
         }
 
-        public string Url
-        {
-            get { return GetValue("url"); }
-        }
+        public string Url { get { return GetValue("url"); } }
+
+        public string Controller { get { return GetValue("controller"); } }
+
+        public string Action { get { return GetValue("action"); } }
 
         #endregion Properties
 
@@ -62,6 +65,15 @@
         private string GetValue(string key)
         {
             return Attributes.ContainsKey(key) ? Attributes[key] : string.Empty;
+        }
+
+        private bool TryGetValue(string key, out string value)
+        {
+            bool result = Attributes.TryGetValue(key, out value);
+            if (string.IsNullOrWhiteSpace(value))
+                result = false;
+
+            return result;
         }
 
         #endregion Methods

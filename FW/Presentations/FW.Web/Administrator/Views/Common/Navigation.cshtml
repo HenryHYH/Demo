@@ -16,10 +16,19 @@
 {
     foreach (var item in list)
     {
+        string url = item.Url;
+        if (string.IsNullOrWhiteSpace(url))
+        {
+            if (!string.IsNullOrWhiteSpace(item.Action) && !string.IsNullOrWhiteSpace(item.Controller))
+            {
+                url = Url.Action(item.Action, item.Controller);
+            }
+        }
+
         if (item.Children.Count > 0)
         {
             <li class="dropdown">
-                <a href="@item.Url" title="@item.Description" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                <a href="@url" title="@item.Description" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                     @if (!string.IsNullOrWhiteSpace(item.Icon))
                     {
                         <i class="@(item.Icon)"></i>
@@ -35,7 +44,7 @@
         else
         {
             <li>
-                <a href="@item.Url" title="@item.Description">
+                <a href="@url" title="@item.Description">
                     @if (!string.IsNullOrWhiteSpace(item.Icon))
                     {
                         <i class="@(item.Icon)"></i>

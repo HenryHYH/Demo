@@ -55,12 +55,7 @@
                     @Html.Action("BreadCrumb", "Common", new { area = "Administrator" })
                 </div>
                 <div class="pull-right">
-                    <input type="button" class="btn btn-default" value="Default" />
-                    <input type="button" class="btn btn-primary" value="Primary" />
-                    <input type="button" class="btn btn-success" value="Success" />
-                    <input type="button" class="btn btn-info" value="Info" />
-                    <input type="button" class="btn btn-warning" value="Warning" />
-                    <input type="button" class="btn btn-danger" value="Danger" />
+                    @RenderSection("Operation", false)
                 </div>
             </div>
         </div>
