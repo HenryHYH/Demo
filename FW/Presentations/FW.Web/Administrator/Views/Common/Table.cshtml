@@ -10,14 +10,18 @@
     <table class="table table-condensed table-striped table-bordered">
         <thead>
             <tr>
+                <th>#</th>
                 {{each columns as col i}}
-                <th>{{col.title}}</th>
+                <th style="width:{{#col.width}};">
+                    {{col.title}}
+                </th>
                 {{/each}}
             </tr>
         </thead>
         <tbody>
             {{each data as row i}}
             <tr>
+                <td>{{ (pager.PageIndex - 1) * pager.PageSize + i + 1 }}</td>
                 {{each row as cell j}}
                 <td>{{cell}}</td>
                 {{/each}}
@@ -71,11 +75,9 @@
             <form class="form-inline">
                 <div class="form-group">
                     <select class="form-control input-sm page-size" id="page-size">
-                        <option value="20">20</option>
-                        <option value="3">3</option>
-                        <option value="5">5</option>
-                        <option value="50">50</option>
-                        <option value="1000">1000</option>
+                        {{each PageSizes as item}}
+                        <option value="{{item}}" {{if item == PageSize}} selected="selected" {{/if}}>{{item}}</option>
+                        {{/each}}
                     </select>
                     <label class="control-label" for="page-size">items per row</label>
                 </div>

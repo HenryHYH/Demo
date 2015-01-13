@@ -13,6 +13,7 @@
 
         public static void RegisterRoutes(RouteCollection routes)
         {
+            routes.IgnoreRoute("favicon.ico");
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(

@@ -7,7 +7,7 @@
             url: "",
             columns: [],
             condition: null,
-            pager: { pageIndex: 1, pageSize: 20 }
+            pager: { PageIndex: 1, PageSize: 20, PageSizes: [20, 3, 5, 50, 1000] }
         };
         this.options = $.extend({}, this.defaults, opt);
     }
@@ -17,9 +17,9 @@
 
             var options = this.options;
             if (newPageIndex)
-                options.pager.pageIndex = newPageIndex;
+                options.pager.PageIndex = newPageIndex;
             if (newPageSize)
-                options.pager.pageSize = newPageSize;
+                options.pager.PageSize = newPageSize;
             var cond = $.extend({}, options.pager, options.condition);
 
             return this.current.each(function () {
@@ -78,11 +78,13 @@
                                 pager.Pages.push(i);
                             }
 
+                            var tmp = $.extend({}, options.pager, pager);
+
                             $(current).html(template(options.template, {
                                 columns: options.columns,
                                 data: data,
-                                pager: pager
-                            })).find(".page-size").val(options.pager.pageSize);
+                                pager: $.extend({}, options.pager, pager)
+                            }));
                         }
                     });
 
