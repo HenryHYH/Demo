@@ -13,7 +13,8 @@
         $(function () {
             $("#table-container").table({
                 url: '@Url.Action("ResourceList", "LocalizedResource")',
-                columns: [{ title: "Resource key", field: "Resource key", width: "47%" }, { title: "Resource value", field: "Resource value", width: "47%" }]
+                columns: [{ title: "@T("Admin.LocalizedResource.ResourceKey")", field: "ResourceKey", width: "47%" },
+                    { title: "@T("Admin.LocalizedResource.ResourceValue")", field: "ResourceValue", width: "47%" }]
             });
         });
     </script>

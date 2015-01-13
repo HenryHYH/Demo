@@ -36,9 +36,29 @@
             return EngineContext.Current.Resolve<IPageBulider>();
         }
 
-        public static MvcHtmlString FWTextboxFor<TModel, TValue>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TValue>> expression)
+        public static MvcHtmlString FWLabelFor<TModel, TValue>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TValue>> expression, object htmlAttributes)
         {
-            return htmlHelper.TextBoxFor(expression, new { });
+            string labelText = GetDisplayName(htmlHelper, expression);
+
+            return htmlHelper.LabelFor(expression, labelText, htmlAttributes);
+        }
+
+        private static string GetDisplayName<TModel, TValue>(HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TValue>> expression)
+        {
+            var metadata = ModelMetadata.FromLambdaExpression(expression, htmlHelper.ViewData);
+
+            string displayName = string.Empty;
+            object value = null;
+            if (metadata.AdditionalValues.TryGetValue("ResourceDisplayName", out value))
+            {
+                var attr = value as ResourceDisplayNameAttribute;
+                if (null != attr)
+                {
+                    displayName = attr.DisplayName;
+                }
+            }
+
+            return displayName;
         }
 
         #endregion Methods

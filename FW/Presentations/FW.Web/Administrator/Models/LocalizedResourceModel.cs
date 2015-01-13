@@ -1,4 +1,5 @@
 ﻿using FW.Web.Framework.MVC;
+using FW.Web.Framework.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +9,13 @@ namespace FW.Admin.Models
 {
     public class LocalizedResourceModel : BaseModel
     {
+        [ResourceDisplayName("Admin.LocalizedResource.Language")]
         public string Language { get; set; }
 
-        public string Key { get; set; }
+        [ResourceDisplayName("Admin.LocalizedResource.ResourceKey")]
+        public string ResourceKey { get; set; }
 
-        public string Resource { get; set; }
+        [ResourceDisplayName("Admin.LocalizedResource.ResourceValue")]
+        public string ResourceValue { get; set; }
     }
 }

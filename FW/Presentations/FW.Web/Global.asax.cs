@@ -9,6 +9,7 @@
     using System.Web.Routing;
 
     using FW.Core.Infrastructure;
+    using FW.Web.Framework.MVC;
 
     public class CustomViewLocationRazorViewEngine : RazorViewEngine
     {
@@ -110,6 +111,8 @@
             ViewEngines.Engines.Clear();
             var viewEngine = new CustomViewLocationRazorViewEngine();
             ViewEngines.Engines.Add(viewEngine);
+
+            ModelMetadataProviders.Current = new FWMetadataProvider();
 
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }

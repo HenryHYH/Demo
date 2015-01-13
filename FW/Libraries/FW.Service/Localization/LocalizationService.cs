@@ -36,9 +36,9 @@ namespace FW.Service.Localization
             return cacheManager.Get(string.Format(RESOURCE_CACHE_KEY, key, language), () =>
             {
                 var resource = localizedResourceRepository.Table
-                    .Where(x => x.Key == key &&
+                    .Where(x => x.ResourceKey == key &&
                             x.Language == language)
-                    .Select(x => x.Resource)
+                    .Select(x => x.ResourceValue)
                     .FirstOrDefault();
 
                 return resource;

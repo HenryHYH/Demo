@@ -10,8 +10,8 @@ namespace FW.Core.Domain.Localization
     {
         public string Language { get; set; }
 
-        public string Key { get; set; }
+        public string ResourceKey { get; set; }
 
-        public string Resource { get; set; }
+        public string ResourceValue { get; set; }
     }
 }

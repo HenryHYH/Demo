@@ -35,7 +35,11 @@ namespace FW.Admin.Controllers
         [HttpPost]
         public ActionResult Add(LocalizedResourceModel model, FormCollection form)
         {
-            return View();
+            var entity = model.MapTo<LocalizedResourceModel, LocalizedResource>();
+            localizationService.InsertResource(entity);
+
+            PrepareResourceModel(model, null);
+            return View(model);
         }
 
         public ActionResult Edit(int id)

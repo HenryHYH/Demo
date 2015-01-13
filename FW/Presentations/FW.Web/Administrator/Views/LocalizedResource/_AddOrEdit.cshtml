@@ -5,17 +5,15 @@
 @using System.Linq
 
 <div class="form-group">
-    <label for="resource-key" class="col-sm-2 col-lg-1 control-label">Resource key</label>
+    @Html.FWLabelFor(x => x.ResourceKey, new { @class = "col-sm-2 col-lg-1 control-label" })
     <div class="col-sm-3">
         @*<input type="text" name="Key" class="form-control" id="resource-key" placeholder="Resource key">*@
-        @Html.TextBoxFor(x => x.Key, new { @class = "form-control", placeholder = "Resource key" })
+        @Html.TextBoxFor(x => x.ResourceKey, new { @class = "form-control" })
     </div>
 </div>
 <div class="form-group">
-    <label for="resoure-value" class="col-sm-2 col-lg-1 control-label">Resource value</label>
+    @Html.FWLabelFor(x => x.ResourceValue, new { @class = "col-sm-2 col-lg-1 control-label" })
     <div class="col-sm-3">
-        @*<input type="text" name="Resource" class="form-control" id="resource-value" placeholder="Resource value">*@
-        @Html.TextBoxFor(x => x.Resource, new { @class = "form-control", placeholder = "Resource value" })
-        @Html.EditorFor(x => x.Resource)
+        @Html.TextBoxFor(x => x.ResourceValue, new { @class = "form-control" })
     </div>
 </div>
