@@ -47,13 +47,29 @@
                             var pageIndex = pager.PageIndex,
                                 totalPages = pager.TotalPages,
                                 firstPageIndex = 1,
-                                lastPageIndex = totalPages;
+                                lastPageIndex = totalPages,
+                                pageCnt = 5;
 
-                            if (pageIndex >= 5) {
-                                firstPageIndex = pageIndex - 4;
-                            }
-                            if (pageIndex <= lastPageIndex - 4) {
-                                lastPageIndex = pageIndex + 4;
+                            if (totalPages >= 5) {
+                                if (pageIndex == 1) {
+                                    lastPageIndex = 5;
+                                }
+                                else if (pageIndex == 2) {
+                                    lastPageIndex = 5;
+                                }
+                                else if (pageIndex < totalPages - 2) {
+                                    lastPageIndex = pageIndex + 2;
+                                }
+
+                                if (pageIndex == totalPages) {
+                                    firstPageIndex = totalPages - 4;
+                                }
+                                else if (pageIndex == totalPages - 1) {
+                                    firstPageIndex = totalPages - 4;
+                                }
+                                else if (pageIndex > 2) {
+                                    firstPageIndex = pageIndex - 2;
+                                }
                             }
 
                             pager.Pages = [];
@@ -61,12 +77,11 @@
                                 pager.Pages.push(i);
                             }
 
-                            var html = template(options.template, {
+                            $(current).html(template(options.template, {
                                 columns: options.columns,
                                 data: data,
                                 pager: pager
-                            });
-                            $(current).html(html);
+                            }));
                         }
                     });
 
