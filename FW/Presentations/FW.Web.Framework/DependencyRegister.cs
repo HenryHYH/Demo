@@ -8,9 +8,11 @@
     using FW.Core.Data;
     using FW.Core.Infrastructure;
     using FW.Data;
-    using FW.Service.Users;
     using FW.Web.Framework.UI;
+    using FW.Service.Users;
     using FW.Service.Logging;
+    using FW.Service.Localization;
+    using FW.Core.Caching;
 
     public class DependencyRegister : IDependencyRegister
     {
@@ -33,8 +35,9 @@
             //controllers
             builder.RegisterControllers(typeFinder.GetAssemblies().ToArray());
 
-            // Settings
+            // Core
             builder.Register(x => new SettingsManager().LoadSettings()).As<Settings>();
+            builder.RegisterType<MemoryCacheManager>().As<ICacheManager>().SingleInstance();
 
             // Repository
             builder.RegisterGeneric(typeof(MongoRepository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
@@ -42,6 +45,7 @@
             // Services
             builder.RegisterType<UserService>().As<IUserService>().InstancePerLifetimeScope();
             builder.RegisterType<DBLogger>().As<ILogger>().InstancePerLifetimeScope();
+            builder.RegisterType<LocalizationService>().As<ILocalizationService>().InstancePerLifetimeScope();
         }
 
         #endregion Methods

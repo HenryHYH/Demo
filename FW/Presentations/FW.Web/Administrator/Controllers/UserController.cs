@@ -32,7 +32,7 @@ namespace FW.Admin.Controllers
             var data = userService.GetUsers(
                 pageIndex: command.PageIndex,
                 pageSize: command.PageSize)
-                .ToResult<User, UserModel>();
+                .ToModel<User, UserModel>();
 
             return Json(data, JsonRequestBehavior.AllowGet);
         }

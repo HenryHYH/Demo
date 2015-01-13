@@ -21,7 +21,7 @@ namespace FW.Web.Framework.Extensions
             return Mapper.Map(source, destination);
         }
 
-        public static DatasourceResult<TDestination> ToResult<TSource, TDestination>(this IPagedList<TSource> data)
+        public static DatasourceResult<TDestination> ToModel<TSource, TDestination>(this IPagedList<TSource> data)
         {
             return new DatasourceResult<TDestination>()
             {

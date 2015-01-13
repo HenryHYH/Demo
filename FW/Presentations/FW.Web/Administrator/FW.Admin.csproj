@@ -106,8 +106,10 @@
     <Compile Include="AdminAreaRegistration.cs" />
     <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocalizedResourceController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Infrastructure\AutoMapperStartupTask.cs" />
+    <Compile Include="Models\LocalizedResourceModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -124,6 +126,10 @@
     <Content Include="Views\Common\Table.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Shared\_PanelLayout.cshtml" />
+    <Content Include="Views\LocalizedResource\Index.cshtml" />
+    <Content Include="Views\LocalizedResource\Add.cshtml" />
+    <Content Include="Views\LocalizedResource\Edit.cshtml" />
+    <Content Include="Views\LocalizedResource\_AddOrEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

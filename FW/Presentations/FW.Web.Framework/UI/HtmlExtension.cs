@@ -6,8 +6,10 @@
     using System.Text;
     using System.Threading.Tasks;
     using System.Web.Mvc;
+    using System.Web.Mvc.Html;
 
     using FW.Core.Infrastructure;
+    using System.Linq.Expressions;
 
     public static class HtmlExtension
     {
@@ -32,6 +34,11 @@
         private static IPageBulider GetPageBulider()
         {
             return EngineContext.Current.Resolve<IPageBulider>();
+        }
+
+        public static MvcHtmlString FWTextboxFor<TModel, TValue>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TValue>> expression)
+        {
+            return htmlHelper.TextBoxFor(expression, new { });
         }
 
         #endregion Methods

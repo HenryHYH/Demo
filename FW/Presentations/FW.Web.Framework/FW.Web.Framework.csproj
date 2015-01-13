@@ -85,6 +85,7 @@
     <Compile Include="Datasource\DatasourceResult.cs" />
     <Compile Include="DependencyRegister.cs" />
     <Compile Include="Extensions\MappingExtensions.cs" />
+    <Compile Include="MVC\BaseModel.cs" />
     <Compile Include="UI\Menu\SiteMapNode.cs" />
     <Compile Include="UI\Menu\XmlSiteMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="UI\ResourcePriority.cs" />
     <Compile Include="UI\ResourceType.cs" />
     <Compile Include="UI\SectionExtensions.cs" />
+    <Compile Include="ViewEngines\Razor\WebViewPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

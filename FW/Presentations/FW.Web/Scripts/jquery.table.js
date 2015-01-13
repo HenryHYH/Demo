@@ -7,7 +7,8 @@
             url: "",
             columns: [],
             condition: null,
-            pager: { PageIndex: 1, PageSize: 20, PageSizes: [20, 3, 5, 50, 1000] }
+            pager: { PageIndex: 1, PageSize: 20 },
+            pageSizes: [20, 3, 5, 50, 1000]
         };
         this.options = $.extend({}, this.defaults, opt);
     }
@@ -78,12 +79,12 @@
                                 pager.Pages.push(i);
                             }
 
-                            var tmp = $.extend({}, options.pager, pager);
+                            pager.PageSizes = options.pageSizes;
 
                             $(current).html(template(options.template, {
                                 columns: options.columns,
                                 data: data,
-                                pager: $.extend({}, options.pager, pager)
+                                pager: pager
                             }));
                         }
                     });

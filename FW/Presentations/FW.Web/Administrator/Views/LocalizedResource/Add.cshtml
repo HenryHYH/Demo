@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Add";
+    ViewBag.PageTitle = "Add resource";
+    Layout = "~/Administrator/Views/Shared/_PanelLayout.cshtml";
+}
+@model LocalizedResourceModel
+
+@section Operation
+{
+    <input type="submit" class="btn btn-default" value="Save" />
+    <input type="submit" class="btn btn-default" value="Save continue" />
+}
+
+@using (Html.BeginForm("Add", "LocalizedResource", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.Partial("_AddOrEdit", Model)
+}
+
+@section Script
+{
+    <script type="text/javascript">
+        $(function () {
+            $(document).delegate("input[type='submit']", "click", function () {
+                $("form").submit();
+                return false;
+            });
+        });
+    </script>
+}

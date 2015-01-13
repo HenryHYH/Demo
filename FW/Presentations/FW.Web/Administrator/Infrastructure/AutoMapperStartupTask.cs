@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FW.Admin.Models;
 using FW.Core;
+using FW.Core.Domain.Localization;
 using FW.Core.Domain.Users;
 using FW.Core.Infrastructure;
 using FW.Web.Framework.UI.Pagination;
@@ -17,6 +18,9 @@ namespace FW.Admin.Infrastructure
         {
             Mapper.CreateMap<User, UserModel>();
             Mapper.CreateMap<UserModel, User>();
+
+            Mapper.CreateMap<LocalizedResource, LocalizedResourceModel>();
+            Mapper.CreateMap<LocalizedResourceModel, LocalizedResource>();
         }
 
         public int Order

@@ -8,6 +8,7 @@
     </siteMapNode>
     <siteMapNode url="/" title="System config" description="System config" icon="fa fa-gears">
       <siteMapNode url="/" title="Language" description="Language" icon="fa fa-language"></siteMapNode>
+      <siteMapNode title="Localization resource" description="Localization resource" icon="fa fa-file-text-o" controller="LocalizedResource" action="Index"></siteMapNode>
       <siteMapNode url="/" title="Schedule" description="Schedule" icon="fa fa-calendar-o"></siteMapNode>
     </siteMapNode>
     <siteMapNode url="/" title="User" position="right" icon="fa fa-user">

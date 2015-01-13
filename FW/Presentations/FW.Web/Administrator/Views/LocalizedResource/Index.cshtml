@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Localized resource";
+    ViewBag.PageTitle = "Localized resource";
+    Layout = "~/Administrator/Views/Shared/_PanelLayout.cshtml";
+}
+
+<div id="table-container"></div>
+@Html.Action("Table", "Common", new { area = "Administrator" })
+
+@section Script
+{
+    <script type="text/javascript">
+        $(function () {
+            $("#table-container").table({
+                url: '@Url.Action("ResourceList", "LocalizedResource")',
+                columns: [{ title: "Resource key", field: "Resource key", width: "47%" }, { title: "Resource value", field: "Resource value", width: "47%" }]
+            });
+        });
+    </script>
+}
+
+@section Operation
+{
+    @Html.ActionLink("Add", "Add", new { }, new { @class = "btn btn-default" })
+}
