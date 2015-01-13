@@ -1,0 +1,18 @@
+﻿@{
+    Layout = "~/Administrator/Views/Shared/_Layout.cshtml";
+}
+@using FW.Web.Framework.UI
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@this.RedefineSection("Script")

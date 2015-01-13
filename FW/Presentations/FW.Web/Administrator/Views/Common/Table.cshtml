@@ -29,6 +29,7 @@
 </script>
 <script id="pager-tmpl" type="text/html">
     <nav>
+        {{if TotalPages > 1 }}
         <ul class="pagination pagination-sm">
             <li class="{{PageIndex != 1 ? "" : "disabled"}}">
                 <a href="#" aria-label="First" data-page="1">
@@ -58,12 +59,27 @@
                 </a>
             </li>
         </ul>
+        {{/if}}
         <ul class="pagination pagination-sm">
             <li>
                 <span class="label label-info">
-                    {{(PageIndex - 1) * PageSize + 1}} - {{PageIndex * PageSize}}&nbsp;of&nbsp;{{TotalRecords}}
+                    {{(PageIndex - 1) * PageSize + 1}} - {{PageIndex * PageSize > TotalRecords ? TotalRecords : PageIndex * PageSize}}&nbsp;of&nbsp;{{TotalRecords}}
                 </span>
             </li>
         </ul>
+        <div class="pull-right">
+            <form class="form-inline">
+                <div class="form-group">
+                    <select class="form-control input-sm page-size" id="page-size">
+                        <option value="20">20</option>
+                        <option value="3">3</option>
+                        <option value="5">5</option>
+                        <option value="50">50</option>
+                        <option value="1000">1000</option>
+                    </select>
+                    <label class="control-label" for="page-size">items per row</label>
+                </div>
+            </form>
+        </div>
     </nav>
 </script>

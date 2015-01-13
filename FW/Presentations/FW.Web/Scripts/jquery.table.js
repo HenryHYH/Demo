@@ -6,17 +6,21 @@
             template: "tb-tmpl",
             url: "",
             columns: [],
-            condition: null
+            condition: null,
+            pager: { pageIndex: 1, pageSize: 20 }
         };
         this.options = $.extend({}, this.defaults, opt);
     }
 
     Table.prototype = {
-        Load: function (newPageIndex) {
+        Load: function (newPageIndex, newPageSize) {
 
             var options = this.options;
             if (newPageIndex)
-                options.condition.pageIndex = newPageIndex;
+                options.pager.pageIndex = newPageIndex;
+            if (newPageSize)
+                options.pager.pageSize = newPageSize;
+            var cond = $.extend({}, options.pager, options.condition);
 
             return this.current.each(function () {
 
@@ -26,7 +30,7 @@
 
                     $.ajax({
                         url: options.url,
-                        data: options.condition,
+                        data: $.extend({}, options.pager, options.condition),
                         success: function (result) {
 
                             var data = result.Data,
@@ -48,27 +52,24 @@
                                 totalPages = pager.TotalPages,
                                 firstPageIndex = 1,
                                 lastPageIndex = totalPages,
-                                pageCnt = 5;
+                                pageCnt = 7;
 
-                            if (totalPages >= 5) {
-                                if (pageIndex == 1) {
-                                    lastPageIndex = 5;
+                            if (totalPages >= pageCnt) {
+
+                                var halfLen = parseInt(pageCnt / 2);
+
+                                if (pageIndex <= halfLen) {
+                                    lastPageIndex = pageCnt;
                                 }
-                                else if (pageIndex == 2) {
-                                    lastPageIndex = 5;
-                                }
-                                else if (pageIndex < totalPages - 2) {
-                                    lastPageIndex = pageIndex + 2;
+                                else if (pageIndex < totalPages - halfLen) {
+                                    lastPageIndex = pageIndex + halfLen;
                                 }
 
-                                if (pageIndex == totalPages) {
-                                    firstPageIndex = totalPages - 4;
+                                if (pageIndex >= totalPages - halfLen) {
+                                    firstPageIndex = totalPages - pageCnt + 1;
                                 }
-                                else if (pageIndex == totalPages - 1) {
-                                    firstPageIndex = totalPages - 4;
-                                }
-                                else if (pageIndex > 2) {
-                                    firstPageIndex = pageIndex - 2;
+                                else if (pageIndex > halfLen) {
+                                    firstPageIndex = pageIndex - halfLen;
                                 }
                             }
 
@@ -81,7 +82,7 @@
                                 columns: options.columns,
                                 data: data,
                                 pager: pager
-                            }));
+                            })).find(".page-size").val(options.pager.pageSize);
                         }
                     });
 
@@ -100,8 +101,15 @@
 
             return false;
 
+        }).delegate(".page-size", "change", function () {
+
+            var pageSize = parseInt($(this).val());
+            plugin.Load(1, pageSize);
+
+            return false;
         });
 
-        return plugin.Load();
+        var table = plugin.Load();
+        return table;
     }
 })(jQuery);

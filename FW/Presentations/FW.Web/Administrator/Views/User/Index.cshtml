@@ -1,38 +1,33 @@
 ﻿@{
     ViewBag.Title = "Index";
+    Layout = "~/Administrator/Views/Shared/_ListLayout.cshtml";
 }
 @using FW.Web.Framework.UI
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <div id="tb-container" class="table-responsive"></div>
-            @Html.Action("Table", "Common", new { area = "Administrator" })
-            <script type="text/html" id="tb-tmpl1">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            {{each columns as col}}
-                            <th>{{col.title}}</th>
-                            {{/each}}
-                            <th>Operation</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {{each data as row}}
-                        <tr>
-                            <td>{{row.Index}}</td>
-                            <td>{{row.Name}}</td>
-                            <td>{{row.Age}}</td>
-                            <td>Haha</td>
-                        </tr>
-                        {{/each}}
-                    </tbody>
-                </table>
-            </script>
-        </div>
-    </div>
-</div>
+<div id="tb-container" class="table-responsive"></div>
+@Html.Action("Table", "Common", new { area = "Administrator" })
+<script type="text/html" id="tb-tmpl1">
+    <table class="table">
+        <thead>
+            <tr>
+                {{each columns as col}}
+                <th>{{col.title}}</th>
+                {{/each}}
+                <th>Operation</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{each data as row}}
+            <tr>
+                <td>{{row.Index}}</td>
+                <td>{{row.Name}}</td>
+                <td>{{row.Age}}</td>
+                <td>Haha</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</script>
 
 @section Script
 {
@@ -42,7 +37,8 @@
                 url: '@Url.Action("UserList", "User")',
                 // template: "tb-tmpl1",
                 // customTemplate: true,
-                condition: { pageIndex: 1, pageSize: 5 },
+                // condition: { pageIndex: 1, pageSize: 5 },
+                // pager: { pageIndex: 1, pageSize: 1000 },
                 columns: [{ title: "No.", field: "Id" }, { title: "Name", field: "Name" }, { title: "Age", field: "Age" }]
             });
         });
