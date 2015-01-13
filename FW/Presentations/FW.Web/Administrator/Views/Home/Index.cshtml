@@ -32,8 +32,7 @@
 
 @helper TabHome()
 {
-    @Html.Action("Table", "Common", new { area = "Administrator" })
-    @Html.Action("Pagination", "Common", new { area = "Administrator", pageIndex = 1, totalRecords = 1 })
+
 }
 
 @helper TabProfile()
@@ -50,3 +49,5 @@
 {
     <text>Settings</text>
 }
+
+@Html.Action("Table", "Common", new { area = "Administrator" })
