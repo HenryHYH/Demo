@@ -13,11 +13,6 @@
     {
         #region Methods
 
-        public static void AddBreadCrumb(this HtmlHelper htmlHelper, string title, string path)
-        {
-            GetPageBulider().AddBreadCrumb(title, path);
-        }
-
         public static void AddResource(this HtmlHelper htmlHelper, string path, ResourcePriority priority = ResourcePriority.Normal)
         {
             var pageBulider = GetPageBulider();

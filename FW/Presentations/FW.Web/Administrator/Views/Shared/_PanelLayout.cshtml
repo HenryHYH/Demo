@@ -1,5 +1,7 @@
 ﻿@{
     Layout = "~/Administrator/Views/Shared/_Layout.cshtml";
+
+    var pageTitle = null == ViewBag.PageTitle ? "FW" : ViewBag.PageTitle;
 }
 @using FW.Web.Framework.UI
 
@@ -7,6 +9,14 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
+
+                <div class="panel-heading clearfix">
+                    <div class="pull-right">
+                        @RenderSection("Operation", false)
+                    </div>
+                    <h2 class="panel-title pull-left" style="margin-top:8px;">@pageTitle</h2>
+                </div>
+
                 <div class="panel-body">
                     @RenderBody()
                 </div>
@@ -14,5 +24,4 @@
         </div>
     </div>
 </div>
-
 @this.RedefineSection("Script")

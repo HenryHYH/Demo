@@ -85,7 +85,6 @@
     <Compile Include="Datasource\DatasourceResult.cs" />
     <Compile Include="DependencyRegister.cs" />
     <Compile Include="Extensions\MappingExtensions.cs" />
-    <Compile Include="UI\BreadCrumb\BreadCrumbNode.cs" />
     <Compile Include="UI\Menu\SiteMapNode.cs" />
     <Compile Include="UI\Menu\XmlSiteMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

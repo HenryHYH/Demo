@@ -17,8 +17,6 @@
     // admin style
     Html.AddResource("~/Administrator/Content/style.css", ResourcePriority.High);
 
-    Html.AddBreadCrumb("Home", "/");
-
     var defaultTitle = "FW";
     var title = null == ViewBag.Title ? defaultTitle : (ViewBag.Title + " - " + defaultTitle);
 }
@@ -47,21 +45,8 @@
             </div>
         </div>
     </nav>
-
-    <div class="container-fluid" id="tool-bar">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="pull-left">
-                    @Html.Action("BreadCrumb", "Common", new { area = "Administrator" })
-                </div>
-                <div class="pull-right">
-                    @RenderSection("Operation", false)
-                </div>
-            </div>
-        </div>
-    </div>
     @RenderBody()
     @Html.GenerateResources(this.Url, ResourceLocation.Footer)
-    @RenderSection("Script", false)    
+    @RenderSection("Script", false)
 </body>
 </html>

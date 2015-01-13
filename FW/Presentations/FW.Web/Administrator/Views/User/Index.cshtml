@@ -1,8 +1,19 @@
 ﻿@{
     ViewBag.Title = "Index";
-    Layout = "~/Administrator/Views/Shared/_ListLayout.cshtml";
+    ViewBag.PageTitle = "User list";
+    Layout = "~/Administrator/Views/Shared/_PanelLayout.cshtml";
 }
 @using FW.Web.Framework.UI
+
+@section Operation
+{
+    <input type="button" class="btn btn-default" value="Default" />
+    <input type="button" class="btn btn-primary" value="Primary" />
+    <input type="button" class="btn btn-success" value="Success" />
+    <input type="button" class="btn btn-info" value="Info" />
+    <input type="button" class="btn btn-warning" value="Warning" />
+    <input type="button" class="btn btn-danger" value="Danger" />
+}
 
 <div id="tb-container" class="table-responsive"></div>
 @Html.Action("Table", "Common", new { area = "Administrator" })

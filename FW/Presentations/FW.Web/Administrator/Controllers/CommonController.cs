@@ -8,7 +8,6 @@
 
     using FW.Core.Infrastructure;
     using FW.Web.Framework.UI;
-    using FW.Web.Framework.UI.BreadCrumb;
     using FW.Web.Framework.UI.Menu;
     using FW.Web.Framework.UI.Pagination;
     using FW.Web.Framework.Controllers;
@@ -17,30 +16,20 @@
     {
         #region Fields
 
-        private readonly IPageBulider pageBulider;
         private readonly Settings settings;
 
         #endregion Fields
 
         #region Constructors
 
-        public CommonController(Settings settings,
-            IPageBulider pageBulider)
+        public CommonController(Settings settings)
         {
             this.settings = settings;
-            this.pageBulider = pageBulider;
         }
 
         #endregion Constructors
 
         #region Methods
-
-        [ChildActionOnly]
-        public ActionResult BreadCrumb()
-        {
-            var breadCrumbs = pageBulider.GetBreadCrumbs();
-            return PartialView(breadCrumbs);
-        }
 
         [ChildActionOnly]
         public ActionResult Navigation()

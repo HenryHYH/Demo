@@ -121,10 +121,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Common\Navigation.cshtml" />
     <Content Include="Views\Common\Pagination.cshtml" />
-    <Content Include="Views\Common\BreadCrumb.cshtml" />
     <Content Include="Views\Common\Table.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\Shared\_ListLayout.cshtml" />
+    <Content Include="Views\Shared\_PanelLayout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

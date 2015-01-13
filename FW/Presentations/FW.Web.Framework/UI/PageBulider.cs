@@ -7,13 +7,10 @@
     using System.Threading.Tasks;
     using System.Web.Mvc;
 
-    using FW.Web.Framework.UI.BreadCrumb;
-
     public class PageBulider : IPageBulider
     {
         #region Fields
 
-        private IList<BreadCrumbNode> breadCrumbs;
         private IList<Resource> resources;
 
         #endregion Fields
@@ -23,21 +20,11 @@
         public PageBulider()
         {
             resources = new List<Resource>();
-            breadCrumbs = new List<BreadCrumbNode>();
         }
 
         #endregion Constructors
 
         #region Methods
-
-        public void AddBreadCrumb(string title, string url)
-        {
-            breadCrumbs.Add(new BreadCrumbNode()
-            {
-                Title = title,
-                Url = url
-            });
-        }
 
         public void AddResource(string path, ResourcePriority priority, ResourceType type, ResourceLocation location)
         {
@@ -67,11 +54,6 @@
             }
 
             return sb.ToString();
-        }
-
-        public IList<BreadCrumbNode> GetBreadCrumbs()
-        {
-            return breadCrumbs.Reverse().ToList();
         }
 
         public ResourceLocation GetResourceLocation(string path)
