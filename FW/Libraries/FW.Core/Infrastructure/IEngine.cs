@@ -9,6 +9,8 @@
         T Resolve<T>()
             where T : class;
 
+        ContainerManager ContainerManager { get; }
+
         #endregion Methods
     }
 }

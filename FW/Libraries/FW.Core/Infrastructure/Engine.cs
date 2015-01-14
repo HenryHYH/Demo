@@ -69,6 +69,14 @@
             return containerManager.Resolve<T>();
         }
 
+        public ContainerManager ContainerManager
+        {
+            get
+            {
+                return containerManager;
+            }
+        }
+
         #endregion Methods
     }
 }

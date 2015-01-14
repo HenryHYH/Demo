@@ -75,6 +75,44 @@
             }
         }
 
+        public object Resolve(Type type, ILifetimeScope scope = null)
+        {
+            if (scope == null)
+            {
+                //no scope specified
+                scope = Scope();
+            }
+            return scope.Resolve(type);
+        }
+
+        public object ResolveUnregistered(Type type, ILifetimeScope scope = null)
+        {
+            if (scope == null)
+            {
+                //no scope specified
+                scope = Scope();
+            }
+            var constructors = type.GetConstructors();
+            foreach (var constructor in constructors)
+            {
+                try
+                {
+                    var parameters = constructor.GetParameters();
+                    var parameterInstances = new List<object>();
+                    foreach (var parameter in parameters)
+                    {
+                        var service = Resolve(parameter.ParameterType, scope);
+                        if (service != null)
+                            parameterInstances.Add(service);
+                    }
+                    return Activator.CreateInstance(type, parameterInstances.ToArray());
+                }
+                catch { }
+            }
+
+            return null;
+        }
+
         #endregion Methods
     }
 }
