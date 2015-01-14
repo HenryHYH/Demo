@@ -13,8 +13,15 @@
         $(function () {
             $("#table-container").table({
                 url: '@Url.Action("ResourceList", "LocalizedResource")',
-                columns: [{ title: "@T("Admin.LocalizedResource.ResourceKey")", field: "ResourceKey", width: "47%" },
-                    { title: "@T("Admin.LocalizedResource.ResourceValue")", field: "ResourceValue", width: "47%" }]
+                columns: [
+                    { title: "@T("Admin.LocalizedResource.Language")", field: "Language", width: "5%" },
+                    { title: "@T("Admin.LocalizedResource.ResourceKey")", field: "ResourceKey", width: "40%" },
+                    { title: "@T("Admin.LocalizedResource.ResourceValue")", field: "ResourceValue", width: "40%" },
+                    {
+                        title: "@T("Admin.Common.Operation")", field: "Id", width: "10%",
+                        template: '<a href="@Url.Action("Edit", new { id = "[val]" })" class="btn btn-sm btn-default">@T("Admin.Common.Edit")</a>'
+                    }
+                ]
             });
         });
     </script>

@@ -2,7 +2,7 @@
     Layout = null;
 
     Html.AddResource("~/Scripts/template.js");
-    Html.AddResource("~/Scripts/jquery.table.js");
+    Html.AddResource("~/Scripts/plugin.table.js");
 }
 
 
@@ -24,7 +24,11 @@
             <tr>
                 <td>{{ (pager.PageIndex - 1) * pager.PageSize + i + 1 }}</td>
                 {{each row as cell j}}
-                <td>{{cell}}</td>
+                {{if cell.template}}
+                <td>{{cell.text | format:cell.template}}</td>
+                {{else}}
+                <td>{{cell.text}}</td>
+                {{/if}}
                 {{/each}}
             </tr>
             {{/each}}

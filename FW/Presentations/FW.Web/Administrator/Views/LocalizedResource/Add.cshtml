@@ -21,7 +21,7 @@
     <script type="text/javascript">
         $(function () {
             $(document).delegate("input[type='submit']", "click", function () {
-                $("form").submit();
+                $("form").submit(function () { });
                 return false;
             });
         });

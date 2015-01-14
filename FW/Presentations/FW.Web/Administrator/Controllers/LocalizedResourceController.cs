@@ -35,10 +35,14 @@ namespace FW.Admin.Controllers
         [HttpPost]
         public ActionResult Add(LocalizedResourceModel model, FormCollection form)
         {
-            var entity = model.MapTo<LocalizedResourceModel, LocalizedResource>();
-            localizationService.InsertResource(entity);
+            if (ModelState.IsValid)
+            {
+                var entity = model.MapTo<LocalizedResourceModel, LocalizedResource>();
+                localizationService.InsertResource(entity);
 
-            PrepareResourceModel(model, null);
+                return RedirectToAction("Index");
+            }
+
             return View(model);
         }
 
@@ -48,7 +52,25 @@ namespace FW.Admin.Controllers
             var entity = localizationService.GetResource(id);
             PrepareResourceModel(model, entity);
 
-            return View();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(LocalizedResourceModel model, FormCollection form)
+        {
+            var entity = localizationService.GetResource(model.Id);
+            if (null == entity)
+                return RedirectToAction("Index");
+
+            if (ModelState.IsValid)
+            {
+                entity = model.MapTo(entity);
+                localizationService.UpdateResource(entity);
+
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
         }
 
         [HttpGet]

@@ -3,4 +3,4 @@
 /// <reference path="bootstrap.js" />
 /// <reference path="bootstrap-hover-dropdown.js" />
 /// <reference path="template.js" />
-/// <reference path="jquery.table.js" />
+/// <reference path="plugin.table.js" />

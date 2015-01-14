@@ -43,7 +43,10 @@
                                 for (var i = 0, iMax = result.Data.length; i < iMax; i++) {
                                     var row = [];
                                     for (var j = 0, jMax = options.columns.length; j < jMax; j++) {
-                                        row.push(result.Data[i][options.columns[j].field]);
+                                        var cell = {};
+                                        cell.text = result.Data[i][options.columns[j].field];
+                                        cell.template = options.columns[j].template;
+                                        row.push(cell);
                                     }
                                     data.push(row);
                                 }
@@ -116,3 +119,7 @@
         return table;
     }
 })(jQuery);
+
+template.helper('format', function (data, format) {
+    return format.replace('[val]', data);
+});
