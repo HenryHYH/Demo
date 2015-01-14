@@ -5,27 +5,33 @@
 @using System.Linq
 
 @*<div class="form-group">
-    @Html.FWLabelFor(x => x.Language, new { @class = "col-sm-2 col-lg-1 control-label" })
-    <div class="col-sm-2">
-        <select class="form-control">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-        </select>
-        
-    </div>
-</div>*@
+        @Html.FWLabelFor(x => x.Language, new { @class = "col-sm-2 col-lg-1 control-label" })
+        <div class="col-sm-2">
+            <select class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+
+        </div>
+    </div>*@
 <div class="form-group">
     @Html.FWLabelFor(x => x.ResourceKey, new { @class = "col-sm-2 col-lg-1 control-label" })
     <div class="col-sm-3">
         @Html.TextBoxFor(x => x.ResourceKey, new { @class = "form-control" })
+        <div class="has-error">
+            @Html.ValidationMessageFor(x => x.ResourceKey, string.Empty, new { @class = "help-block" })
+        </div>
     </div>
 </div>
-<div class="form-group">
+<div class="form-group ">
     @Html.FWLabelFor(x => x.ResourceValue, new { @class = "col-sm-2 col-lg-1 control-label" })
     <div class="col-sm-3">
         @Html.TextBoxFor(x => x.ResourceValue, new { @class = "form-control" })
+        <div class="has-error">
+            @Html.ValidationMessageFor(x => x.ResourceValue, string.Empty, new { @class = "help-block" })
+        </div>
     </div>
 </div>
