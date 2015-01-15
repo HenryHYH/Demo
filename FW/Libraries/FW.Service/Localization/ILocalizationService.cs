@@ -14,7 +14,7 @@ namespace FW.Service.Localization
 
         string GetResource(string key);
 
-        string GetResource(string key, string language);
+        string GetResource(string key, int language);
 
         IPagedList<LocalizedResource> GetResources(int pageIndex = 1, int pageSize = 20);
 
@@ -23,5 +23,15 @@ namespace FW.Service.Localization
         void UpdateResource(LocalizedResource resource);
 
         void DeleteResource(LocalizedResource resource);
+
+        IPagedList<Language> GetLanguages(int pageIndex = 1, int pageSize = 20);
+
+        Language GetLanguage(int id);
+
+        void InsertLanguage(Language entity);
+
+        void UpdateLanguage(Language entity);
+
+        void DeleteLanguage(Language entity);
     }
 }

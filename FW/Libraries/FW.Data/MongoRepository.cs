@@ -17,6 +17,7 @@
     using MongoDB.Driver.Linq;
 
     using MongoDBIntIdGenerator;
+    using System.Linq.Expressions;
 
     public partial class MongoRepository<T> : IRepository<T>
         where T : BaseEntity
@@ -72,6 +73,11 @@
         public void Delete(IEnumerable<T> entities)
         {
             throw new NotImplementedException();
+        }
+
+        public void Delete(Expression<Func<T, bool>> expression)
+        {
+            collection.Remove(Query<T>.Where(expression));
         }
 
         public T GetById(int id)

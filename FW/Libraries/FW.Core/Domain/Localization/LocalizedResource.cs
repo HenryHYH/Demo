@@ -8,7 +8,7 @@ namespace FW.Core.Domain.Localization
 {
     public class LocalizedResource : BaseEntity
     {
-        public string Language { get; set; }
+        public int Language { get; set; }
 
         public string ResourceKey { get; set; }
 

@@ -5,7 +5,6 @@
     Html.AddResource("~/Scripts/plugin.table.js");
 }
 
-
 <script id="tb-tmpl" type="text/html">
     {{if pager.TotalRecords > 0}}
     <table class="table table-condensed table-striped table-bordered">
@@ -37,7 +36,7 @@
     {{include 'pager-tmpl' pager}}
     {{else}}
     <div class="alert alert-danger" role="alert">
-        <p><i class="fa fa-info-circle"></i> No data</p>
+        <p><i class="fa fa-info-circle"></i> @T("Admin.Common.NoData")</p>
     </div>
     {{/if}}
 </script>

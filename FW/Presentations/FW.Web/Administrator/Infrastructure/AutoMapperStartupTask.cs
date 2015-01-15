@@ -21,6 +21,9 @@ namespace FW.Admin.Infrastructure
 
             Mapper.CreateMap<LocalizedResource, LocalizedResourceModel>();
             Mapper.CreateMap<LocalizedResourceModel, LocalizedResource>();
+
+            Mapper.CreateMap<Language, LanguageModel>();
+            Mapper.CreateMap<LanguageModel, Language>();
         }
 
         public int Order

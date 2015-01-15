@@ -74,10 +74,10 @@ namespace FW.Admin.Controllers
         }
 
         [HttpGet]
-        public ActionResult ResourceList()
+        public ActionResult ResourceList(int pageIndex = 1, int pageSize = 20)
         {
-            var list = localizationService.GetResources()
-                .ToModel<LocalizedResource, LocalizedResourceModel>();
+            var list = localizationService.GetResources(pageIndex, pageSize)
+                                            .ToModel<LocalizedResource, LocalizedResourceModel>();
 
             return Json(list, JsonRequestBehavior.AllowGet);
         }

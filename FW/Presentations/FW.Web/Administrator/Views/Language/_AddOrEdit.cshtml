@@ -1,0 +1,20 @@
+﻿@{
+    Layout = null;
+}
+@model LanguageModel
+
+<div class="form-group">
+    @Html.FWLabelFor(x => x.Code)
+    @Html.TextBoxFor(x => x.Code, new { @class = "form-control" })
+    <div class="has-error">
+        @Html.ValidationMessageFor(x => x.Code, string.Empty, new { @class = "help-block" })
+    </div>
+</div>
+<div class="form-group ">
+    @Html.FWLabelFor(x => x.Name)
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    <span class="has-error">
+        @Html.ValidationMessageFor(x => x.Name, string.Empty, new { @class = "help-block" })
+    </span>
+
+</div>

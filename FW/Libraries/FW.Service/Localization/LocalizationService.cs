@@ -16,22 +16,28 @@ namespace FW.Service.Localization
         private const string RESOURCE_CACHE_ID = "LOCALIZED_RESOURCE.{0}";
         private const string RESOURCE_CACHE_PATTERN = "LOCALIZED_RESOURCE.";
 
+        private const string LANGUAGE_CACHE_ID = "LANGUAGE.{0}";
+        private const string LANGUAGE_CACHE_PATTERN = "LANGUAGE.";
+
         private readonly IRepository<LocalizedResource> localizedResourceRepository;
+        private readonly IRepository<Language> languageRepository;
         private readonly ICacheManager cacheManager;
 
         public LocalizationService(IRepository<LocalizedResource> localizedResourceRepository,
+            IRepository<Language> languageRepository,
             ICacheManager cacheManger)
         {
             this.localizedResourceRepository = localizedResourceRepository;
+            this.languageRepository = languageRepository;
             this.cacheManager = cacheManger;
         }
 
         public string GetResource(string key)
         {
-            return GetResource(key, "CN");
+            return GetResource(key, 1);
         }
 
-        public string GetResource(string key, string language)
+        public string GetResource(string key, int language)
         {
             return cacheManager.Get(string.Format(RESOURCE_CACHE_KEY, key, language), () =>
             {
@@ -83,6 +89,47 @@ namespace FW.Service.Localization
                 () => localizedResourceRepository.Table
                     .Where(x => x.Id == id)
                     .FirstOrDefault());
+        }
+
+
+        public IPagedList<Language> GetLanguages(int pageIndex = 1, int pageSize = 20)
+        {
+            var query = languageRepository.Table;
+
+            return new PagedList<Language>(query, pageIndex, pageSize);
+        }
+
+        public Language GetLanguage(int id)
+        {
+            if (0 == id)
+                return null;
+
+            return cacheManager.Get(
+                string.Format(LANGUAGE_CACHE_ID, id),
+                () => languageRepository.Table
+                .Where(x => x.Id == id)
+                .FirstOrDefault());
+        }
+
+        public void InsertLanguage(Language entity)
+        {
+            languageRepository.Insert(entity);
+            cacheManager.RemoveByPattern(LANGUAGE_CACHE_PATTERN);
+        }
+
+        public void UpdateLanguage(Language entity)
+        {
+            languageRepository.Update(entity);
+            cacheManager.RemoveByPattern(LANGUAGE_CACHE_PATTERN);
+        }
+
+        public void DeleteLanguage(Language entity)
+        {
+            localizedResourceRepository.Delete(x => x.Language == entity.Id);
+            languageRepository.Delete(entity);
+
+            cacheManager.RemoveByPattern(LANGUAGE_CACHE_PATTERN);
+            cacheManager.RemoveByPattern(RESOURCE_CACHE_PATTERN);
         }
     }
 }

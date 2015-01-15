@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = T("Admin.Language");
+    ViewBag.PageTitle = T("Admin.Language");
+    Layout = "~/Administrator/Views/Shared/_PanelLayout.cshtml";
+}
+
+<div id="table-container"></div>
+@Html.Action("Table", "Common", new { area = "Administrator" })
+
+@section Script
+{
+    <script type="text/javascript">
+        $(function () {
+            $("#table-container").table({
+                url: '@Url.Action("LanguageList", "Language")',
+                columns: [
+                    { title: "@T("Admin.Language.Code")", field: "Code", width: "25%" },
+                    { title: "@T("Admin.Language.Name")", field: "Name", width: "25%" },
+                    {
+                        title: "@T("Admin.LocalizedResource")", field: "Id", width: "25%",
+                        template: '<a href="@Url.Action("Index", "LocalizedResource", new { id="[val]"})">@T("Admin.LocalizedResource")</a>'
+                    },
+                    {
+                        title: "@T("Admin.Common.Operation")", field: "Id", width: "20%",
+                        template: '<a href="@Url.Action("Edit", new { id = "[val]" })" class="btn btn-sm btn-default">@T("Admin.Common.Edit")</a>'
+                    }
+                ]
+            });
+        });
+    </script>
+}
+
+@section OperationRight
+{
+    @Html.ActionLink(T("Admin.Common.Add"), "Add", new { }, new { @class = "btn btn-default" })
+}
+
