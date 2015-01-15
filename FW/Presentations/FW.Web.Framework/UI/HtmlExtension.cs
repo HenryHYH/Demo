@@ -36,7 +36,7 @@
             return EngineContext.Current.Resolve<IPageBulider>();
         }
 
-        public static MvcHtmlString FWLabelFor<TModel, TValue>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TValue>> expression, object htmlAttributes)
+        public static MvcHtmlString FWLabelFor<TModel, TValue>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TValue>> expression, object htmlAttributes = null)
         {
             string labelText = GetDisplayName(htmlHelper, expression);
 

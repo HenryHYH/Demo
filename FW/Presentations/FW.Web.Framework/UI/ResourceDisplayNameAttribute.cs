@@ -24,9 +24,13 @@ namespace FW.Web.Framework.UI
         {
             get
             {
-                return EngineContext.Current
-                    .Resolve<ILocalizationService>()
-                    .GetResource(resourceKey);
+                var displayName = EngineContext.Current.Resolve<ILocalizationService>()
+                                                        .GetResource(resourceKey);
+
+                if (string.IsNullOrWhiteSpace(displayName))
+                    return resourceKey;
+                else
+                    return displayName;
             }
         }
 

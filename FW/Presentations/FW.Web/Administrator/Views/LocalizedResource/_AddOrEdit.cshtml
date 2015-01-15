@@ -18,20 +18,17 @@
         </div>
     </div>*@
 <div class="form-group">
-    @Html.FWLabelFor(x => x.ResourceKey, new { @class = "col-sm-2 col-lg-1 control-label" })
-    <div class="col-sm-3">
-        @Html.TextBoxFor(x => x.ResourceKey, new { @class = "form-control" })
-        <div class="has-error">
-            @Html.ValidationMessageFor(x => x.ResourceKey, string.Empty, new { @class = "help-block" })
-        </div>
+    @Html.FWLabelFor(x => x.ResourceKey)
+    @Html.TextBoxFor(x => x.ResourceKey, new { @class = "form-control" })
+    <div class="has-error">
+        @Html.ValidationMessageFor(x => x.ResourceKey, string.Empty, new { @class = "help-block" })
     </div>
 </div>
 <div class="form-group ">
-    @Html.FWLabelFor(x => x.ResourceValue, new { @class = "col-sm-2 col-lg-1 control-label" })
-    <div class="col-sm-3">
-        @Html.TextBoxFor(x => x.ResourceValue, new { @class = "form-control" })
-        <div class="has-error">
-            @Html.ValidationMessageFor(x => x.ResourceValue, string.Empty, new { @class = "help-block" })
-        </div>
-    </div>
+    @Html.FWLabelFor(x => x.ResourceValue)
+    @Html.TextBoxFor(x => x.ResourceValue, new { @class = "form-control" })
+    <span class="has-error">
+        @Html.ValidationMessageFor(x => x.ResourceValue, string.Empty, new { @class = "help-block" })
+    </span>
+
 </div>

@@ -10,6 +10,8 @@
 
     using FW.Core.Infrastructure;
     using FW.Web.Framework.MVC;
+    using FluentValidation.Mvc;
+    using FluentValidation.Attributes;
 
     public class CustomViewLocationRazorViewEngine : RazorViewEngine
     {
@@ -115,6 +117,10 @@
             ModelMetadataProviders.Current = new FWMetadataProvider();
 
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            // FluentValidation
+            DataAnnotationsModelValidatorProvider.AddImplicitRequiredAttributeForValueTypes = false;
+            ModelValidatorProviders.Providers.Add(new FluentValidationModelValidatorProvider(new AttributedValidatorFactory()));
         }
 
         #endregion Methods

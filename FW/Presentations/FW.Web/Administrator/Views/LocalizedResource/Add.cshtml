@@ -16,7 +16,7 @@
     <input type="submit" class="btn btn-default" value="@T("Admin.Common.SaveContinue")" title="@T("Admin.Common.SaveContinue")" />
 }
 
-@using (Html.BeginForm("Add", "LocalizedResource", FormMethod.Post, new { @class = "form-horizontal" }))
+@using (Html.BeginForm("Add", "LocalizedResource", FormMethod.Post, new { @class = "col-md-4" }))
 {
     @Html.Partial("_AddOrEdit", Model)
 }
