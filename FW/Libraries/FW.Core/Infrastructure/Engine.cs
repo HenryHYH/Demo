@@ -16,12 +16,30 @@
 
         #endregion Fields
 
+        #region Properties
+
+        public ContainerManager ContainerManager
+        {
+            get
+            {
+                return containerManager;
+            }
+        }
+
+        #endregion Properties
+
         #region Methods
 
         public void Initialize()
         {
             RegisterDependencies();
             RunStartupTasks();
+        }
+
+        public T Resolve<T>()
+            where T : class
+        {
+            return containerManager.Resolve<T>();
         }
 
         protected virtual void RegisterDependencies()
@@ -61,20 +79,6 @@
             startUpTasks = startUpTasks.AsQueryable().OrderBy(st => st.Order).ToList();
             foreach (var startUpTask in startUpTasks)
                 startUpTask.Execute();
-        }
-
-        public T Resolve<T>()
-            where T : class
-        {
-            return containerManager.Resolve<T>();
-        }
-
-        public ContainerManager ContainerManager
-        {
-            get
-            {
-                return containerManager;
-            }
         }
 
         #endregion Methods

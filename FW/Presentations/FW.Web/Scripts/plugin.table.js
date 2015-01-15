@@ -121,5 +121,6 @@
 })(jQuery);
 
 template.helper('format', function (data, format) {
-    return format.replace('[val]', data);
+    var result = format.replace('[val]', data);
+    return result.replace('%5Bval%5D', data);
 });

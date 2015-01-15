@@ -1,12 +1,23 @@
-﻿using FW.Web.Framework.UI.Pagination;
-using System.Collections.Generic;
-
-namespace FW.Web.Framework.Datasource
+﻿namespace FW.Web.Framework.Datasource
 {
+    using System.Collections.Generic;
+
+    using FW.Web.Framework.UI.Pagination;
+
     public class DatasourceResult<T>
     {
-        public Pager Pager { get; set; }
+        #region Properties
 
-        public IList<T> Data { get; set; }
+        public IList<T> Data
+        {
+            get; set;
+        }
+
+        public Pager Pager
+        {
+            get; set;
+        }
+
+        #endregion Properties
     }
 }

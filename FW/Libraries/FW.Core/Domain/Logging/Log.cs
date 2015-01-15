@@ -1,19 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FW.Core.Domain.Logging
+﻿namespace FW.Core.Domain.Logging
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
     public class Log : BaseEntity
     {
-        public LogLevel LogLevel { get; set; }
+        #region Properties
 
-        public string ShortMessage { get; set; }
+        public DateTime CreateTime
+        {
+            get; set;
+        }
 
-        public string FullMessage { get; set; }
+        public string FullMessage
+        {
+            get; set;
+        }
 
-        public DateTime CreateTime { get; set; }
+        public LogLevel LogLevel
+        {
+            get; set;
+        }
+
+        public string ShortMessage
+        {
+            get; set;
+        }
+
+        #endregion Properties
     }
 }

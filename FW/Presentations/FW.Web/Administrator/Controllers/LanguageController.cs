@@ -1,28 +1,34 @@
-﻿using FW.Core.Domain.Localization;
-using FW.Service.Localization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using FW.Web.Framework.Extensions;
-using FW.Admin.Models;
-
-namespace FW.Admin.Controllers
+﻿namespace FW.Admin.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Web.Mvc;
+
+    using FW.Admin.Models;
+    using FW.Core.Domain.Localization;
+    using FW.Service.Localization;
+    using FW.Web.Framework.Extensions;
+
     public class LanguageController : Controller
     {
+        #region Fields
+
         private readonly ILocalizationService localizationService;
+
+        #endregion Fields
+
+        #region Constructors
 
         public LanguageController(ILocalizationService localizationService)
         {
             this.localizationService = localizationService;
         }
 
-        public ActionResult Index()
-        {
-            return View();
-        }
+        #endregion Constructors
+
+        #region Methods
 
         public ActionResult Add()
         {
@@ -46,6 +52,11 @@ namespace FW.Admin.Controllers
             return View(model);
         }
 
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         [HttpGet]
         public ActionResult LanguageList(int pageIndex, int pageSize)
         {
@@ -62,5 +73,7 @@ namespace FW.Admin.Controllers
                 model = entity.MapTo(model);
             }
         }
+
+        #endregion Methods
     }
 }

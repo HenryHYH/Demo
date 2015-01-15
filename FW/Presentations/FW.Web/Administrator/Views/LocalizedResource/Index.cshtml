@@ -13,8 +13,9 @@
         $(function () {
             $("#table-container").table({
                 url: '@Url.Action("ResourceList", "LocalizedResource")',
+                condition: { LanguageId: "@ViewBag.LanguageId" },
                 columns: [
-                    { title: "@T("Admin.LocalizedResource.Language")", field: "Language", width: "5%" },
+                    { title: "@T("Admin.LocalizedResource.Language")", field: "LanguageName", width: "5%" },
                     { title: "@T("Admin.LocalizedResource.ResourceKey")", field: "ResourceKey", width: "40%" },
                     { title: "@T("Admin.LocalizedResource.ResourceValue")", field: "ResourceValue", width: "40%" },
                     {
@@ -25,6 +26,11 @@
             });
         });
     </script>
+}
+
+@section OperationLeft
+{
+    <a href="@Url.Action("Index", "Language")" class="btn btn-link" title="@T("Admin.Common.Back")"><i class="fa fa-chevron-left"></i></a>
 }
 
 @section OperationRight

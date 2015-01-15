@@ -10,10 +10,9 @@
     {
         #region Properties
 
-        public string Password
+        public int Age
         {
-            get;
-            set;
+            get; set;
         }
 
         public string Name
@@ -22,7 +21,11 @@
             set;
         }
 
-        public int Age { get; set; }
+        public string Password
+        {
+            get;
+            set;
+        }
 
         #endregion Properties
     }

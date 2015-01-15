@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-
-namespace FW.Web.Framework.MVC
+﻿namespace FW.Web.Framework.MVC
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Web.Mvc;
+
     public class FWMetadataProvider : DataAnnotationsModelMetadataProvider
     {
+        #region Methods
+
         protected override ModelMetadata CreateMetadata(IEnumerable<Attribute> attributes, Type containerType, Func<object> modelAccessor, Type modelType, string propertyName)
         {
             var metadata = base.CreateMetadata(attributes, containerType, modelAccessor, modelType, propertyName);
@@ -21,5 +23,7 @@ namespace FW.Web.Framework.MVC
 
             return metadata;
         }
+
+        #endregion Methods
     }
 }

@@ -18,7 +18,7 @@
                     { title: "@T("Admin.Language.Name")", field: "Name", width: "25%" },
                     {
                         title: "@T("Admin.LocalizedResource")", field: "Id", width: "25%",
-                        template: '<a href="@Url.Action("Index", "LocalizedResource", new { id="[val]"})">@T("Admin.LocalizedResource")</a>'
+                        template: '<a href="@Url.Action("Index", "LocalizedResource", new { languageId = "[val]" })">@T("Admin.LocalizedResource")</a>'
                     },
                     {
                         title: "@T("Admin.Common.Operation")", field: "Id", width: "20%",

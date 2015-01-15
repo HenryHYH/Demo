@@ -1,16 +1,30 @@
-﻿using FW.Core.Infrastructure;
-using FW.Service.Localization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FW.Web.Framework.ViewEngines.Razor
+﻿namespace FW.Web.Framework.ViewEngines.Razor
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    using FW.Core.Infrastructure;
+    using FW.Service.Localization;
+
     public abstract class WebViewPage<TModel> : System.Web.Mvc.WebViewPage<TModel>
     {
+        #region Fields
+
         private ILocalizationService localizationService;
+
+        #endregion Fields
+
+        #region Methods
+
+        public override void InitHelpers()
+        {
+            base.InitHelpers();
+
+            localizationService = EngineContext.Current.Resolve<ILocalizationService>();
+        }
 
         public string T(string key, params string[] args)
         {
@@ -25,11 +39,6 @@ namespace FW.Web.Framework.ViewEngines.Razor
             return key;
         }
 
-        public override void InitHelpers()
-        {
-            base.InitHelpers();
-
-            localizationService = EngineContext.Current.Resolve<ILocalizationService>();
-        }
+        #endregion Methods
     }
 }

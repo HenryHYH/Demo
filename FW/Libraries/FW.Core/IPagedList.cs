@@ -30,12 +30,12 @@
             get;
         }
 
-        int TotalRecords
+        int TotalPages
         {
             get;
         }
 
-        int TotalPages
+        int TotalRecords
         {
             get;
         }

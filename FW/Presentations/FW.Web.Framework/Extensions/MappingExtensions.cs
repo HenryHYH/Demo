@@ -1,16 +1,20 @@
-﻿using AutoMapper;
-using FW.Core;
-using FW.Web.Framework.Datasource;
-using FW.Web.Framework.UI.Pagination;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace FW.Web.Framework.Extensions
+﻿namespace FW.Web.Framework.Extensions
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+
+    using AutoMapper;
+
+    using FW.Core;
+    using FW.Web.Framework.Datasource;
+    using FW.Web.Framework.UI.Pagination;
+
     public static class MappingExtensions
     {
+        #region Methods
+
         public static TDestination MapTo<TSource, TDestination>(this TSource source)
         {
             return Mapper.Map<TSource, TDestination>(source);
@@ -29,5 +33,7 @@ namespace FW.Web.Framework.Extensions
                 Pager = new Pager(data.PageIndex, data.PageSize) { TotalRecords = data.TotalRecords }
             };
         }
+
+        #endregion Methods
     }
 }

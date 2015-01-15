@@ -1,15 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FW.Core.Domain.Localization
+﻿namespace FW.Core.Domain.Localization
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
     public class Language : BaseEntity
     {
-        public string Code { get; set; }
+        #region Properties
 
-        public string Name { get; set; }
+        public string Code
+        {
+            get; set;
+        }
+
+        public string Name
+        {
+            get; set;
+        }
+
+        #endregion Properties
     }
 }

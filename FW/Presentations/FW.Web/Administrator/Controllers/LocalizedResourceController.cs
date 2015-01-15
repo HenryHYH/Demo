@@ -1,28 +1,34 @@
-﻿using FW.Service.Localization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using FW.Web.Framework.Extensions;
-using FW.Core.Domain.Localization;
-using FW.Admin.Models;
-
-namespace FW.Admin.Controllers
+﻿namespace FW.Admin.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Web.Mvc;
+
+    using FW.Admin.Models;
+    using FW.Core.Domain.Localization;
+    using FW.Service.Localization;
+    using FW.Web.Framework.Extensions;
+
     public class LocalizedResourceController : Controller
     {
+        #region Fields
+
         private readonly ILocalizationService localizationService;
+
+        #endregion Fields
+
+        #region Constructors
 
         public LocalizedResourceController(ILocalizationService localizationService)
         {
             this.localizationService = localizationService;
         }
 
-        public ActionResult Index()
-        {
-            return View();
-        }
+        #endregion Constructors
+
+        #region Methods
 
         public ActionResult Add()
         {
@@ -40,7 +46,7 @@ namespace FW.Admin.Controllers
                 var entity = model.MapTo<LocalizedResourceModel, LocalizedResource>();
                 localizationService.InsertResource(entity);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { languageId = entity.LanguageId });
             }
 
             return View(model);
@@ -60,23 +66,29 @@ namespace FW.Admin.Controllers
         {
             var entity = localizationService.GetResource(model.Id);
             if (null == entity)
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { languageId = model.LanguageId });
 
             if (ModelState.IsValid)
             {
                 entity = model.MapTo(entity);
                 localizationService.UpdateResource(entity);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { languageId = entity.LanguageId });
             }
 
             return View(model);
         }
 
-        [HttpGet]
-        public ActionResult ResourceList(int pageIndex = 1, int pageSize = 20)
+        public ActionResult Index(int languageId)
         {
-            var list = localizationService.GetResources(pageIndex, pageSize)
+            ViewBag.LanguageId = languageId;
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult ResourceList(int languageId, int pageIndex = 1, int pageSize = 20)
+        {
+            var list = localizationService.GetResources(languageId, pageIndex, pageSize)
                                             .ToModel<LocalizedResource, LocalizedResourceModel>();
 
             return Json(list, JsonRequestBehavior.AllowGet);
@@ -90,5 +102,7 @@ namespace FW.Admin.Controllers
                 model = entity.MapTo(model);
             }
         }
+
+        #endregion Methods
     }
 }

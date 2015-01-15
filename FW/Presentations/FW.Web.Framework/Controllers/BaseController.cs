@@ -1,24 +1,27 @@
-﻿using FW.Core.Infrastructure;
-using FW.Service.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-
-namespace FW.Web.Framework.Controllers
+﻿namespace FW.Web.Framework.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Web.Mvc;
+
+    using FW.Core.Infrastructure;
+    using FW.Service.Logging;
+
     public abstract class BaseController : Controller
     {
-        protected override void OnActionExecuting(ActionExecutingContext filterContext)
-        {
-            base.OnActionExecuting(filterContext);
-        }
+        #region Methods
 
         protected override void OnActionExecuted(ActionExecutedContext filterContext)
         {
             base.OnActionExecuted(filterContext);
+        }
+
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            base.OnActionExecuting(filterContext);
         }
 
         protected override void OnException(ExceptionContext filterContext)
@@ -34,5 +37,7 @@ namespace FW.Web.Framework.Controllers
             var logger = EngineContext.Current.Resolve<ILogger>();
             logger.Error(ex.Message, ex);
         }
+
+        #endregion Methods
     }
 }

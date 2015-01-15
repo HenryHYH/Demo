@@ -52,13 +52,13 @@
             private set;
         }
 
-        public int TotalRecords
+        public int TotalPages
         {
             get;
             private set;
         }
 
-        public int TotalPages
+        public int TotalRecords
         {
             get;
             private set;

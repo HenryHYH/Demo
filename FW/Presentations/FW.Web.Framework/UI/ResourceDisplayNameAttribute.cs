@@ -1,24 +1,35 @@
-﻿using FW.Core.Infrastructure;
-using FW.Service.Localization;
-using FW.Web.Framework.MVC;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FW.Web.Framework.UI
+﻿namespace FW.Web.Framework.UI
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    using FW.Core.Infrastructure;
+    using FW.Service.Localization;
+    using FW.Web.Framework.MVC;
+
     public class ResourceDisplayNameAttribute : DisplayNameAttribute, IModelAttribute
     {
+        #region Fields
+
         private string resourceKey = string.Empty;
+
+        #endregion Fields
+
+        #region Constructors
 
         public ResourceDisplayNameAttribute(string resourceKey)
             : base(resourceKey)
         {
             this.resourceKey = resourceKey;
         }
+
+        #endregion Constructors
+
+        #region Properties
 
         public override string DisplayName
         {
@@ -38,5 +49,7 @@ namespace FW.Web.Framework.UI
         {
             get { return "ResourceDisplayName"; }
         }
+
+        #endregion Properties
     }
 }

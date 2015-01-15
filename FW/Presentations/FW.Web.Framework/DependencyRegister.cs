@@ -5,14 +5,14 @@
     using Autofac;
     using Autofac.Integration.Mvc;
 
+    using FW.Core.Caching;
     using FW.Core.Data;
     using FW.Core.Infrastructure;
     using FW.Data;
-    using FW.Web.Framework.UI;
-    using FW.Service.Users;
-    using FW.Service.Logging;
     using FW.Service.Localization;
-    using FW.Core.Caching;
+    using FW.Service.Logging;
+    using FW.Service.Users;
+    using FW.Web.Framework.UI;
 
     public class DependencyRegister : IDependencyRegister
     {

@@ -8,10 +8,11 @@
     using System.Web.Mvc;
     using System.Web.Routing;
 
+    using FluentValidation.Attributes;
+    using FluentValidation.Mvc;
+
     using FW.Core.Infrastructure;
     using FW.Web.Framework.MVC;
-    using FluentValidation.Mvc;
-    using FluentValidation.Attributes;
 
     public class CustomViewLocationRazorViewEngine : RazorViewEngine
     {

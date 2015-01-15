@@ -2,6 +2,13 @@
 {
     public interface IModelAttribute
     {
-        string Name { get; }
+        #region Properties
+
+        string Name
+        {
+            get;
+        }
+
+        #endregion Properties
     }
 }

@@ -20,6 +20,11 @@
 
         #region Properties
 
+        public string Action
+        {
+            get { return GetValue("action"); }
+        }
+
         public Dictionary<string, string> Attributes
         {
             get;
@@ -30,6 +35,11 @@
         {
             get;
             private set;
+        }
+
+        public string Controller
+        {
+            get { return GetValue("controller"); }
         }
 
         public string Description
@@ -52,11 +62,10 @@
             get { return GetValue("title"); }
         }
 
-        public string Url { get { return GetValue("url"); } }
-
-        public string Controller { get { return GetValue("controller"); } }
-
-        public string Action { get { return GetValue("action"); } }
+        public string Url
+        {
+            get { return GetValue("url"); }
+        }
 
         #endregion Properties
 
