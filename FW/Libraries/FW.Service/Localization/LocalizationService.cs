@@ -44,7 +44,7 @@
 
         public void DeleteLanguage(Language entity)
         {
-            localizedResourceRepository.Delete(x => x.LanguageId == entity.Id);
+            //localizedResourceRepository.Delete(x => x.LanguageId == entity.Id);
             languageRepository.Delete(entity);
 
             cacheManager.RemoveByPattern(LANGUAGE_CACHE_PATTERN);

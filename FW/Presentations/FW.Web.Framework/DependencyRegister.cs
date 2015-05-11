@@ -40,7 +40,8 @@
             builder.RegisterType<MemoryCacheManager>().As<ICacheManager>().SingleInstance();
 
             // Repository
-            builder.RegisterGeneric(typeof(MongoRepository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
+            //builder.RegisterGeneric(typeof(MongoRepository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
+            builder.RegisterGeneric(typeof(EfRepository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
 
             // Services
             builder.RegisterType<UserService>().As<IUserService>().InstancePerLifetimeScope();
