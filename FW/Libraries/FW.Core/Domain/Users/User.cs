@@ -6,13 +6,14 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class User : BaseEntity
+    public partial class User : BaseEntity
     {
         #region Properties
 
         public int Age
         {
-            get; set;
+            get;
+            set;
         }
 
         public string Name
