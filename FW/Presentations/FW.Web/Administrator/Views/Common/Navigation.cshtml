@@ -12,6 +12,30 @@
     </ul>
 }
 
+@helper ShowTitle(FW.Web.Framework.UI.Menu.SiteMapNode item)
+{
+    if (!string.IsNullOrWhiteSpace(item.Title))
+    {
+        <text>@item.Title</text>
+    }
+    else if (!string.IsNullOrWhiteSpace(item.ResourceTitle))
+    {
+        <text>@T(item.ResourceTitle)</text>
+    }
+}
+
+@helper ShowDescription(FW.Web.Framework.UI.Menu.SiteMapNode item)
+{
+    if (!string.IsNullOrWhiteSpace(item.Description))
+    {
+        <text>@item.Description</text>
+    }
+    else if (!string.IsNullOrWhiteSpace(item.ResourceDescription))
+    {
+        <text>@T(item.ResourceDescription)</text>
+    }
+}
+
 @helper ShowMenu(IEnumerable<FW.Web.Framework.UI.Menu.SiteMapNode> list)
 {
     foreach (var item in list)
@@ -28,12 +52,12 @@
         if (item.Children.Count > 0)
         {
             <li class="dropdown">
-                <a href="@url" title="@item.Description" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                <a href="@url" title="@ShowDescription(item)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                     @if (!string.IsNullOrWhiteSpace(item.Icon))
                     {
                         <i class="@(item.Icon)"></i>
                     }
-                    @item.Title
+                    @ShowTitle(item)
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
@@ -44,12 +68,12 @@
         else
         {
             <li>
-                <a href="@url" title="@item.Description">
+                <a href="@url" title="@ShowDescription(item)">
                     @if (!string.IsNullOrWhiteSpace(item.Icon))
                     {
                         <i class="@(item.Icon)"></i>
                     }
-                    @item.Title
+                    @ShowTitle(item)
                 </a>
             </li>
         }

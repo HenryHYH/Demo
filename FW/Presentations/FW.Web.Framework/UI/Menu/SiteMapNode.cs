@@ -25,17 +25,9 @@
             get { return GetValue("action"); }
         }
 
-        public Dictionary<string, string> Attributes
-        {
-            get;
-            private set;
-        }
+        public Dictionary<string, string> Attributes { get; private set; }
 
-        public IList<SiteMapNode> Children
-        {
-            get;
-            private set;
-        }
+        public IList<SiteMapNode> Children { get; private set; }
 
         public string Controller
         {
@@ -65,6 +57,16 @@
         public string Url
         {
             get { return GetValue("url"); }
+        }
+
+        public string ResourceTitle
+        {
+            get { return GetValue("resourcetitle"); }
+        }
+
+        public string ResourceDescription
+        {
+            get { return GetValue("resourcedescription"); }
         }
 
         #endregion Properties
