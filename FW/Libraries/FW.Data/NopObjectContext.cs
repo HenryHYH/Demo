@@ -1,4 +1,5 @@
 ﻿using FW.Core;
+using FW.Data.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -35,8 +36,11 @@ namespace FW.Data
             //var typesToRegister = Assembly.GetAssembly(configType).GetTypes()
 
             var typesToRegister = Assembly.GetExecutingAssembly().GetTypes()
-            .Where(type => !String.IsNullOrEmpty(type.Namespace))
-            .Where(type => type.BaseType != null && type.BaseType.IsGenericType && type.BaseType.GetGenericTypeDefinition() == typeof(EntityTypeConfiguration<>));
+                                    .Where(type => !String.IsNullOrEmpty(type.Namespace))
+                                    .Where(type => type.BaseType != null && type.BaseType.IsGenericType)
+                                    .Where(type => type != typeof(BaseEntityTypeConfiguration<>))
+                                    .Where(type => type.BaseType.GetGenericTypeDefinition() == typeof(BaseEntityTypeConfiguration<>) ||
+                                                    type.BaseType.GetGenericTypeDefinition() == typeof(EntityTypeConfiguration<>));
             foreach (var type in typesToRegister)
             {
                 dynamic configurationInstance = Activator.CreateInstance(type);
