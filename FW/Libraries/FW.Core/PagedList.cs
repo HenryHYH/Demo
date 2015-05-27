@@ -7,9 +7,17 @@
     using System.Threading.Tasks;
 
     using FW.Core;
+    using System.Linq.Expressions;
 
     public class PagedList<T> : List<T>, IPagedList<T>
+        where T : BaseEntity
     {
+        #region Fields
+
+        private static readonly string[] PaginationPrerequisiteMehods = new[] { "OrderBy", "OrderByDescending" };
+
+        #endregion
+
         #region Constructors
 
         public PagedList(IQueryable<T> source, int pageIndex, int pageSize)
@@ -23,6 +31,11 @@
 
             this.PageSize = pageSize;
             this.PageIndex = pageIndex;
+            var methodName = ((MethodCallExpression)source.Expression).Method.Name;
+            if (!Array.Exists(PaginationPrerequisiteMehods, s => s.Equals(methodName, StringComparison.InvariantCulture)))
+            {
+                source = source.OrderByDescending(x => x.Id);
+            }
             this.AddRange(source.Skip(pageSize * (pageIndex - 1)).Take(pageSize).ToList());
         }
 
