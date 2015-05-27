@@ -35,7 +35,7 @@
                 LogLevel = level,
                 ShortMessage = shortMessage,
                 FullMessage = fullMessage,
-                CreateTime = DateTime.Now
+                CTime = DateTime.Now
             };
 
             logRepository.Insert(log);

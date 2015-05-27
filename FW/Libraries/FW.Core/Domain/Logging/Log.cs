@@ -10,24 +10,28 @@
     {
         #region Properties
 
-        public DateTime CreateTime
+        public DateTime CTime
         {
-            get; set;
+            get;
+            set;
         }
 
         public string FullMessage
         {
-            get; set;
+            get;
+            set;
         }
 
         public LogLevel LogLevel
         {
-            get; set;
+            get;
+            set;
         }
 
         public string ShortMessage
         {
-            get; set;
+            get;
+            set;
         }
 
         #endregion Properties
