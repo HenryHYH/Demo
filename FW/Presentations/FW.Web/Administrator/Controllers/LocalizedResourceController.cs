@@ -10,6 +10,7 @@
     using FW.Core.Domain.Localization;
     using FW.Service.Localization;
     using FW.Web.Framework.Extensions;
+    using FW.Web.Framework.Controllers;
 
     public class LocalizedResourceController : Controller
     {
@@ -61,8 +62,8 @@
             return View(model);
         }
 
-        [HttpPost]
-        public ActionResult Edit(LocalizedResourceModel model, FormCollection form)
+        [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
+        public ActionResult Edit(LocalizedResourceModel model, bool continueEditing)
         {
             var entity = localizationService.GetResource(model.Id);
             if (null == entity)
@@ -73,7 +74,10 @@
                 entity = model.MapTo(entity);
                 localizationService.UpdateResource(entity);
 
-                return RedirectToAction("Index", new { languageId = entity.LanguageId });
+                if (continueEditing)
+                    return RedirectToAction("Edit", new { id = entity.Id });
+                else
+                    return RedirectToAction("Index", new { languageId = entity.LanguageId });
             }
 
             return View(model);

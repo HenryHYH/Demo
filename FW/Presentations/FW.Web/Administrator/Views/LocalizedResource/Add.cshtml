@@ -12,8 +12,8 @@
 
 @section OperationRight
 {
-    <input type="submit" class="btn btn-default" value="@T("Admin.Common.Save")" title="@T("Admin.Common.Save")" />
-    <input type="submit" class="btn btn-default" value="@T("Admin.Common.SaveContinue")" title="@T("Admin.Common.SaveContinue")" />
+    <input type="submit" class="btn btn-default" name="save" value="@T("Admin.Common.Save")" title="@T("Admin.Common.Save")" />
+    <input type="submit" class="btn btn-default" name="save-continue" value="@T("Admin.Common.SaveContinue")" title="@T("Admin.Common.SaveContinue")" />
 }
 
 @using (Html.BeginForm("Add", "LocalizedResource", FormMethod.Post, new { @class = "col-md-4" }))
