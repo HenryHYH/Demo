@@ -10,6 +10,7 @@
     using FW.Core.Domain.Localization;
     using FW.Service.Localization;
     using FW.Web.Framework.Extensions;
+    using FW.Web.Framework.Controllers;
 
     public class LanguageController : Controller
     {
@@ -39,14 +40,21 @@
         }
 
         [HttpPost]
-        public ActionResult Add(LanguageModel model, FormCollection form)
+        [ParameterBasedOnFormName("save-continue", "continueEditing")]
+        public ActionResult Add(LanguageModel model, bool continueEditing)
         {
+            if (null == model)
+                return Index();
+
             if (ModelState.IsValid)
             {
                 var entity = model.MapTo<LanguageModel, Language>();
                 localizationService.InsertLanguage(entity);
 
-                return RedirectToAction("Index");
+                if (continueEditing)
+                    return RedirectToAction("Add");
+                else
+                    return RedirectToAction("Index");
             }
 
             return View(model);

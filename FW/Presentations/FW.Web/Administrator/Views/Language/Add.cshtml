@@ -12,8 +12,8 @@
 
 @section OperationRight
 {
-    <input type="submit" class="btn btn-default" value="@T("Admin.Common.Save")" title="@T("Admin.Common.Save")" />
-    <input type="submit" class="btn btn-default" value="@T("Admin.Common.SaveContinue")" title="@T("Admin.Common.SaveContinue")" />
+    <input type="submit" class="btn btn-default" name="save" value="@T("Admin.Common.Save")" title="@T("Admin.Common.Save")" />
+    <input type="submit" class="btn btn-default" name="save-continue" value="@T("Admin.Common.SaveContinue")" title="@T("Admin.Common.SaveContinue")" />
 }
 
 @using (Html.BeginForm("Add", "Language", FormMethod.Post, new { @class = "col-md-4" }))
@@ -26,7 +26,11 @@
     <script type="text/javascript">
         $(function () {
             $(document).delegate("input[type='submit']", "click", function () {
-                $("form").submit();
+                SubmitSaveContinue({
+                    form: $('form'),
+                    btn: $(this)
+                });
+
                 return false;
             });
         });

@@ -16,6 +16,12 @@ namespace FW.Web.Framework.Controllers
         private readonly string name;
         private readonly string actionParameterName;
 
+        public ParameterBasedOnFormNameAttribute()
+        {
+            this.name = "save-continue";
+            this.actionParameterName = "continueEditing";
+        }
+
         public ParameterBasedOnFormNameAttribute(string name, string actionParameterName)
         {
             this.name = name;

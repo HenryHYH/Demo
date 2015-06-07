@@ -30,6 +30,9 @@
                 new { controller = "Home", action = "Index", area = "Admin", id = UrlParameter.Optional },
                 new[] { "FW.Admin.Controllers" }
             );
+
+            context.MapRoute("Admin_Content",
+                "Admin/Content/");
         }
 
         #endregion Methods

@@ -39,15 +39,18 @@
             return View(model);
         }
 
-        [HttpPost]
-        public ActionResult Add(LocalizedResourceModel model, FormCollection form)
+        [HttpPost, ParameterBasedOnFormName]
+        public ActionResult Add(LocalizedResourceModel model, bool continueEditing)
         {
             if (ModelState.IsValid)
             {
                 var entity = model.MapTo<LocalizedResourceModel, LocalizedResource>();
                 localizationService.InsertResource(entity);
 
-                return RedirectToAction("Index", new { languageId = entity.LanguageId });
+                if (continueEditing)
+                    return RedirectToAction("Add");
+                else
+                    return RedirectToAction("Index", new { languageId = entity.LanguageId });
             }
 
             return View(model);
