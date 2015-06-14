@@ -1,2 +1,2 @@
 DataProvider: sqlserver
-DataConnectionString: Data Source=localhost\SQLEXPRESS;Initial Catalog=FW;Integrated Security=False;Persist Security Info=False;User ID=sa;Password=mytest;
+DataConnectionString: Data Source=localhost;Initial Catalog=FW;Integrated Security=False;Persist Security Info=False;User ID=sa;Password=mytest;
