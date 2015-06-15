@@ -60,6 +60,36 @@
             return View(model);
         }
 
+        public ActionResult Edit(int id)
+        {
+            var entity = localizationService.GetLanguage(id);
+
+            var model = new LanguageModel();
+            PrepareLanguageModel(model, entity);
+
+            return View(model);
+        }
+
+        [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
+        public ActionResult Edit(LanguageModel model, bool continueEditing)
+        {
+            if (null == model)
+                return Index();
+
+            if (ModelState.IsValid)
+            {
+                var entity = model.MapTo<LanguageModel, Language>();
+                localizationService.UpdateLanguage(entity);
+
+                if (continueEditing)
+                    return RedirectToAction("Edit", new { id = entity.Id });
+                else
+                    return RedirectToAction("Index");
+            }
+
+            return View(model);
+        }
+
         public ActionResult Index()
         {
             return View();
