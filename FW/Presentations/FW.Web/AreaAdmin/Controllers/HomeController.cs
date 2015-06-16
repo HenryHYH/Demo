@@ -28,10 +28,6 @@ namespace FW.Admin.Controllers
 
         public ActionResult Index()
         {
-            var resource = localizationService.GetResource(4);
-            resource.ResourceValue = "DEF";
-            localizationService.UpdateResource(resource);
-
             return View();
         }
 
