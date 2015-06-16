@@ -4,3 +4,4 @@
 /// <reference path="bootstrap-hover-dropdown.js" />
 /// <reference path="template.js" />
 /// <reference path="plugin.table.js" />
+/// <reference path="bootstrap-tooltip.js" />
