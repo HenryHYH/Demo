@@ -30,7 +30,7 @@
                                         .find("tbody").detach()
                                         .end().prependTo(parent);
 
-            var scrollMin = cur.height() * -1;
+            var scrollMin = (cur.height()) * -1;
 
             parent.scroll(function () {
                 var scrollTop = cur.position().top - panelHeadingHeight;

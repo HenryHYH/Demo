@@ -5,5 +5,8 @@ body { padding-top: 51px; padding-bottom: 20px; }
 footer { position: fixed; bottom: 0; width: 100%; height: 30px; padding-top: 6px; z-index: 2; }
 
 /* 固定高度滚动 */
-.fixed-height { height: calc(100vh - 210px); overflow-y: auto; }
+.fixed-height { height: calc(100vh - 270px); overflow-y: auto; }
 .fixed-height .table-fixed-header { position: absolute; display: none; background-color: #fff; }
+
+/* Panel footer 内分页控件 */
+.panel-footer .pagination { margin: 0; }
