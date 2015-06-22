@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "管理平台";
+    Html.AddResource("~/Scripts/pager.js");
 }
 
 <ol class="breadcrumb">
@@ -110,31 +111,31 @@
                     </div>
                     <div class="panel-footer">
                         <ul class="pagination">
-                            <li>
-                                <a href="#" aria-label="First">
-                                    <i class="fa fa-angle-double-left"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" aria-label="Previous">
-                                    <i class="fa fa-angle-left"></i>
-                                </a>
-                            </li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li>
-                                <a href="#" aria-label="Next">
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" aria-label="Last">
-                                    <i class="fa fa-angle-double-right"></i>
-                                </a>
-                            </li>
+                            @*<li>
+                                    <a href="#" aria-label="First">
+                                        <i class="fa fa-angle-double-left"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" aria-label="Previous">
+                                        <i class="fa fa-angle-left"></i>
+                                    </a>
+                                </li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li>
+                                    <a href="#" aria-label="Next">
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" aria-label="Last">
+                                        <i class="fa fa-angle-double-right"></i>
+                                    </a>
+                                </li>*@
                         </ul>
                     </div>
                 </div>
@@ -142,4 +143,32 @@
         </div>
     </div>
 </div>
+
+<script type="text/html" id="tmpl-pager">
+    <li>
+        <a href="#" aria-label="First">
+            <i class="fa fa-angle-double-left"></i>
+        </a>
+    </li>
+    <li class="">
+        <a href="#" aria-label="Previous">
+            <i class="fa fa-angle-left"></i>
+        </a>
+    </li>
+    <li><a href="#">{{pager}}</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+        <a href="#" aria-label="Next">
+            <i class="fa fa-angle-right"></i>
+        </a>
+    </li>
+    <li>
+        <a href="#" aria-label="Last">
+            <i class="fa fa-angle-double-right"></i>
+        </a>
+    </li>
+</script>
 

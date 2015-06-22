@@ -92,7 +92,7 @@
     <Compile Include="Datasource\DatasourceRequest.cs" />
     <Compile Include="Datasource\DatasourceResult.cs" />
     <Compile Include="DependencyRegister.cs" />
-    <Compile Include="Extensions\MappingExtensions.cs" />
+    <Compile Include="MappingExtensions.cs" />
     <Compile Include="MVC\BaseModel.cs" />
     <Compile Include="MVC\FWMetadataProvider.cs" />
     <Compile Include="MVC\IModelAttribute.cs" />

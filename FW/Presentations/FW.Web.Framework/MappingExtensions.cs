@@ -1,4 +1,4 @@
-﻿namespace FW.Web.Framework.Extensions
+﻿namespace FW.Web.Framework
 {
     using System;
     using System.Collections.Generic;
