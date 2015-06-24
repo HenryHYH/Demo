@@ -1,30 +1,40 @@
 ﻿$(function () {
+    var pageChanged = function (pageIndex) {
+        alert("Callback " + pageIndex);
+        $(".pagination").pager({
+            totalPages: pageIndex,
+            onPageChanged: pageChanged
+        });
+    };
+
     $(".pagination").pager({
-        pager: {
-            hasPrevious: false,
-            hasNext: false,
-            totalPages: 10
-        }
+        hasPrevious: false,
+        hasNext: false,
+        totalPages: 1,
+        onPageChanged: pageChanged
     });
 });
 
 ; (function ($) {
     $.fn.pager = function (options) {
         var defaultOptions = {
-            pager: {
-                hasPrevious: false,
-                hasNext: false,
-                totalPages: 20
-            }
+            hasPrevious: false,
+            hasNext: false,
+            totalPages: 20,
+            onPageChanged: null
         };
         if (options) $.extend(defaultOptions, options);
 
         return this.each(function (i) {
             var cur = $(this);
-            alert(options.pager);
-            cur.html(template("tmpl-pager"), {
-                pager: options.pager
-            });
+            cur.html(template("tmpl-pager", options));
+            if (options.onPageChanged) {
+                cur.find("a").on("click", function () {
+                    options.onPageChanged(parseInt($(this).text()));
+
+                    return false;
+                });
+            }
         });
     };
 })(jQuery);
