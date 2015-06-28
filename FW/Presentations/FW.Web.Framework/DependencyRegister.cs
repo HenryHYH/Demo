@@ -60,6 +60,7 @@
 
             // Repository
             builder.RegisterGeneric(typeof(EfRepository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
+            builder.RegisterGeneric(typeof(RedisRepository<>)).Named("Redis", typeof(IRepository<>)).InstancePerLifetimeScope();
 
             // Services
             builder.RegisterType<UserService>().As<IUserService>().InstancePerLifetimeScope();
