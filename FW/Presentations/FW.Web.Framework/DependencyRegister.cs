@@ -38,6 +38,7 @@
             // Core
             builder.Register(x => new SettingsManager().LoadSettings()).As<Settings>();
             builder.RegisterType<MemoryCacheManager>().As<ICacheManager>().SingleInstance();
+            builder.RegisterType<RedisCacheManager>().Named<ICacheManager>("Redis").SingleInstance();
 
             //data layer
             var dataSettingsManager = new DataSettingsManager();

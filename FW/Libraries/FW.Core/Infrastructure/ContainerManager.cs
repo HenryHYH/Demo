@@ -54,6 +54,17 @@
             return scope.ResolveKeyed<T>(key);
         }
 
+        public T ResolveNamed<T>(string name, ILifetimeScope scope = null)
+            where T : class
+        {
+            if (null == scope)
+                scope = Scope();
+            if (string.IsNullOrWhiteSpace(name))
+                return scope.Resolve<T>();
+
+            return scope.ResolveNamed<T>(name);
+        }
+
         public object Resolve(Type type, ILifetimeScope scope = null)
         {
             if (scope == null)

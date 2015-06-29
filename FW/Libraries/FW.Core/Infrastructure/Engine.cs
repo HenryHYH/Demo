@@ -42,6 +42,15 @@
             return containerManager.Resolve<T>();
         }
 
+        public T Resolve<T>(string name)
+            where T : class
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                return Resolve<T>();
+            else
+                return containerManager.ResolveNamed<T>(name);
+        }
+
         protected virtual void RegisterDependencies()
         {
             var builder = new ContainerBuilder();

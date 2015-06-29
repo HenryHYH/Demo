@@ -12,6 +12,8 @@ namespace FW.Core.Caching
     {
         #region Fields
 
+        private const string REDIS_HOST_SETTING_KEY = "RedisHost";
+
         private static readonly object _lock = new object();
 
         private readonly DataSettings dataSettings;
@@ -25,7 +27,7 @@ namespace FW.Core.Caching
         {
             this.dataSettings = dataSettings;
 
-            client = new RedisClient(dataSettings.RawDataSettings["RedisHost"]);
+            client = new RedisClient(dataSettings.RawDataSettings[REDIS_HOST_SETTING_KEY]);
         }
 
         #endregion
