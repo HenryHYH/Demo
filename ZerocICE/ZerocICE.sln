@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZerocICE.Client", "ZerocICE.Client\ZerocICE.Client.csproj", "{1FE5A00B-FAC6-4A39-B401-5F10FF391588}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZerocICE.Server", "ZerocICE.Server\ZerocICE.Server.csproj", "{696EC52A-EF52-427B-B5F7-BFB94B0314FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZerocICE.Common", "ZerocICE.Common\ZerocICE.Common.csproj", "{440A664D-6DF2-44FA-9BFE-2FB6DE216C2D}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1FE5A00B-FAC6-4A39-B401-5F10FF391588}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FE5A00B-FAC6-4A39-B401-5F10FF391588}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FE5A00B-FAC6-4A39-B401-5F10FF391588}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FE5A00B-FAC6-4A39-B401-5F10FF391588}.Release|Any CPU.Build.0 = Release|Any CPU
+		{696EC52A-EF52-427B-B5F7-BFB94B0314FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{696EC52A-EF52-427B-B5F7-BFB94B0314FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{696EC52A-EF52-427B-B5F7-BFB94B0314FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{696EC52A-EF52-427B-B5F7-BFB94B0314FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{440A664D-6DF2-44FA-9BFE-2FB6DE216C2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{440A664D-6DF2-44FA-9BFE-2FB6DE216C2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{440A664D-6DF2-44FA-9BFE-2FB6DE216C2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{440A664D-6DF2-44FA-9BFE-2FB6DE216C2D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
