@@ -1,17 +1,17 @@
-module ZerocICE.Common
+module Common
 {
-	interface Callback
-	{
-		void GetMessage(string content);
-	};
+       interface ICallback
+       {
+              void GetMessage(string content);
+       };
 
-	dictionary<string, Callback *> OnlineUsers;
+       dictionary<string, ICallback *> OnlineUsers;
 
-	interface Chat
-	{
-		bool Register(string name);
-		void SendMessage(string content);
-		void Unregister();
-		void SetCallback(Callback * cb);
-	};
+       interface IChat
+       {
+              bool Register(string name);
+              void SendMessage(string content);
+              void Unregister();
+              void SetICallback(ICallback * cb);
+       };
 };
