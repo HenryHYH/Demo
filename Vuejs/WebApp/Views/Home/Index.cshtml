@@ -10,9 +10,14 @@
                     <input type="text" class="form-control" placeholder="Text" v-model="newTodo" v-on:keyup.enter="addTodo">
                 </div>
                 <div class="list-group">
-                    <div class="list-group-item" v-for="item in todos">
-                        <span class="btn btn-link" v-on:click="removeTodo($index)">{{item.text}}</span>
-                    </div>
+                    @*<div class="list-group-item" v-for="item in todos">
+                            <span class="btn btn-link" v-on:click="removeTodo($index)">{{item.text}}</span>
+                        </div>*@
+                    <template v-for="item in todos">
+                        <span class="list-group-item" v-on:click="removeTodo($index)">
+                            {{item.text}}
+                        </span>
+                    </template>
                 </div>
             </form>
         </div>
