@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "测试";
 }
 
 <div class="row">
@@ -10,13 +10,10 @@
                     <input type="text" class="form-control" placeholder="Text" v-model="newTodo" v-on:keyup.enter="addTodo">
                 </div>
                 <div class="list-group">
-                    @*<div class="list-group-item" v-for="item in todos">
-                            <span class="btn btn-link" v-on:click="removeTodo($index)">{{item.text}}</span>
-                        </div>*@
                     <template v-for="item in todos">
-                        <span class="list-group-item" v-on:click="removeTodo($index)">
-                            {{item.text}}
-                        </span>
+                        <button type="button" class="list-group-item" v-on:click="removeTodo($index)">
+                            {{item.Text}}
+                        </button>
                     </template>
                 </div>
             </form>
@@ -24,27 +21,36 @@
     </div>
 </div>
 
-<script type="text/javascript" src="~/Scripts/vue.js"></script>
-<script type="text/javascript">
-    var curVue = new Vue({
-        el: "#app",
-        data: {
-            newTodo: "",
-            todos: [
-                { text: "Add some todos." }
-            ]
-        },
-        methods: {
-            addTodo: function () {
-                var text = this.newTodo.trim();
-                if (!!text) {
-                    this.todos.push({ text: text });
-                    this.newTodo = "";
-                }
+@section Scripts {
+    <script type="text/javascript">
+        var curVue = new Vue({
+            el: "#app",
+            data: {
+                newTodo: "",
+                todos: []
             },
-            removeTodo: function (index) {
-                this.todos.splice(index, 1);
+            ready: function () {
+                var self = this;
+
+                $.ajax({
+                    url: '/Home/GetAjax',
+                    success: function (result) {
+                        self.$data.todos = result;
+                    }
+                });
+            },
+            methods: {
+                addTodo: function () {
+                    var text = this.newTodo.trim();
+                    if (!!text) {
+                        this.todos.push({ Text: text });
+                        this.newTodo = "";
+                    }
+                },
+                removeTodo: function (index) {
+                    this.todos.splice(index, 1);
+                }
             }
-        }
-    });
-</script>
+        });
+    </script>
+}
