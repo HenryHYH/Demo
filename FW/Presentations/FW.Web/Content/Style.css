@@ -1,1 +1,7 @@
 ﻿body { padding-top: 51px; }
+
+/* nav */
+.sidebar { position: fixed; top: 51px; bottom: 0; left: 0; z-index: 1000; display: block; padding: 20px; overflow-x: hidden; overflow-y: auto; background-color: #2E363F; border-right: 1px solid #eee; }
+.sidebar a { color: #939da8; }
+.sidebar a:hover { color: #939da8; }
+.sidebar .nav-sidebar { margin-right: -21px; margin-bottom: 20px; margin-left: -20px; }

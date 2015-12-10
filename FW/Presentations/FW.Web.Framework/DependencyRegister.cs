@@ -38,7 +38,6 @@
             // Core
             builder.Register(x => new SettingsManager().LoadSettings()).As<Settings>();
             builder.RegisterType<MemoryCacheManager>().As<ICacheManager>().SingleInstance();
-            builder.RegisterType<RedisCacheManager>().Named<ICacheManager>("Redis").SingleInstance();
 
             //data layer
             var dataSettingsManager = new DataSettingsManager();
@@ -61,7 +60,6 @@
 
             // Repository
             builder.RegisterGeneric(typeof(EfRepository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
-            builder.RegisterGeneric(typeof(RedisRepository<>)).Named("Redis", typeof(IRepository<>)).InstancePerLifetimeScope();
 
             // Services
             builder.RegisterType<UserService>().As<IUserService>().InstancePerLifetimeScope();
