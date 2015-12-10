@@ -30,8 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Cavity.Core">
-      <HintPath>..\..\packages\Cavity.Core.1.1.0.814\lib\net40\Cavity.Core.dll</HintPath>
+    <Reference Include="Cavity.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Cavity.Core.2.0.0.970\lib\net40\Cavity.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Cavity.Data.Csv">
       <HintPath>..\..\packages\Cavity.Data.Csv.2.0.0.831\lib\net40\Cavity.Data.Csv.dll</HintPath>
@@ -39,20 +40,25 @@
     <Reference Include="Cavity.Data.Csv.Xunit">
       <HintPath>..\..\packages\Cavity.Data.Csv.Xunit.2.0.0.831\lib\net40\Cavity.Data.Csv.Xunit.dll</HintPath>
     </Reference>
-    <Reference Include="Cavity.Data.Html">
-      <HintPath>..\..\packages\Cavity.Data.Html.1.1.0.818\lib\net40\Cavity.Data.Html.dll</HintPath>
+    <Reference Include="Cavity.Data.Html, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Cavity.Data.Html.2.0.0.970\lib\net40\Cavity.Data.Html.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Cavity.Data.Html.Xunit">
-      <HintPath>..\..\packages\Cavity.Data.Html.Xunit.1.1.0.818\lib\net40\Cavity.Data.Html.Xunit.dll</HintPath>
+    <Reference Include="Cavity.Data.Html.Xunit, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Cavity.Data.Html.Xunit.2.0.0.970\lib\net40\Cavity.Data.Html.Xunit.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Cavity.Data.Json.Xunit">
-      <HintPath>..\..\packages\Cavity.Data.Json.Xunit.1.1.0.806\lib\net40\Cavity.Data.Json.Xunit.dll</HintPath>
+    <Reference Include="Cavity.Data.Json.Xunit, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Cavity.Data.Json.Xunit.2.0.0.970\lib\net40\Cavity.Data.Json.Xunit.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Cavity.Data.Xml.Xunit">
-      <HintPath>..\..\packages\Cavity.Data.Xml.Xunit.1.1.0.811\lib\net40\Cavity.Data.Xml.Xunit.dll</HintPath>
+    <Reference Include="Cavity.Data.Xml.Xunit, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Cavity.Data.Xml.Xunit.2.0.0.970\lib\net40\Cavity.Data.Xml.Xunit.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Cavity.Testing.Unit">
-      <HintPath>..\..\packages\Cavity.Testing.Unit.1.1.0.804\lib\net40\Cavity.Testing.Unit.dll</HintPath>
+    <Reference Include="Cavity.Testing.Unit, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Cavity.Testing.Unit.2.0.0.848\lib\net40\Cavity.Testing.Unit.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -67,32 +73,45 @@
     <Reference Include="FizzWare.NBuilder">
       <HintPath>..\..\packages\NBuilder.3.0.1.1\lib\FizzWare.NBuilder.dll</HintPath>
     </Reference>
-    <Reference Include="FluentAssertions">
-      <HintPath>..\..\packages\FluentAssertions.1.7.1.1\Lib\net40\FluentAssertions.dll</HintPath>
+    <Reference Include="FluentAssertions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentAssertions.4.1.0\lib\net45\FluentAssertions.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="HtmlAgilityPack">
-      <HintPath>..\..\packages\HtmlAgilityPack.1.4.3\lib\HtmlAgilityPack.dll</HintPath>
+    <Reference Include="FluentAssertions.Core, Version=4.1.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentAssertions.4.1.0\lib\net45\FluentAssertions.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Moq">
-      <HintPath>..\..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\packages\Newtonsoft.Json.4.5.3\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Ploeh.AutoFixture">
-      <HintPath>..\..\packages\AutoFixture.2.10.0\lib\Ploeh.AutoFixture.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Ploeh.AutoFixture.AutoMoq">
-      <HintPath>..\..\packages\AutoFixture.AutoMoq.2.10.0\lib\Ploeh.AutoFixture.AutoMoq.dll</HintPath>
+    <Reference Include="Ploeh.Albedo, Version=1.0.2.0, Culture=neutral, PublicKeyToken=179ef6dd03497bbd, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Albedo.1.0.2\lib\net35\Ploeh.Albedo.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Ploeh.AutoFixture.Idioms">
-      <HintPath>..\..\packages\AutoFixture.Idioms.2.10.0\lib\Ploeh.AutoFixture.Idioms.dll</HintPath>
+    <Reference Include="Ploeh.AutoFixture, Version=3.37.3.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoFixture.3.37.3\lib\net40\Ploeh.AutoFixture.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Ploeh.AutoFixture.Xunit">
-      <HintPath>..\..\packages\AutoFixture.Xunit.2.10.0\lib\Ploeh.AutoFixture.Xunit.dll</HintPath>
+    <Reference Include="Ploeh.AutoFixture.AutoMoq, Version=3.37.3.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoFixture.AutoMoq.3.37.3\lib\net40\Ploeh.AutoFixture.AutoMoq.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Ploeh.SemanticComparison">
-      <HintPath>..\..\packages\AutoFixture.2.10.0\lib\Ploeh.SemanticComparison.dll</HintPath>
+    <Reference Include="Ploeh.AutoFixture.Idioms, Version=3.37.3.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoFixture.Idioms.3.37.3\lib\net40\Ploeh.AutoFixture.Idioms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ploeh.AutoFixture.Xunit, Version=3.37.3.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoFixture.Xunit.3.37.3\lib\net40\Ploeh.AutoFixture.Xunit.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -101,6 +120,7 @@
       <Private>True</Private>
       <HintPath>..\..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -110,11 +130,29 @@
     <Reference Include="xunit">
       <HintPath>..\..\packages\xunit.1.9.2\lib\net20\xunit.dll</HintPath>
     </Reference>
-    <Reference Include="xunit.extensions">
-      <HintPath>..\..\packages\xunit.extensions.1.9.0.1566\lib\xunit.extensions.dll</HintPath>
+    <Reference Include="xunit.extensions, Version=1.9.2.1705, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\xunit.extensions.1.9.2\lib\net20\xunit.extensions.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Packages\XunitShould.5.0.0\AssertEnumerable.cs" />
+    <Compile Include="App_Packages\XunitShould.5.0.0\AssertEquality.cs" />
+    <Compile Include="App_Packages\XunitShould.5.0.0\AssertException.cs" />
+    <Compile Include="App_Packages\XunitShould.5.0.0\AssertFalse.cs" />
+    <Compile Include="App_Packages\XunitShould.5.0.0\AssertRange.cs" />
+    <Compile Include="App_Packages\XunitShould.5.0.0\AssertReferences.cs" />
+    <Compile Include="App_Packages\XunitShould.5.0.0\AssertString.cs" />
+    <Compile Include="App_Packages\XunitShould.5.0.0\AssertThrows.cs" />
+    <Compile Include="App_Packages\XunitShould.5.0.0\AssertTrue.cs" />
+    <Compile Include="App_Packages\XunitShould.5.0.0\AssertType.cs" />
+    <Compile Include="App_Packages\XunitShould.5.0.0\Sdk\EnumerableEqualException.cs" />
+    <Compile Include="App_Packages\XunitShould.5.0.0\Sdk\EqualException.cs" />
+    <Compile Include="App_Packages\XunitShould.5.0.0\Sdk\InRangeException.cs" />
+    <Compile Include="App_Packages\XunitShould.5.0.0\Sdk\NotInRangeException.cs" />
+    <Compile Include="App_Packages\XunitShould.5.0.0\Sdk\StringComparisonExtensions.cs" />
+    <Compile Include="App_Packages\XunitShould.5.0.0\Sdk\XunitException.cs" />
+    <Compile Include="App_Packages\XunitShould.5.0.0\Trap.cs" />
     <Compile Include="Helloworld\MyTest.cs" />
     <Compile Include="PersistenceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
