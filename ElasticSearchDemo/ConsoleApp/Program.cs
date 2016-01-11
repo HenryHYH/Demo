@@ -32,6 +32,9 @@ namespace ConsoleApp
             var response = client.Search<UserBehavior>(x => x
                                     .Index("logstash-user-packet")
                                     .Size(0)
+                                    .Query(q => q
+                                        .Match(m => m.OnField("DealDate").Query("20151216"))
+                                    )
                                     .Aggregations(a => a
                                         .Terms("count", t => t
                                             .Field("EventKey.raw")

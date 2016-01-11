@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+
+    DateTime? dt = Session["Test"] as DateTime?;
+    if (null == dt || !dt.HasValue)
+    {
+        dt = DateTime.Now;
+        Session["Test"] = dt;
+    }
+
+    string strSession = dt.Value.ToString("yyyy-MM-dd HH:mm:ss.fff");
+}
+
+<div class="jumbotron">
+    <h1>@Request.Url.Port</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Session</h2>
+        <p>
+            Session is @strSession
+        </p>
+    </div>
+</div>
