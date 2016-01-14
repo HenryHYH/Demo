@@ -15,7 +15,6 @@ namespace Sample.Implements
         public Task<bool> Exists()
         {
             Console.WriteLine("处理请求");
-            Console.WriteLine(this.IdentityString);
 
             return Task.FromResult(this.GetPrimaryKeyString() == "Henry");
         }
