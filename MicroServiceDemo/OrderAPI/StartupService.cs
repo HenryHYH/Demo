@@ -1,24 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Owin.Hosting;
+using MS.Infrastructure;
 
-namespace ProductAPI
+namespace MS.OrderAPI
 {
-    public class ProductService
+    public class StartupService
     {
         #region Fields
 
         private IDisposable app;
+        private readonly ServerConfig config;
 
         #endregion
 
         #region Ctor
 
-        public ProductService()
+        public StartupService(ServerConfig config)
         {
+            this.config = config;
         }
 
         #endregion
@@ -27,7 +26,7 @@ namespace ProductAPI
 
         public void Start()
         {
-            app = WebApp.Start<Startup>("http://localhost:8802/");
+            app = WebApp.Start<Startup>(config.Address.Uri.AbsoluteUri);
         }
 
         public void Stop()

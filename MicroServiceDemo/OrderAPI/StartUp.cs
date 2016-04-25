@@ -5,7 +5,7 @@ using System.Text;
 using System.Web.Http;
 using Owin;
 
-namespace OrderAPI
+namespace MS.OrderAPI
 {
     public class Startup
     {

@@ -1,25 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.Http.SelfHost;
+﻿using MS.Infrastructure;
 using Topshelf;
+using Topshelf.Autofac;
 
-namespace OrderAPI
+namespace MS.OrderAPI
 {
     class Program
     {
         static void Main(string[] args)
         {
+            EngineContext.Initialize(false);
+
             HostFactory.Run(x =>
             {
-                x.Service<OrderService>(s =>
+                x.UseAutofacContainer(EngineContext.Current.ContainerManager.Container);
+                x.Service<StartupService>(s =>
                 {
-                    s.ConstructUsing(y => new OrderService());
-                    s.WhenStarted(y => y.Start());
-                    s.WhenStopped(y => y.Stop());
+                    s.ConstructUsingAutofacContainer();
+                    s.WhenStarted(tc => tc.Start());
+                    s.WhenStopped(tc => tc.Stop());
                 });
             });
         }

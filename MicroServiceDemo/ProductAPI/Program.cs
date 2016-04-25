@@ -1,21 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MS.Infrastructure;
 using Topshelf;
+using Topshelf.Autofac;
 
-namespace ProductAPI
+namespace MS.ProductAPI
 {
     class Program
     {
         static void Main(string[] args)
         {
+            EngineContext.Initialize(false);
+
             HostFactory.Run(x =>
             {
-                x.Service<ProductService>(s =>
+                x.UseAutofacContainer(EngineContext.Current.ContainerManager.Container);
+                x.Service<StartupService>(s =>
                 {
-                    s.ConstructUsing(name => new ProductService());
+                    s.ConstructUsingAutofacContainer();
                     s.WhenStarted(tc => tc.Start());
                     s.WhenStopped(tc => tc.Stop());
                 });

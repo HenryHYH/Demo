@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProductAPI
+namespace MS.Infrastructure
 {
-    public class ServerConfiguration : ConfigurationSection
+    public class ServerConfig : ConfigurationSection
     {
         [ConfigurationProperty("address")]
         public UriSpecification Address
@@ -16,17 +16,17 @@ namespace ProductAPI
             set { this["address"] = value; }
         }
 
-        public static ServerConfiguration GetConfiguration()
+        public static ServerConfig GetConfiguration()
         {
-            var config = ConfigurationManager.GetSection("serverConfiguration") as ServerConfiguration;
+            var config = ConfigurationManager.GetSection("serverConfig") as ServerConfig;
 
-            return config ?? new ServerConfiguration();
+            return config ?? new ServerConfig();
         }
     }
 
     public class UriSpecification : ConfigurationElement
     {
-        [ConfigurationProperty("uri", DefaultValue = "http://localhost:8802/", IsRequired = true)]
+        [ConfigurationProperty("uri", IsRequired = true)]
         public Uri Uri
         {
             get { return this["uri"] as Uri; }
