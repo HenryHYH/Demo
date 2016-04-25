@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Autofac;
-using Topshelf.Autofac;
-using Autofac.Integration.WebApi;
+﻿using Autofac;
 using MS.Infrastructure;
-using System.Reflection;
 
 namespace MS.OrderAPI.Dependency
 {
