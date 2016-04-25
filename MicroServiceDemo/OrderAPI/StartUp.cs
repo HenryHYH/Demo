@@ -12,13 +12,19 @@ namespace MS.OrderAPI
         public void Configuration(IAppBuilder app)
         {
             var config = new HttpConfiguration();
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+
+            HttpRoute(config);
 
             app.UseWebApi(config);
+        }
+
+        private void HttpRoute(HttpConfiguration config)
+        {
+            config.Routes.MapHttpRoute(
+                  name: "DefaultApi",
+                  routeTemplate: "{controller}/{id}",
+                  defaults: new { id = RouteParameter.Optional }
+              );
         }
     }
 }
