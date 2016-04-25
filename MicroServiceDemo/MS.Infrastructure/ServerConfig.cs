@@ -22,11 +22,11 @@ namespace MS.Infrastructure
 
     public class UriSpecification : ConfigurationElement
     {
-        [ConfigurationProperty("uri", IsRequired = true)]
-        public Uri Uri
+        [ConfigurationProperty("url", IsRequired = true)]
+        public string Url
         {
-            get { return this["uri"] as Uri; }
-            set { this["uri"] = value; }
+            get { return this["url"] as string; }
+            set { this["url"] = value; }
         }
     }
 }

@@ -26,7 +26,7 @@ namespace MS.ProductAPI
 
         public void Start()
         {
-            app = WebApp.Start<Startup>(config.Address.Uri.AbsoluteUri);
+            app = WebApp.Start<Startup>(config.Address.Url);
         }
 
         public void Stop()
