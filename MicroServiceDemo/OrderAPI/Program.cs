@@ -1,4 +1,5 @@
-﻿using MS.Infrastructure;
+﻿using System;
+using MS.Infrastructure;
 using Topshelf;
 using Topshelf.Autofac;
 
@@ -19,6 +20,8 @@ namespace MS.OrderAPI
                     s.WhenStarted(tc => tc.Start());
                     s.WhenStopped(tc => tc.Stop());
                 });
+
+                x.UseLog4Net(AppDomain.CurrentDomain.BaseDirectory + "log4net.config", true);
             });
         }
     }
