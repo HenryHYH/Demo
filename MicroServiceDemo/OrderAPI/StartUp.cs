@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using MS.Framework;
 using Owin;
 
 namespace MS.OrderAPI
@@ -10,6 +11,7 @@ namespace MS.OrderAPI
             var config = new HttpConfiguration();
 
             HttpRoute(config);
+            Filter(config);
 
             app.UseWebApi(config);
         }
@@ -21,6 +23,11 @@ namespace MS.OrderAPI
                   routeTemplate: "{controller}/{id}",
                   defaults: new { id = RouteParameter.Optional }
               );
+        }
+
+        private void Filter(HttpConfiguration config)
+        {
+            config.Filters.Add(new LoggingFilterAttribute());
         }
     }
 }
