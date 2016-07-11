@@ -145,6 +145,8 @@
     <Compile Include="Datas\MongoDBProvider.cs" />
     <Compile Include="Domain\BaseEntity.cs" />
     <Compile Include="Domain\Models\User.cs" />
+    <Compile Include="Domain\Settings\DataSettings.cs" />
+    <Compile Include="Domain\Settings\DataSettingsManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Logging\ILogger.cs" />
@@ -160,6 +162,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+    <Content Include="App_Data\Settings.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Webroot\data.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

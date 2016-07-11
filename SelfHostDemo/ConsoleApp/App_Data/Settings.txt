@@ -1,0 +1,2 @@
+﻿MongodbConnectionString: mongodb://localhost:27017
+MongodbDatabase: Test

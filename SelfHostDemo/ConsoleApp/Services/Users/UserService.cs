@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ConsoleApp.Datas;
 using ConsoleApp.Domain.Models;
+using ConsoleApp.Domain.Settings;
 using MongoDB.Driver;
 
 namespace ConsoleApp.Services.Users
@@ -19,9 +20,9 @@ namespace ConsoleApp.Services.Users
 
         #region Ctor
 
-        public UserService()
+        public UserService(DataSettings dataSettings)
         {
-            this.collection = MongoDBProvider.GetCollection<User>("mongodb://localhost:27017", "Test");
+            this.collection = MongoDBProvider.GetCollection<User>(dataSettings);
         }
 
         #endregion
@@ -30,10 +31,10 @@ namespace ConsoleApp.Services.Users
 
         public IEnumerable<User> Get()
         {
-            var list = collection.Find(x => x.Age > 1)
-                                 .ToList();
+            var list = collection.AsQueryable()
+                                 .Where(x => x.Name.Contains("Test"));
 
-            return list;
+            return list.ToList();
         }
 
         public void Insert(User entity)

@@ -2,6 +2,7 @@
 using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
+using ConsoleApp.Domain.Settings;
 using ConsoleApp.Services.Logging;
 using ConsoleApp.Services.Users;
 using Microsoft.Owin.FileSystems;
@@ -39,6 +40,10 @@ namespace ConsoleApp
             var builder = new ContainerBuilder();
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).PropertiesAutowired();
             builder.RegisterWebApiFilterProvider(config);
+
+            // data
+            var dataSettingsManager = new DataSettingsManager();
+            builder.Register(x => dataSettingsManager.LoadSettings()).As<DataSettings>();
 
             // Services
             builder.RegisterType<FileLogger>().As<ILogger>().InstancePerLifetimeScope();
