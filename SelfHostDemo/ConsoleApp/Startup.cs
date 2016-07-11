@@ -1,11 +1,11 @@
-﻿using Microsoft.Owin.FileSystems;
-using Microsoft.Owin.StaticFiles;
-using Owin;
+﻿using System.Reflection;
 using System.Web.Http;
 using Autofac;
-using System.Reflection;
 using Autofac.Integration.WebApi;
 using ConsoleApp.Services;
+using Microsoft.Owin.FileSystems;
+using Microsoft.Owin.StaticFiles;
+using Owin;
 
 namespace ConsoleApp
 {
@@ -19,7 +19,6 @@ namespace ConsoleApp
 #if DEBUG
             app.UseErrorPage();
 #endif
-            app.UseWelcomePage("/");
 
             this.config = new HttpConfiguration();
             this.app = app;
@@ -31,7 +30,7 @@ namespace ConsoleApp
             UseWebApi();
 
             // File Server
-            //UseFileServer();
+            UseFileServer();
         }
 
         private void UseAutofac()
@@ -66,7 +65,7 @@ namespace ConsoleApp
                 EnableDirectoryBrowsing = true,
                 EnableDefaultFiles = true,
                 DefaultFilesOptions = { DefaultFileNames = { "index.html" } },
-                FileSystem = new PhysicalFileSystem("Assets"),
+                FileSystem = new PhysicalFileSystem("Webroot"),
                 StaticFileOptions = { ContentTypeProvider = new CustomContentTypeProvider() }
             };
 
