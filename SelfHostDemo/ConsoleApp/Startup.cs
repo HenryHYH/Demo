@@ -2,11 +2,18 @@
 using Microsoft.Owin.StaticFiles;
 using Owin;
 using System.Web.Http;
+using Autofac;
+using System.Reflection;
+using Autofac.Integration.WebApi;
+using ConsoleApp.Services;
 
 namespace ConsoleApp
 {
     public class Startup
     {
+        private HttpConfiguration config;
+        private IAppBuilder app;
+
         public void Configuration(IAppBuilder app)
         {
 #if DEBUG
@@ -14,16 +21,36 @@ namespace ConsoleApp
 #endif
             app.UseWelcomePage("/");
 
+            this.config = new HttpConfiguration();
+            this.app = app;
+
+            // Autofac
+            UseAutofac();
+
             // Web Api
-            UseWebApi(app);
+            UseWebApi();
 
             // File Server
-            //UseFileServer(app);
+            //UseFileServer();
         }
 
-        private void UseWebApi(IAppBuilder app)
+        private void UseAutofac()
         {
-            var config = new HttpConfiguration();
+            var builder = new ContainerBuilder();
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).PropertiesAutowired();
+            builder.RegisterWebApiFilterProvider(config);
+
+            builder.RegisterType<FileLogger>().As<ILogger>().InstancePerLifetimeScope();
+
+            var container = builder.Build();
+            config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+
+            app.UseAutofacMiddleware(container);
+            app.UseAutofacWebApi(config);
+        }
+
+        private void UseWebApi()
+        {
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
@@ -32,7 +59,7 @@ namespace ConsoleApp
             app.UseWebApi(config);
         }
 
-        private void UseFileServer(IAppBuilder app)
+        private void UseFileServer()
         {
             var options = new FileServerOptions
             {

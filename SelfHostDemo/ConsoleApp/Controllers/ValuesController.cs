@@ -4,11 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
+using ConsoleApp.Services;
 
 namespace ConsoleApp.Controllers
 {
     public class ValuesController : ApiController
     {
+        #region Fields
+
+        private readonly ILogger logger;
+
+        #endregion
+
+        #region Ctor
+
+        public ValuesController(ILogger logger)
+        {
+            this.logger = logger;
+        }
+
+        #endregion
+
+        #region Methods
+
         // GET api/values 
         public IEnumerable<string> Get()
         {
@@ -35,5 +53,7 @@ namespace ConsoleApp.Controllers
         public void Delete(int id)
         {
         }
+
+        #endregion
     }
 }
