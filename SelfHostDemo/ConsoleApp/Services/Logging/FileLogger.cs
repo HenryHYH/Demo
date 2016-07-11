@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using log4net;
 
-namespace ConsoleApp.Services
+namespace ConsoleApp.Services.Logging
 {
     public class FileLogger : ILogger
     {
