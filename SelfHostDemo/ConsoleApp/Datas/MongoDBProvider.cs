@@ -1,4 +1,4 @@
-﻿using ConsoleApp.Domain.Settings;
+﻿using ConsoleApp.Core.Settings;
 using MongoDB.Driver;
 
 namespace ConsoleApp.Datas

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp.Domain.Models
+namespace ConsoleApp.Core.Domain.Users
 {
     public class User : BaseEntity
     {

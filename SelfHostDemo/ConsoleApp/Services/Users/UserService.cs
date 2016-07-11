@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConsoleApp.Datas;
-using ConsoleApp.Domain.Models;
-using ConsoleApp.Domain.Settings;
+using ConsoleApp.Core.Domain.Users;
+using ConsoleApp.Core.Settings;
 using MongoDB.Driver;
 
 namespace ConsoleApp.Services.Users

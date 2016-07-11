@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ConsoleApp.Domain.Models;
+using ConsoleApp.Core.Domain.Users;
 
 namespace ConsoleApp.Services.Users
 {

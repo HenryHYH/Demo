@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ConsoleApp.Domain.Settings
+namespace ConsoleApp.Core.Settings
 {
     public class DataSettings
     {
