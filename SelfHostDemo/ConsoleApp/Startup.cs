@@ -3,6 +3,7 @@ using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
 using ConsoleApp.Services.Logging;
+using ConsoleApp.Services.Users;
 using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.StaticFiles;
 using Owin;
@@ -39,7 +40,9 @@ namespace ConsoleApp
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).PropertiesAutowired();
             builder.RegisterWebApiFilterProvider(config);
 
+            // Services
             builder.RegisterType<FileLogger>().As<ILogger>().InstancePerLifetimeScope();
+            builder.RegisterType<UserService>().As<IUserService>().InstancePerLifetimeScope();
 
             var container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
@@ -50,6 +53,12 @@ namespace ConsoleApp
 
         private void UseWebApi()
         {
+            config.Routes.MapHttpRoute(
+                name: "DefaultActionApi",
+                routeTemplate: "api/{controller}/{action}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
