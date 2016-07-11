@@ -1,4 +1,5 @@
-﻿using Topshelf;
+﻿using System;
+using Topshelf;
 
 namespace ConsoleApp
 {
@@ -19,7 +20,8 @@ namespace ConsoleApp
                     s.WhenStarted(f => f.Start());
                     s.WhenStopped(f => f.Stop());
                 });
-                // x.UseLog4Net();
+
+                x.UseLog4Net(AppDomain.CurrentDomain.BaseDirectory + "log4net.config", true);
 
                 x.RunAsLocalSystem();
                 x.SetDescription("WebAPI SelfHost");
