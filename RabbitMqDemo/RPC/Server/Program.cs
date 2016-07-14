@@ -22,17 +22,10 @@ namespace Server
                     autoDelete: false,
                     arguments: null);
                 channel.BasicQos(0, 1, false);
-                var consumer = new QueueingBasicConsumer(channel);
-                channel.BasicConsume(queue: "rpc_queue",
-                    noAck: false,
-                    consumer: consumer);
-                Console.WriteLine(" [x] Waiting RPC request.");
-
-                while (true)
+                var consumer = new EventingBasicConsumer(channel);
+                consumer.Received += (model, ea) =>
                 {
                     string response = null;
-                    var ea = (BasicDeliverEventArgs)consumer.Queue.Dequeue();
-
                     var body = ea.Body;
                     var props = ea.BasicProperties;
                     var replyProps = channel.CreateBasicProperties();
@@ -60,7 +53,14 @@ namespace Server
                         channel.BasicAck(deliveryTag: ea.DeliveryTag,
                             multiple: false);
                     }
-                }
+                };
+
+                channel.BasicConsume(queue: "rpc_queue",
+                    noAck: false,
+                    consumer: consumer);
+                Console.WriteLine(" [x] Waiting RPC request.");
+                Console.WriteLine(" Press [enter] to exit.");
+                Console.ReadLine();
             }
         }
     }
