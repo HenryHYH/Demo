@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sender", "Sender\Sender.csproj", "{55821585-2DC7-409A-9FD1-B291F9BA078A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sender", "Helloworld\Sender\Sender.csproj", "{55821585-2DC7-409A-9FD1-B291F9BA078A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reciver", "Reciver\Reciver.csproj", "{88412866-D73B-43A2-8C71-410E6129010A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reciver", "Helloworld\Reciver\Reciver.csproj", "{88412866-D73B-43A2-8C71-410E6129010A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helloworld", "Helloworld", "{FEB5600A-0D7B-4B20-8B89-7F8A4BF1C6E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +26,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{55821585-2DC7-409A-9FD1-B291F9BA078A} = {FEB5600A-0D7B-4B20-8B89-7F8A4BF1C6E4}
+		{88412866-D73B-43A2-8C71-410E6129010A} = {FEB5600A-0D7B-4B20-8B89-7F8A4BF1C6E4}
 	EndGlobalSection
 EndGlobal
