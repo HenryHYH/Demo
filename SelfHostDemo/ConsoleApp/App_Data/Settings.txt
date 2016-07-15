@@ -1,2 +1,4 @@
 ﻿MongodbConnectionString: mongodb://localhost:27017
 MongodbDatabase: Test
+RedisConnectionString: localhost:6379
+RedisDbIndex: 4

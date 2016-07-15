@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ConsoleApp.Core.Settings
 {
-    public class DataSettings
+    public partial class DataSettings
     {
         #region Ctor
 

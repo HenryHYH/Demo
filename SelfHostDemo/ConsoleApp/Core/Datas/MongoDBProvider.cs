@@ -1,7 +1,7 @@
 ﻿using ConsoleApp.Core.Settings;
 using MongoDB.Driver;
 
-namespace ConsoleApp.Datas
+namespace ConsoleApp.Core.Datas
 {
     public class MongoDBProvider
     {

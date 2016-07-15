@@ -2,11 +2,14 @@
 using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
+using ConsoleApp.Core.Caching;
 using ConsoleApp.Core.Settings;
+using ConsoleApp.Infrastructure.WebApi;
 using ConsoleApp.Services.Logging;
 using ConsoleApp.Services.Users;
 using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.StaticFiles;
+using Microsoft.Owin.Extensions;
 using Owin;
 
 namespace ConsoleApp
@@ -45,6 +48,9 @@ namespace ConsoleApp
             var dataSettingsManager = new DataSettingsManager();
             builder.Register(x => dataSettingsManager.LoadSettings()).As<DataSettings>();
 
+            // caching
+            builder.RegisterType<RedisCacheManager>().As<ICacheManager>().SingleInstance();
+
             // Services
             builder.RegisterType<FileLogger>().As<ILogger>().InstancePerLifetimeScope();
             builder.RegisterType<UserService>().As<IUserService>().InstancePerLifetimeScope();
@@ -58,17 +64,20 @@ namespace ConsoleApp
 
         private void UseWebApi()
         {
+            // default action api
             config.Routes.MapHttpRoute(
                 name: "DefaultActionApi",
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-
+            // default api
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Formatters.Add(new BrowserJsonFormatter());
             app.UseWebApi(config);
         }
 

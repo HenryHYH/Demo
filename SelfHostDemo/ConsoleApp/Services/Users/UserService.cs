@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ConsoleApp.Datas;
+using ConsoleApp.Core.Caching;
+using ConsoleApp.Core.Datas;
 using ConsoleApp.Core.Domain.Users;
 using ConsoleApp.Core.Settings;
 using MongoDB.Driver;
@@ -15,14 +16,16 @@ namespace ConsoleApp.Services.Users
         #region Fields
 
         private readonly IMongoCollection<User> collection;
+        private readonly ICacheManager cacheManager;
 
         #endregion
 
         #region Ctor
 
-        public UserService(DataSettings dataSettings)
+        public UserService(DataSettings dataSettings, ICacheManager cacheManager)
         {
             this.collection = MongoDBProvider.GetCollection<User>(dataSettings);
+            this.cacheManager = cacheManager;
         }
 
         #endregion
