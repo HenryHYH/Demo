@@ -1,5 +1,6 @@
 ﻿using Microsoft.Owin.Hosting;
 using System;
+using System.Configuration;
 
 namespace ConsoleApp
 {
@@ -15,7 +16,8 @@ namespace ConsoleApp
 
         public void Start()
         {
-            webapp = WebApp.Start<Startup>("http://localhost:8000");
+            var port = ConfigurationManager.AppSettings["PORT"];
+            webapp = WebApp.Start<Startup>(string.Format("http://*:{0}", port));
         }
 
         public void Stop()

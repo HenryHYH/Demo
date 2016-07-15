@@ -15,7 +15,7 @@ namespace TestApp
         [Fact]
         public void TestUserGet()
         {
-            var result = "http://localhost:8000"
+            var result = "http://127.0.0.1:8000"
                             .AppendPathSegment("API")
                             .AppendPathSegment("User")
                             .GetJsonListAsync()
