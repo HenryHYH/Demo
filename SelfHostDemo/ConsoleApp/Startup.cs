@@ -1,5 +1,7 @@
-﻿using System.Reflection;
+﻿using System.Net.Http;
+using System.Reflection;
 using System.Web.Http;
+using System.Web.Http.Routing;
 using Autofac;
 using Autofac.Integration.WebApi;
 using ConsoleApp.Core.Caching;
@@ -71,17 +73,27 @@ namespace ConsoleApp
 
         private void UseWebApi()
         {
-            // default action api
             config.Routes.MapHttpRoute(
-                name: "DefaultActionApi",
-                routeTemplate: "api/{controller}/{action}/{id}",
-                defaults: new { action = "Get", id = RouteParameter.Optional }
+                "DefaultApiWithId",
+                "Api/{controller}/{id}",
+                new { id = RouteParameter.Optional },
+                new { id = @"\d+" }
             );
-            // default api
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { action = "Get", id = RouteParameter.Optional }
+                "DefaultApiWithAction",
+                "Api/{controller}/{action}"
+            );
+            config.Routes.MapHttpRoute(
+                "DefaultApiGet",
+                "Api/{controller}",
+                new { action = "Get" },
+                new { httpMethod = new HttpMethodConstraint(HttpMethod.Get) }
+            );
+            config.Routes.MapHttpRoute(
+                "DefaultApiPost",
+                "Api/{controller}",
+                new { action = "Post" },
+                new { httpMethod = new HttpMethodConstraint(HttpMethod.Post) }
             );
 
             config.Formatters.Add(new BrowserJsonFormatter());

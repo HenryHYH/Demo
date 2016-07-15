@@ -176,6 +176,7 @@
     <Compile Include="Mappings\ModelMapper.cs" />
     <Compile Include="Models\ModelExtensions.cs" />
     <Compile Include="Models\Users\UserModel.cs" />
+    <Compile Include="Models\Values\ValueModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Logging\ILogger.cs" />
