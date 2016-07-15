@@ -16,6 +16,9 @@ namespace ConsoleApp.Mappings
             Mapper.CreateMap<User, UserModel>()
                 .ForMember(d => d.Name, m => m.MapFrom(s => s.Name))
                 .ForMember(d => d.Age, m => m.MapFrom(s => s.Age));
+            Mapper.CreateMap<UserModel, User>()
+                .ForMember(d => d.Name, m => m.MapFrom(s => s.Name))
+                .ForMember(d => d.Age, m => m.MapFrom(s => s.Age));
         }
     }
 }

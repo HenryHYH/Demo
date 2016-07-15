@@ -116,6 +116,7 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
@@ -162,6 +163,8 @@
     <Compile Include="Core\Caching\ICacheManager.cs" />
     <Compile Include="Core\Caching\MemoryCacheManager.cs" />
     <Compile Include="Core\Caching\RedisCacheManager.cs" />
+    <Compile Include="Core\MessageQueues\IMessageQueueManager.cs" />
+    <Compile Include="Core\MessageQueues\MSMessageQueueManager.cs" />
     <Compile Include="Infrastructure\WebApi\CustomContentTypeProvider.cs" />
     <Compile Include="Core\Datas\MongoDBProvider.cs" />
     <Compile Include="Core\Domain\BaseEntity.cs" />

@@ -3,6 +3,7 @@ using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
 using ConsoleApp.Core.Caching;
+using ConsoleApp.Core.MessageQueues;
 using ConsoleApp.Core.Settings;
 using ConsoleApp.Infrastructure.WebApi;
 using ConsoleApp.Mappings;
@@ -54,6 +55,9 @@ namespace ConsoleApp
             // caching
             builder.RegisterType<RedisCacheManager>().As<ICacheManager>().SingleInstance();
 
+            // mq
+            builder.RegisterType<MSMessageQueueManager>().As<IMessageQueueManager>().InstancePerLifetimeScope();
+
             // Services
             builder.RegisterType<FileLogger>().As<ILogger>().InstancePerLifetimeScope();
             builder.RegisterType<UserService>().As<IUserService>().InstancePerLifetimeScope();
@@ -71,13 +75,13 @@ namespace ConsoleApp
             config.Routes.MapHttpRoute(
                 name: "DefaultActionApi",
                 routeTemplate: "api/{controller}/{action}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                defaults: new { action = "Get", id = RouteParameter.Optional }
             );
             // default api
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                defaults: new { action = "Get", id = RouteParameter.Optional }
             );
 
             config.Formatters.Add(new BrowserJsonFormatter());

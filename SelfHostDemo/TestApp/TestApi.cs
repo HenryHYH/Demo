@@ -21,7 +21,7 @@ namespace TestApp
                             .GetJsonListAsync()
                             .Result;
 
-            Assert.Equal(3, result.Count());
+            Assert.Equal(4, result.Count());
         }
     }
 }
