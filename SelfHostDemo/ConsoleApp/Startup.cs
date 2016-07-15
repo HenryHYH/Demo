@@ -8,7 +8,7 @@ using ConsoleApp.Core.Caching;
 using ConsoleApp.Core.MessageQueues;
 using ConsoleApp.Core.Settings;
 using ConsoleApp.Infrastructure.WebApi;
-using ConsoleApp.Mappings;
+using ConsoleApp.Models;
 using ConsoleApp.Services.Logging;
 using ConsoleApp.Services.Users;
 using Microsoft.Owin.FileSystems;

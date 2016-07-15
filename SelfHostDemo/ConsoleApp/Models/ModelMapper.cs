@@ -7,7 +7,7 @@ using AutoMapper;
 using ConsoleApp.Core.Domain.Users;
 using ConsoleApp.Models.Users;
 
-namespace ConsoleApp.Mappings
+namespace ConsoleApp.Models
 {
     public class ModelMapper
     {

@@ -173,7 +173,7 @@
     <Compile Include="Core\Settings\DataSettingsManager.cs" />
     <Compile Include="Core\Datas\RedisProvider.cs" />
     <Compile Include="Infrastructure\WebApi\BrowserJsonFormatter.cs" />
-    <Compile Include="Mappings\ModelMapper.cs" />
+    <Compile Include="Models\ModelMapper.cs" />
     <Compile Include="Models\ModelExtensions.cs" />
     <Compile Include="Models\Users\UserModel.cs" />
     <Compile Include="Models\Values\ValueModel.cs" />
@@ -212,6 +212,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
