@@ -5,11 +5,11 @@ using Autofac.Integration.WebApi;
 using ConsoleApp.Core.Caching;
 using ConsoleApp.Core.Settings;
 using ConsoleApp.Infrastructure.WebApi;
+using ConsoleApp.Mappings;
 using ConsoleApp.Services.Logging;
 using ConsoleApp.Services.Users;
 using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.StaticFiles;
-using Microsoft.Owin.Extensions;
 using Owin;
 
 namespace ConsoleApp
@@ -36,6 +36,9 @@ namespace ConsoleApp
 
             // File Server
             UseFileServer();
+
+            // AutoMapper
+            ModelMapper.MapModels();
         }
 
         private void UseAutofac()

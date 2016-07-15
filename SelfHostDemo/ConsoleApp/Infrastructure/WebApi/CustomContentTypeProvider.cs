@@ -1,6 +1,6 @@
 ﻿using Microsoft.Owin.StaticFiles.ContentTypes;
 
-namespace ConsoleApp
+namespace ConsoleApp.Infrastructure.WebApi
 {
     public class CustomContentTypeProvider : FileExtensionContentTypeProvider
     {
