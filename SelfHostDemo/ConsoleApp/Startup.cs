@@ -5,10 +5,12 @@ using System.Web.Http.Routing;
 using Autofac;
 using Autofac.Integration.WebApi;
 using ConsoleApp.Core.Caching;
+using ConsoleApp.Core.Datas;
 using ConsoleApp.Core.MessageQueues;
 using ConsoleApp.Core.Settings;
 using ConsoleApp.Infrastructure.WebApi;
 using ConsoleApp.Models;
+using ConsoleApp.Repositories;
 using ConsoleApp.Services.Logging;
 using ConsoleApp.Services.Users;
 using Microsoft.Owin.FileSystems;
@@ -53,10 +55,10 @@ namespace ConsoleApp
             // data
             var dataSettingsManager = new DataSettingsManager();
             builder.Register(x => dataSettingsManager.LoadSettings()).As<DataSettings>();
+            builder.RegisterGeneric(typeof(MongoDbRepository<>)).As(typeof(IRepository<>));
 
             // caching
             builder.RegisterType<RedisCacheManager>().As<ICacheManager>().SingleInstance();
-
             // mq
             builder.RegisterType<MSMessageQueueManager>().As<IMessageQueueManager>().InstancePerLifetimeScope();
 

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ConsoleApp.Core.Caching;
 using ConsoleApp.Core.Datas;
 using ConsoleApp.Core.Domain.Users;
-using ConsoleApp.Core.Settings;
-using MongoDB.Driver;
 
 namespace ConsoleApp.Services.Users
 {
@@ -15,16 +10,16 @@ namespace ConsoleApp.Services.Users
     {
         #region Fields
 
-        private readonly IMongoCollection<User> collection;
+        private readonly IRepository<User> repository;
         private readonly ICacheManager cacheManager;
 
         #endregion
 
         #region Ctor
 
-        public UserService(DataSettings dataSettings, ICacheManager cacheManager)
+        public UserService(IRepository<User> repository, ICacheManager cacheManager)
         {
-            this.collection = MongoDBProvider.GetCollection<User>(dataSettings);
+            this.repository = repository;
             this.cacheManager = cacheManager;
         }
 
@@ -34,7 +29,7 @@ namespace ConsoleApp.Services.Users
 
         public IEnumerable<User> Get()
         {
-            var list = collection.AsQueryable()
+            var list = repository.Table
                                  .Where(x => x.Name.Contains("Test"));
 
             return list.ToList();
@@ -42,7 +37,7 @@ namespace ConsoleApp.Services.Users
 
         public void Insert(User entity)
         {
-            collection.InsertOne(entity);
+            repository.Add(entity);
         }
 
         #endregion
