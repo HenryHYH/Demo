@@ -6,28 +6,36 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace ConsoleApp.Infrastructure
+namespace ConsoleApp.MyOrm
 {
     public class ExpressionAnalyzer
     {
         #region Fields
 
+        /// <summary>
+        /// 参数序号
+        /// </summary>
         private int parameterIndex = 0;
 
+        /// <summary>
+        /// 符合 LIKE 规则的方法名
+        /// </summary>
         private static readonly string[] LIKE_METHOD_NAMES = { "StartsWith", "EndsWith", "Contains" };
 
         /// <summary>
         /// 表达式所有参数集合
         /// </summary>
-        private Dictionary<string, object> _params;
+        private Dictionary<string, object> parameters;
+
         /// <summary>
         /// 命名参数别名
         /// </summary>
-        private const string _argName = "TAB";
+        private const string argName = "t";
+
         /// <summary>
         /// 解析结果
         /// </summary>
-        private AnalysisData _resultData;
+        private AnalysisData resultData;
 
         #endregion
 
@@ -35,8 +43,8 @@ namespace ConsoleApp.Infrastructure
 
         public ExpressionAnalyzer()
         {
-            _resultData = new AnalysisData();
-            _params = new Dictionary<string, object>();
+            resultData = new AnalysisData();
+            parameters = new Dictionary<string, object>();
         }
 
         public ExpressionAnalyzer(LambdaExpression exp, AnalysisTable table = null)
@@ -44,12 +52,12 @@ namespace ConsoleApp.Infrastructure
         {
             if (table != null)
             {
-                _resultData.Table = table;
+                resultData.Table = table;
             }
 
             if (exp != null)
             {
-                AppendParams(GetChildValue(exp.Body), _params);
+                AppendParams(GetChildValue(exp.Body), parameters);
                 foreach (var item in exp.Parameters)
                 {
                     AnalysisTables(item);
@@ -64,7 +72,7 @@ namespace ConsoleApp.Infrastructure
 
         public AnalysisData GetAnalysisResult()
         {
-            return _resultData;
+            return resultData;
         }
 
         #endregion
@@ -81,64 +89,64 @@ namespace ConsoleApp.Infrastructure
             switch (exp.NodeType)
             {
                 case ExpressionType.AndAlso:
-                    _resultData.StackList.Add("(");
+                    resultData.StackList.Add("(");
                     AnalysisExpression(GetChildExpression(exp));
-                    _resultData.StackList.Add(")");
-                    _resultData.StackList.Add("AND");
-                    _resultData.StackList.Add("(");
+                    resultData.StackList.Add(")");
+                    resultData.StackList.Add("AND");
+                    resultData.StackList.Add("(");
                     AnalysisExpression(GetChildExpression(exp, false), false);
-                    _resultData.StackList.Add(")");
+                    resultData.StackList.Add(")");
                     break;
                 case ExpressionType.OrElse:
-                    _resultData.StackList.Add("(");
+                    resultData.StackList.Add("(");
                     AnalysisExpression(GetChildExpression(exp));
-                    _resultData.StackList.Add(")");
-                    _resultData.StackList.Add("OR");
-                    _resultData.StackList.Add("(");
+                    resultData.StackList.Add(")");
+                    resultData.StackList.Add("OR");
+                    resultData.StackList.Add("(");
                     AnalysisExpression(GetChildExpression(exp, false), false);
-                    _resultData.StackList.Add(")");
+                    resultData.StackList.Add(")");
                     break;
                 case ExpressionType.Not:
-                    _resultData.StackList.Add("NOT");
-                    _resultData.StackList.Add("(");
+                    resultData.StackList.Add("NOT");
+                    resultData.StackList.Add("(");
                     var notExp = exp as UnaryExpression;
                     AnalysisExpression(notExp.Operand);
-                    _resultData.StackList.Add(")");
+                    resultData.StackList.Add(")");
                     break;
                 case ExpressionType.Equal:
                     AnalysisExpression(GetChildExpression(exp));
-                    _resultData.StackList.Add("=");
-                    _resultData.StackList.Add("@P" + parameterIndex);
+                    resultData.StackList.Add("=");
+                    resultData.StackList.Add("@P" + parameterIndex);
                     AnalysisExpression(GetChildExpression(exp, false), false);
                     break;
                 case ExpressionType.NotEqual:
                     AnalysisExpression(GetChildExpression(exp));
-                    _resultData.StackList.Add("<>");
-                    _resultData.StackList.Add("@P" + parameterIndex);
+                    resultData.StackList.Add("<>");
+                    resultData.StackList.Add("@P" + parameterIndex);
                     AnalysisExpression(GetChildExpression(exp, false), false);
                     break;
                 case ExpressionType.GreaterThanOrEqual:
                     AnalysisExpression(GetChildExpression(exp));
-                    _resultData.StackList.Add(">=");
-                    _resultData.StackList.Add("@P" + parameterIndex);
+                    resultData.StackList.Add(">=");
+                    resultData.StackList.Add("@P" + parameterIndex);
                     AnalysisExpression(GetChildExpression(exp, false), false);
                     break;
                 case ExpressionType.GreaterThan:
                     AnalysisExpression(GetChildExpression(exp));
-                    _resultData.StackList.Add(">");
-                    _resultData.StackList.Add("@P" + parameterIndex);
+                    resultData.StackList.Add(">");
+                    resultData.StackList.Add("@P" + parameterIndex);
                     AnalysisExpression(GetChildExpression(exp, false), false);
                     break;
                 case ExpressionType.LessThan:
                     AnalysisExpression(GetChildExpression(exp));
-                    _resultData.StackList.Add("<");
-                    _resultData.StackList.Add("@P" + parameterIndex);
+                    resultData.StackList.Add("<");
+                    resultData.StackList.Add("@P" + parameterIndex);
                     AnalysisExpression(GetChildExpression(exp, false), false);
                     break;
                 case ExpressionType.LessThanOrEqual:
                     AnalysisExpression(GetChildExpression(exp));
-                    _resultData.StackList.Add("<=");
-                    _resultData.StackList.Add("@P" + parameterIndex);
+                    resultData.StackList.Add("<=");
+                    resultData.StackList.Add("@P" + parameterIndex);
                     AnalysisExpression(GetChildExpression(exp, false), false);
                     break;
                 case ExpressionType.Call:
@@ -147,13 +155,13 @@ namespace ConsoleApp.Infrastructure
                     if (LIKE_METHOD_NAMES.Contains(methodName))
                     {
                         AnalysisExpression(imExp.Object, true);
-                        _resultData.StackList.Add("LIKE");
+                        resultData.StackList.Add("LIKE");
                         if (LIKE_METHOD_NAMES[0] == methodName)
-                            _resultData.StackList.Add(string.Format("@P{0} + '%'", parameterIndex));
+                            resultData.StackList.Add(string.Format("@P{0} + '%'", parameterIndex));
                         else if (LIKE_METHOD_NAMES[1] == methodName)
-                            _resultData.StackList.Add(string.Format("'%' + @P{0}", parameterIndex));
+                            resultData.StackList.Add(string.Format("'%' + @P{0}", parameterIndex));
                         else if (LIKE_METHOD_NAMES[2] == methodName)
-                            _resultData.StackList.Add(string.Format("'%' + @P{0} + '%'", parameterIndex));
+                            resultData.StackList.Add(string.Format("'%' + @P{0} + '%'", parameterIndex));
                         if (imExp.Arguments.Count > 0)
                             AnalysisExpression(imExp.Arguments[0], false);
                     }
@@ -166,38 +174,38 @@ namespace ConsoleApp.Infrastructure
                         var parentName = GetExpressionName(mberExp.Expression);
                         if (!string.IsNullOrEmpty(parentName))
                         {
-                            _resultData.StackList.Add(string.Format("[{0}].{1}", parentName, GetExpressionName(exp)));
+                            resultData.StackList.Add(string.Format("[{0}].[{1}]", parentName, GetExpressionName(exp)));
                             break;
                         }
-                        _resultData.StackList.Add(GetExpressionName(exp));
+                        resultData.StackList.Add(GetExpressionName(exp));
                     }
                     else
                     {
                         var paramName = GetParamName(exp);
-                        _resultData.ParamList.Add(paramName, _params[paramName]);
-                        _resultData.StackList.Add(paramName);
+                        resultData.ParamList.Add(paramName, parameters[paramName]);
+                        resultData.StackList.Add(paramName);
                     }
                     break;
                 case ExpressionType.Constant:
                     var constent = exp as ConstantExpression;
                     if (constent.Value == null)
                     {
-                        _resultData.StackList.RemoveAt(_resultData.StackList.Count - 1); // Remove parameter
-                        var op = _resultData.StackList.ElementAt(_resultData.StackList.Count - 1);
-                        _resultData.StackList.RemoveAt(_resultData.StackList.Count - 1); // Remove mark
+                        resultData.StackList.RemoveAt(resultData.StackList.Count - 1); // Remove parameter
+                        var op = resultData.StackList.ElementAt(resultData.StackList.Count - 1);
+                        resultData.StackList.RemoveAt(resultData.StackList.Count - 1); // Remove mark
                         if (string.Equals(op, "="))
-                            _resultData.StackList.Add("IS NULL");
+                            resultData.StackList.Add("IS NULL");
                         else
-                            _resultData.StackList.Add("IS NOT NULL");
+                            resultData.StackList.Add("IS NOT NULL");
                         break;
                     }
                     else if (constent.Value.GetType() == typeof(bool))
                     {
                         var value = Convert.ToBoolean(constent.Value);
-                        _resultData.ParamList.Add("P" + (parameterIndex++), (value ? "1" : "0"));
+                        resultData.ParamList.Add("P" + (parameterIndex++), (value ? "1" : "0"));
                         break;
                     }
-                    _resultData.ParamList.Add("P" + (parameterIndex++), constent.Value);
+                    resultData.ParamList.Add("P" + (parameterIndex++), constent.Value);
                     break;
                 case ExpressionType.Convert:
                     var uExp = exp as UnaryExpression;
@@ -209,8 +217,8 @@ namespace ConsoleApp.Infrastructure
                     for (int i = 0; i < newExp.Arguments.Count; i++)
                     {
                         AnalysisExpression(newExp.Arguments[i]);
-                        _resultData.StackList.Add("AS");
-                        _resultData.StackList.Add(string.Format("'{0}'", newExp.Members[i].Name));
+                        resultData.StackList.Add("AS");
+                        resultData.StackList.Add(string.Format("'{0}'", newExp.Members[i].Name));
                     }
                     break;
                 case ExpressionType.Parameter:
@@ -274,7 +282,7 @@ namespace ConsoleApp.Infrastructure
                     var mberExp = exp as MemberExpression;
                     return string.Format("{0}", mberExp.Member.Name);
                 case "TypedParameterExpression":
-                    return _argName;
+                    return argName;
                 default:
                     return string.Empty;
             }
@@ -321,7 +329,7 @@ namespace ConsoleApp.Infrastructure
                         AnalysisTables(mberExp.Expression);
                         break;
                     }
-                    var _tampTab = GetTableByRName(_resultData.Table, mberExp.Member.Name);
+                    var _tampTab = GetTableByRName(resultData.Table, mberExp.Member.Name);
                     if (_tampTab == null)
                     {
                         _tampTab = new AnalysisTable()
@@ -342,18 +350,18 @@ namespace ConsoleApp.Infrastructure
                     var texp = exp as ParameterExpression;
                     if (!IsDefaultType(texp.Type))
                     {
-                        if (null == _resultData.Table)
+                        if (null == resultData.Table)
                         {
-                            _resultData.Table = new AnalysisTable()
+                            resultData.Table = new AnalysisTable()
                             {
-                                RName = _argName,
+                                RName = argName,
                                 Name = texp.Type.Name,
                                 TableType = texp.Type
                             };
                         }
                         if (refTable != null)
                         {
-                            _resultData.Table.LeftJoins.Add(refTable);
+                            resultData.Table.LeftJoins.Add(refTable);
                         }
                     }
                     break;
@@ -519,36 +527,5 @@ namespace ConsoleApp.Infrastructure
         }
 
         #endregion
-    }
-
-    public class AnalysisData
-    {
-        public AnalysisData()
-        {
-            StackList = new List<string>();
-            ParamList = new Dictionary<string, object>();
-        }
-
-        public AnalysisTable Table { get; set; }
-
-        public IList<string> StackList { get; set; }
-
-        public IDictionary<string, object> ParamList { get; set; }
-    }
-
-    public class AnalysisTable
-    {
-        public AnalysisTable()
-        {
-            LeftJoins = new List<AnalysisTable>();
-        }
-
-        public string RName { get; set; }
-
-        public string Name { get; set; }
-
-        public Type TableType { get; set; }
-
-        public IList<AnalysisTable> LeftJoins { get; set; }
     }
 }
