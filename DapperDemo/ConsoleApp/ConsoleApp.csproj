@@ -51,6 +51,14 @@
       <HintPath>..\packages\Dommel.1.6.0\lib\net451\Dommel.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SQLinq, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1c5d57eb9e11fe4b, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLinq.2.0\lib\net\SQLinq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SQLinq.Dapper, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLinq.Dapper.1.2\lib\net\SQLinq.Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -98,6 +106,7 @@
     <Compile Include="MyOrm\QueryCommand.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQLinqTests\TestHelloworld.cs" />
     <Compile Include="TestDommelFluentMap.cs" />
     <Compile Include="TestExecute.cs" />
     <Compile Include="TestExpressionAnalyzer.cs" />
