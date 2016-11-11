@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{9881B68A-46E5-417C-9B9F-070196641FAA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp.Maps", "ConsoleApp.Maps\ConsoleApp.Maps.csproj", "{019202AC-7487-417A-8E43-333FFC002073}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp.Domains", "ConsoleApp.Domains\ConsoleApp.Domains.csproj", "{811831FB-B56A-415B-8C29-3C53E6EF5F51}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{9881B68A-46E5-417C-9B9F-070196641FAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9881B68A-46E5-417C-9B9F-070196641FAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9881B68A-46E5-417C-9B9F-070196641FAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{019202AC-7487-417A-8E43-333FFC002073}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{019202AC-7487-417A-8E43-333FFC002073}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{019202AC-7487-417A-8E43-333FFC002073}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{019202AC-7487-417A-8E43-333FFC002073}.Release|Any CPU.Build.0 = Release|Any CPU
+		{811831FB-B56A-415B-8C29-3C53E6EF5F51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{811831FB-B56A-415B-8C29-3C53E6EF5F51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{811831FB-B56A-415B-8C29-3C53E6EF5F51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{811831FB-B56A-415B-8C29-3C53E6EF5F51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
