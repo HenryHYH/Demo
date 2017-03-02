@@ -13,9 +13,16 @@ namespace Helloworld
         {
             HostFactory.Run(x =>
             {
-                x.Service<TimerService>(s =>
+                //x.Service<TimerService>(s =>
+                //{
+                //    s.ConstructUsing(name => new TimerService());
+                //    s.WhenStarted(tc => tc.Start());
+                //    s.WhenStopped(tc => tc.Stop());
+                //});
+
+                x.Service<QuartzService>(s =>
                 {
-                    s.ConstructUsing(name => new TimerService());
+                    s.ConstructUsing(name => new QuartzService());
                     s.WhenStarted(tc => tc.Start());
                     s.WhenStopped(tc => tc.Stop());
                 });
