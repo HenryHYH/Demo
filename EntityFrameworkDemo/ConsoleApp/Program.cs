@@ -11,7 +11,6 @@ namespace ConsoleApp
         static void Main(string[] args)
         {
             var dal = new TestDal();
-
             Console.WriteLine("Count = " + dal.GetCount());
 
             Console.ReadKey();
