@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4C4CCCD8-FFF6-41BD-B06B-FA53CD0C0FB0}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ConsoleApp</RootNamespace>
+    <AssemblyName>ConsoleApp</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DbModels\ATS.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ATS.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\ATS.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\ATS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ATS.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestDal.cs" />
+    <Compile Include="DbModels\T_AccountBalance.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_AccountRecord.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_AccountRecordIn.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_AmountWhitelist.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_Asset.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_BatchSettlement.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_BatchSettlementVirtual.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_Binding.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_BindingHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_CfcaCallBack.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_CPSinPay.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_ErrLog.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_InstitutionSetting.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_InterFaceReceive.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_InterFaceSend.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_InvestmentOrder.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_NoticeRemitCMF.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_OperateRecord.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_PayByDeduction.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_PayByDeductionHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_PayByDeductionUcs.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_PayByDeductionUcsHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_PaymentByCMF.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_PaymentByCMFHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_PaymentByDeduction.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_PaymentByDeductionHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_PaymentByGateway.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_PaymentByGateWayAccount.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_PaymentByGatewaySign.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_PaymentBySignDeduction.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_PaymentByStabilizationFund.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_PaymentByStabilizationFundHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_Project.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_ProjectDeduction.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_QuickPayment.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_QuickPaymentHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_QuickRefund.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_QuickRefundHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_RefundByCMF.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_RefundByDeduction.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_RefundByGateway.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_RefundBySignDeduction.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_Repay.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_RepayCMF.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_RepayHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_RepayOrderHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_RepayTempCMF.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_Role.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_RoleAccess.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_Settlement.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_SettlementByStabilizationFund.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_SettlementByStabilizationFundHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_SettlementHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_SettlementVirtual.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_UnBinding.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_UnitedPayment.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_UnitedPaymentHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_UnitedRefund.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_UnitedRepay.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_UnitedRepayHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_UserAuthority.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\T_WhiteList.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\V_Binding.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\V_Deduction.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\V_PayByDeduction.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\V_PayByDeductionUcs.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\V_PaymentByCMF.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\V_PaymentByDeduction.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\V_PaymentByStabilizationFund.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\V_PaymentSummary.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\V_QuickPayment.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\V_QuickRefund.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\V_Refund.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\V_Repay.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\V_RepayCMFSummary.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\V_Settle.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\V_Settlement.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\V_SettlementByStabilizationFund.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\V_UnitedRepay.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModels\V_UserAuthority.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="DbModels\ATS.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ATS.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DbModels\ATS.edmx.diagram">
+      <DependentUpon>ATS.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DbModels\ATS.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ATS.edmx</DependentUpon>
+      <LastGenOutput>ATS.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DbModels\ATS.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ATS.edmx</DependentUpon>
+      <LastGenOutput>ATS.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
