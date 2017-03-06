@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp
+namespace Services
 {
-    public class ConsoleLog : ILog
+    public class ColoredLog : ILog
     {
         public void Log(string message)
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(message);
         }
     }
