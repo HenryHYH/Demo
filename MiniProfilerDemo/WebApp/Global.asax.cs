@@ -1,4 +1,5 @@
 ﻿using StackExchange.Profiling;
+using StackExchange.Profiling.EntityFramework6;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,8 @@ namespace WebApp
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            MiniProfilerEF6.Initialize();
         }
 
         protected void Application_BeginRequest()

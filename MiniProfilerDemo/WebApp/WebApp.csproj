@@ -57,8 +57,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MiniProfiler, Version=3.0.10.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
-      <HintPath>..\packages\MiniProfiler.3.0.10\lib\net40\MiniProfiler.dll</HintPath>
+    <Reference Include="MiniProfiler, Version=3.0.11.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
+      <HintPath>..\packages\MiniProfiler.3.0.11\lib\net40\MiniProfiler.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MiniProfiler.EntityFramework6, Version=3.0.11.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
@@ -72,6 +72,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -140,13 +142,224 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="ATS.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ATS.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ATS.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ATS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ATS.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="T_AccountBalance.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_AccountRecord.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_AccountRecordIn.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_AmountWhitelist.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_Asset.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_BatchSettlement.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_BatchSettlementVirtual.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_Binding.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_BindingHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_CfcaCallBack.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_CPSinPay.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_ErrLog.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_InstitutionSetting.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_InterFaceReceive.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_InterFaceSend.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_InvestmentOrder.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_NoticeRemitCMF.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_OperateRecord.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_PayByDeduction.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_PayByDeductionHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_PayByDeductionUcs.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_PayByDeductionUcsHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_PaymentByCMF.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_PaymentByCMFHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_PaymentByDeduction.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_PaymentByDeductionHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_PaymentByGateway.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_PaymentByGateWayAccount.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_PaymentByGatewaySign.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_PaymentBySignDeduction.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_PaymentByStabilizationFund.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_PaymentByStabilizationFundHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_Project.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_ProjectDeduction.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_QuickPayment.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_QuickPaymentHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_QuickRefund.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_QuickRefundHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_RefundByCMF.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_RefundByDeduction.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_RefundByGateway.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_RefundBySignDeduction.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_Repay.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_RepayCMF.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_RepayHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_RepayOrderHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_RepayTempCMF.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_Role.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_RoleAccess.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_Settlement.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_SettlementByStabilizationFund.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_SettlementByStabilizationFundHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_SettlementHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_SettlementVirtual.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_UnBinding.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_UnitedPayment.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_UnitedPaymentHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_UnitedRefund.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_UnitedRepay.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_UnitedRepayHistory.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_UserAuthority.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_WhiteList.cs">
+      <DependentUpon>ATS.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ATS.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ATS.edmx</DependentUpon>
+      <LastGenOutput>ATS.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ATS.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ATS.edmx</DependentUpon>
+      <LastGenOutput>ATS.cs</LastGenOutput>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -155,6 +368,13 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="ATS.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ATS.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="ATS.edmx.diagram">
+      <DependentUpon>ATS.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -192,6 +412,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
