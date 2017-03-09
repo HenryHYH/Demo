@@ -20,6 +20,14 @@ namespace WebApp
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             MiniProfilerEF6.Initialize();
+            MiniProfiler.Settings.Results_Authorize = (req) =>
+            {
+                return req.IsLocal;
+            };
+            MiniProfiler.Settings.Results_List_Authorize = (req) =>
+            {
+                return req.IsLocal;
+            };
         }
 
         protected void Application_BeginRequest()
