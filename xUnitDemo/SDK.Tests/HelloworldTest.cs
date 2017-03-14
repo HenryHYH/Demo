@@ -13,10 +13,17 @@ namespace SDK.Tests
     public class HelloworldTest
     {
         private readonly IWebHelper webHelper;
+        private readonly IWebHelper mockWebHelper;
 
         public HelloworldTest()
         {
             webHelper = new WebHelper();
+
+            string mockMessage = "MockMessage1";
+            var mock = new Mock<IWebHelper>();
+            mock.Setup<bool>(x => x.Post(It.IsAny<string>(), It.IsAny<string[]>(), It.IsAny<string[]>(), out mockMessage))
+                .Returns(false);
+            mockWebHelper = mock.Object;
         }
 
         [Theory]
@@ -41,14 +48,8 @@ namespace SDK.Tests
         [Fact]
         public void TestMockWebPost()
         {
-            string mockMessage = "MockMessage1";
-            var mock = new Mock<IWebHelper>();
-            mock.Setup<bool>(x => x.Post(It.IsAny<string>(), It.IsAny<string[]>(), It.IsAny<string[]>(), out mockMessage))
-                .Returns(false);
-
             var helloworld = new Helloworld();
-
-            Assert.Equal("MockMessage1", helloworld.WebPost(mock.Object));
+            Assert.Equal("MockMessage1", helloworld.WebPost(mockWebHelper));
         }
     }
 }
