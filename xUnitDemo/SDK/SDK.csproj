@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helloworld.cs" />
+    <Compile Include="Infrastructure\IWebHelper.cs" />
+    <Compile Include="Infrastructure\WebHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
