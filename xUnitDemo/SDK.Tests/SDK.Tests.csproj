@@ -155,7 +155,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseTest.cs" />
+    <Compile Include="DicFuncTest.cs" />
     <Compile Include="HelloworldTest.cs" />
+    <Compile Include="LogicTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
