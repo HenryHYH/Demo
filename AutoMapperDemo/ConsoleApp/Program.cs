@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
+using ConsoleApp.Test2;
+using System;
 
 namespace ConsoleApp
 {
@@ -11,8 +8,67 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            Config();
+            //Test1();
+            Test2();
 
+            Console.ReadKey();
+        }
+
+        private static void Test2()
+        {
+            var config = new MapperConfiguration(conf =>
+            {
+                conf.CreateMap<A, B>()
+                    .ForMember(d => d.DT, o => o.UseValue(DateTime.Now))
+                    .ForMember(d => d.Ext1, o => o.MapFrom(s => s.ExtField.Str1))
+                    .ForMember(d => d.Ext2, o => o.MapFrom(s => s.ExtField.Str2))
+                    .ForMember(d => d.ExtA, o => o.MapFrom(s => s.ExtField.Ext2Field.StrA));
+            });
+            var mapper = config.CreateMapper();
+
+            var a = new A();
+            var b = mapper.Map<B>(a);
+            Console.WriteLine(null == b.Ext1);
+            Console.WriteLine("[{0}]", b.Ext1);
+            Console.WriteLine(null == b.Ext2);
+            Console.WriteLine("[{0}]", b.Ext2);
+            Console.WriteLine(null == b.ExtA);
+            Console.WriteLine("[{0}]", b.ExtA);
+
+            Console.WriteLine();
+            a.ExtField = new Ext
+            {
+                Str1 = "Str1"
+            };
+            b = mapper.Map<B>(a);
+            Console.WriteLine(null == b.Ext1);
+            Console.WriteLine("[{0}]", b.Ext1);
+            Console.WriteLine(null == b.Ext2);
+            Console.WriteLine("[{0}]", b.Ext2);
+            Console.WriteLine(null == b.ExtA);
+            Console.WriteLine("[{0}]", b.ExtA);
+
+            Console.WriteLine();
+            a.ExtField = new Ext
+            {
+                Ext2Field = new Ext2
+                {
+                    StrA = "StrA"
+                }
+            };
+            b = mapper.Map<B>(a);
+            Console.WriteLine(null == b.Ext1);
+            Console.WriteLine("[{0}]", b.Ext1);
+            Console.WriteLine(null == b.Ext2);
+            Console.WriteLine("[{0}]", b.Ext2);
+            Console.WriteLine(null == b.ExtA);
+            Console.WriteLine("[{0}]", b.ExtA);
+
+            Console.WriteLine("{0:yyyyMMdd HH:mm:ss.ffff}", b.DT);
+        }
+
+        private static void Test1()
+        {
             var config = new MapperConfiguration(conf =>
             {
                 conf.CreateMap<Request, DTO>();
@@ -30,12 +86,6 @@ namespace ConsoleApp
             Console.WriteLine("A = " + dto.A);
             Console.WriteLine("B2 = " + dto.B2);
             Console.WriteLine("C = " + dto.C);
-
-            Console.ReadKey();
-        }
-
-        private static void Config()
-        {
         }
     }
 }
