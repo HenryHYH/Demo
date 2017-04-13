@@ -3,10 +3,6 @@ using Microsoft.Practices.Unity.Configuration;
 using Services;
 using Services.Repository;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp2
 {
@@ -20,6 +16,11 @@ namespace ConsoleApp2
 
             var userService = container.Resolve<IUserService>();
             Console.WriteLine(userService.GetName());
+
+            var sqlRepository = container.Resolve<IRepository>();
+            Console.WriteLine(sqlRepository.Get());
+            var oracleRepository = container.Resolve<IRepository>("Oracle");
+            Console.WriteLine(oracleRepository.Get());
 
             Console.ReadKey();
         }
