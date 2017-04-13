@@ -1,11 +1,6 @@
-﻿using log4net;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Helloworld.Jobs;
+using log4net;
 using Quartz;
-using Helloworld.Jobs;
 using Quartz.Impl;
 using System.Collections.Specialized;
 
@@ -25,6 +20,9 @@ namespace Helloworld
             properties["quartz.threadPool.type"] = "Quartz.Simpl.SimpleThreadPool, Quartz";
             properties["quartz.threadPool.threadCount"] = "5";
             properties["quartz.threadPool.threadPriority"] = "Normal";
+
+            properties["quartz.plugin.xml.type"] = "Quartz.Plugin.Xml.XMLSchedulingDataProcessorPlugin, Quartz";
+            properties["quartz.plugin.xml.fileNames"] = @"~/quartz_jobs.xml";
 
             // 远程输出配置
             properties["quartz.scheduler.exporter.type"] = "Quartz.Simpl.RemotingSchedulerExporter, Quartz";
@@ -61,7 +59,7 @@ namespace Helloworld
             log.Debug("Start");
 
             scheduler.Start();
-            Run();
+            // Run();
         }
 
         public void Stop()
