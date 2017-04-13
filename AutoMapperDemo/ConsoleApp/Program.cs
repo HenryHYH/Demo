@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ConsoleApp.Test2;
 using System;
+using System.Collections.Generic;
 
 namespace ConsoleApp
 {
@@ -23,6 +24,7 @@ namespace ConsoleApp
                     .ForMember(d => d.Ext1, o => o.MapFrom(s => s.ExtField.Str1))
                     .ForMember(d => d.Ext2, o => o.MapFrom(s => s.ExtField.Str2))
                     .ForMember(d => d.ExtA, o => o.MapFrom(s => s.ExtField.Ext2Field.StrA));
+                conf.CreateMap<List<A>, List<B>>();
             });
             var mapper = config.CreateMapper();
 
@@ -65,6 +67,28 @@ namespace ConsoleApp
             Console.WriteLine("[{0}]", b.ExtA);
 
             Console.WriteLine("{0:yyyyMMdd HH:mm:ss.ffff}", b.DT);
+
+            Console.WriteLine();
+            IList<A> aList = new List<A>();
+            aList.Add(new A
+            {
+                ExtField = new Ext
+                {
+                    Str1 = "A1"
+                }
+            });
+            aList.Add(new A
+            {
+                ExtField = new Ext
+                {
+                    Str1 = "A2"
+                }
+            });
+            var bList = mapper.Map<IList<B>>(aList);
+            Console.WriteLine(null == bList);
+            Console.WriteLine(bList.Count);
+            foreach (var item in bList)
+                Console.WriteLine(item.Ext1);
         }
 
         private static void Test1()
