@@ -15,10 +15,10 @@ namespace ConsoleApp
 
         public void Start()
         {
-            scheduler.AddJob<HeartbeatJob>("0/3 * * * * ?");
-            scheduler.AddJob<HeartbeatReceiveJob>("1/1 * * * * ?");
+            //scheduler.AddJob<HeartbeatJob>("0/3 * * * * ?");
+            //scheduler.AddJob<HeartbeatReceiveJob>("1/1 * * * * ?");
             //scheduler.AddJob<PrintCurrentTimeJob>("0/3 * * * * ?");
-            //scheduler.AddJob<PrintJobContextMessageJob>("0/3 * * * * ?");
+            scheduler.AddJob<PrintJobContextMessageJob>("0/3 * * * * ?");
 
             scheduler.Start();
         }
