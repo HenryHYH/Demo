@@ -9,7 +9,7 @@ namespace EntlibDemo
         void Register(User user);
     }
 
-    public class UserService : MarshalByRefObject, IUserService
+    public class UserService : IUserService
     {
         public void Register(User user)
         {
