@@ -6,7 +6,6 @@ namespace EntlibDemo
     {
         static void Main(string[] args)
         {
-            EntlibConfig.Configuration();
             Client.Run();
 
             Console.ReadKey();

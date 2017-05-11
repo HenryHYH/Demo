@@ -1,5 +1,4 @@
-﻿using Microsoft.Practices.EnterpriseLibrary.PolicyInjection;
-using Model;
+﻿using Model;
 
 namespace EntlibDemo
 {
@@ -9,7 +8,12 @@ namespace EntlibDemo
         {
             try
             {
-                IUserService userService = PolicyInjection.Create<UserService, IUserService>();
+                //EntlibConfig.Configuration();
+                //IUserService userService = PolicyInjection.Create<UserService, IUserService>();
+
+                EntlibConfig.Initialize();
+                var userService = EntlibConfig.Resolve<IUserService>();
+
                 userService.Register(User.Instance);
             }
             catch
