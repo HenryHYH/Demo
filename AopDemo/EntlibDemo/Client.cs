@@ -15,6 +15,7 @@ namespace EntlibDemo
                 var userService = EntlibConfig.Resolve<IUserService>();
 
                 userService.Register(User.Instance);
+                userService.Register2(User.Instance);
             }
             catch
             {
