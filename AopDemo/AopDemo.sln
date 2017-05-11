@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StaticProxy", "StaticProxy\StaticProxy.csproj", "{257E94BB-61A6-4C1D-8E17-81AF397C139C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealProxyDemo", "RealProxyDemo\RealProxyDemo.csproj", "{4FEFF669-DDDE-4C5A-BEF6-C41C2658BBBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntlibDemo", "EntlibDemo\EntlibDemo.csproj", "{E1A4AF8E-74F4-4DDF-AACE-DECAB413EC75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicProxyDemo", "DynamicProxyDemo\DynamicProxyDemo.csproj", "{63208E11-1E87-4CFA-852F-A80290DE418A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{0BE9FD87-3EBD-4A07-8F3E-300CD3AA3FD5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{257E94BB-61A6-4C1D-8E17-81AF397C139C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{257E94BB-61A6-4C1D-8E17-81AF397C139C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{257E94BB-61A6-4C1D-8E17-81AF397C139C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{257E94BB-61A6-4C1D-8E17-81AF397C139C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FEFF669-DDDE-4C5A-BEF6-C41C2658BBBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FEFF669-DDDE-4C5A-BEF6-C41C2658BBBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FEFF669-DDDE-4C5A-BEF6-C41C2658BBBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FEFF669-DDDE-4C5A-BEF6-C41C2658BBBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1A4AF8E-74F4-4DDF-AACE-DECAB413EC75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1A4AF8E-74F4-4DDF-AACE-DECAB413EC75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1A4AF8E-74F4-4DDF-AACE-DECAB413EC75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1A4AF8E-74F4-4DDF-AACE-DECAB413EC75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63208E11-1E87-4CFA-852F-A80290DE418A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63208E11-1E87-4CFA-852F-A80290DE418A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63208E11-1E87-4CFA-852F-A80290DE418A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63208E11-1E87-4CFA-852F-A80290DE418A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BE9FD87-3EBD-4A07-8F3E-300CD3AA3FD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BE9FD87-3EBD-4A07-8F3E-300CD3AA3FD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BE9FD87-3EBD-4A07-8F3E-300CD3AA3FD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BE9FD87-3EBD-4A07-8F3E-300CD3AA3FD5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.PolicyInjection.6.0.1304.0\lib\NET45
+	EndGlobalSection
+EndGlobal
