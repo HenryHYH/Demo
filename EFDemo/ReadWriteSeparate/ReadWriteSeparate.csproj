@@ -59,6 +59,7 @@
     <Compile Include="DbExtensions.cs" />
     <Compile Include="DbMasterSlaveCommandInterceptor.cs" />
     <Compile Include="DbMasterSlaveConnectionInterceptor.cs" />
+    <Compile Include="EmptyConnectionInterceptor.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

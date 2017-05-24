@@ -2,7 +2,6 @@
 using System.Configuration;
 using System.Data;
 using System.Data.Common;
-using System.Data.Entity;
 using System.Data.Entity.Infrastructure.Interception;
 using System.Transactions;
 
@@ -14,7 +13,6 @@ namespace ReadWriteSeparate
                                 ConfigurationManager.ConnectionStrings["Master"].ConnectionString);
         private Lazy<string> slaveConnectionString = new Lazy<string>(() =>
                                 ConfigurationManager.ConnectionStrings["Slave"].ConnectionString);
-        private int count = 0;
 
         public string MasterConnectionString
         {
@@ -47,65 +45,47 @@ namespace ReadWriteSeparate
         {
             Console.WriteLine();
             Console.WriteLine("NonQuery");
-            UpdateToMaster(command, interceptionContext);
+            UpdateToMaster(interceptionContext);
             base.NonQueryExecuting(command, interceptionContext);
         }
 
-        private void UpdateToMaster(DbCommand command, DbCommandInterceptionContext<int> interceptionContext)
+        private void UpdateToMaster(DbCommandInterceptionContext<int> interceptionContext)
         {
             foreach (var context in interceptionContext.DbContexts)
             {
-                //Console.WriteLine("Master, " + masterConnectionString);
-                UpdateConnectionStringIfNeed(context, context.Database.Connection, MasterConnectionString, "172.17.22.18", "Master");
+                UpdateConnectionStringIfNeed(context.Database.Connection, MasterConnectionString);
             }
         }
 
         private void UpdateToSlave(DbCommand command, DbInterceptionContext interceptionContext)
         {
-            bool isDistributedTran = null != Transaction.Current &&
-                                     Transaction.Current.TransactionInformation.Status != TransactionStatus.Committed;
+            var isDistributedTran = null != Transaction.Current &&
+                                    Transaction.Current.TransactionInformation.Status != TransactionStatus.Committed;
             foreach (var context in interceptionContext.DbContexts)
             {
-                bool isDbTran = null != context.Database.CurrentTransaction;
-                var isTrans = isDistributedTran || isDbTran;
+                var isDbTran = null != context.Database.CurrentTransaction;
+                var isCommandTran = null != command.Transaction;
+                var isTrans = isDistributedTran || isDbTran || isCommandTran;
 
                 var connectionString = isTrans ?
                                        MasterConnectionString :
                                        SlaveConnectionString;
 
-                var dataSource = isTrans ?
-                                 "172.17.22.18" :
-                                 "10.1.20.97";
-
-                var configName = isTrans ?
-                                 "Master" :
-                                 "Slave";
-
-                //Console.WriteLine("Salve, " + connectionString);
-                UpdateConnectionStringIfNeed(context, context.Database.Connection, connectionString, dataSource, configName);
+                UpdateConnectionStringIfNeed(context.Database.Connection, connectionString);
             }
         }
 
-        private void UpdateConnectionStringIfNeed(DbContext context,
-                                                  DbConnection connection,
-                                                  string connectionString,
-                                                  string dataSource,
-                                                  string configName)
+        private void UpdateConnectionStringIfNeed(DbConnection connection, string connectionString)
         {
             if (!ConnectionStringCompare(connection, connectionString))
             {
-                //Console.WriteLine("cnt = " + (++count));
-                Console.WriteLine("A = " + connection.ConnectionString);
-                Console.WriteLine("B = " + connectionString);
-                UpdateConnectionString(context, connection, connectionString, dataSource, configName);
+                Console.WriteLine("A.ConnStr = " + connection.ConnectionString);
+                Console.WriteLine("B.ConnStr = " + connectionString);
+                UpdateConnectionString(connection, connectionString);
             }
         }
 
-        private void UpdateConnectionString(DbContext context,
-                                            DbConnection connection,
-                                            string connectionString,
-                                            string dataSource,
-                                            string configName)
+        public static void UpdateConnectionString(DbConnection connection, string connectionString)
         {
             var state = connection.State;
             var isOpened = state == ConnectionState.Open;
@@ -113,24 +93,20 @@ namespace ReadWriteSeparate
                 connection.Close();
 
             connection.ConnectionString = connectionString;
-            //context.ChangeDatabase(dataSource: dataSource,
-            //                       configConnectionStringName: configName);
 
             if (isOpened)
                 connection.Open();
         }
 
-        private bool ConnectionStringCompare(DbConnection connection, string connectionString)
+        public static bool ConnectionStringCompare(DbConnection connection, string connectionString)
         {
             DbProviderFactory factory = DbProviderFactories.GetFactory("System.Data.SqlClient");
 
             var first = factory.CreateConnectionStringBuilder();
             first.ConnectionString = connection.ConnectionString;
-            //Console.WriteLine("first = " + first.ConnectionString);
 
             var second = factory.CreateConnectionStringBuilder();
             second.ConnectionString = connectionString;
-            //Console.WriteLine("second = " + second.ConnectionString);
 
             var result = first["Data Source"].Equals(second["Data Source"]);
             Console.WriteLine("EquivalentTo " + result.ToString());

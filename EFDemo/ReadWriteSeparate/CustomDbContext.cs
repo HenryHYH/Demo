@@ -9,8 +9,8 @@ namespace ReadWriteSeparate
             : base(nameOrConnectionString)
         {
             Database.SetInitializer<CustomDbContext>(null);
-            //DbInterception.Add(new DbMasterSlaveConnectionInterceptor());
             DbInterception.Add(new DbMasterSlaveCommandInterceptor());
+            DbInterception.Add(new DbMasterSlaveConnectionInterceptor());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
