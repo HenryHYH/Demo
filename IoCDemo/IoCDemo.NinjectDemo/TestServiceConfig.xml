@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<module name="TestServiceConfig">
+  <bind service="IoCDemo.Services.IDal, IoCDemo.Services" to="IoCDemo.Services.MsSqlDal, IoCDemo.Services" />
+  <bind service="IoCDemo.Services.IService, IoCDemo.Services" to="IoCDemo.Services.TestService, IoCDemo.Services" />
+</module>
