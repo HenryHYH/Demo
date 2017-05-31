@@ -56,13 +56,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomDbContext.cs" />
-    <Compile Include="DbExtensions.cs" />
     <Compile Include="DbMasterSlaveCommandInterceptor.cs" />
     <Compile Include="DbMasterSlaveConnectionInterceptor.cs" />
     <Compile Include="EmptyConnectionInterceptor.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestPerformance.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

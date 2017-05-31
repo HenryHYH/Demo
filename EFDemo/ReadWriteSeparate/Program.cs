@@ -7,7 +7,8 @@ namespace ReadWriteSeparate
     {
         static void Main(string[] args)
         {
-            TestDb();
+            // TestDb();
+            TestPerformance.Run();
 
             Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
