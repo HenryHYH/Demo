@@ -9,7 +9,8 @@ namespace log4netDemo
         static void Main(string[] args)
         {
             //Test();
-            TestDynamic();
+            //TestDynamic();
+            TestMulti();
 
             Console.WriteLine("Press any keys");
             Console.ReadKey();
@@ -31,6 +32,36 @@ namespace log4netDemo
                 DynamicLogHelper.Error("Client", "Test", "Message" + index);
             });
             DynamicLogHelper.Debug("Client", "Test", "Message");
+        }
+
+        static void TestMulti()
+        {
+            var option = new ParallelOptions { MaxDegreeOfParallelism = 10 };
+            //Parallel.For(0, 100, option, (index) =>
+            //{
+            //    Debug("Debug", "Debug");
+            //});
+            Parallel.For(0, 100, option, (index) =>
+            {
+                Error("中文\\测试", "Error");
+            });
+        }
+
+        private static void Debug(string name, object message)
+        {
+            var log = GetLog(name);
+            log.Debug(message);
+        }
+
+        private static void Error(string name, object message)
+        {
+            var log = GetLog(name);
+            log.Error(message);
+        }
+
+        private static ILog GetLog(string name)
+        {
+            return LogManager.GetLogger(name);
         }
     }
 }

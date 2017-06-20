@@ -34,4 +34,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 //[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]
-[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net_dynamic.config", Watch = true)]
+//[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net_dynamic.config", Watch = true)]
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net_multi.config", Watch = true)]
