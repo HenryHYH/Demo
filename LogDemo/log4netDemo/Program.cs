@@ -10,10 +10,22 @@ namespace log4netDemo
         {
             //Test();
             //TestDynamic();
-            TestMulti();
+            //TestMulti();
+            TestConfig();
 
             Console.WriteLine("Press any keys");
             Console.ReadKey();
+        }
+
+        static void TestConfig()
+        {
+            Parallel.For(0, 10000, new ParallelOptions { MaxDegreeOfParallelism = 100 }, (index) =>
+            {
+                TestConfigHelper.Debug("Debug" + index, "Debug");
+            });
+            TestConfigHelper.Debug("Debug", "Debug2");
+            TestConfigHelper.Debug("DebugA", "Debug2");
+            TestConfigHelper.Debug("Debug2", "Debug2");
         }
 
         static void Test()
@@ -36,6 +48,10 @@ namespace log4netDemo
 
         static void TestMulti()
         {
+            var repository = LogManager.GetRepository();
+            var appenders = repository.GetAppenders();
+            var loggers = repository.GetCurrentLoggers();
+
             var option = new ParallelOptions { MaxDegreeOfParallelism = 10 };
             //Parallel.For(0, 100, option, (index) =>
             //{
