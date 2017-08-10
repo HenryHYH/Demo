@@ -33,6 +33,8 @@ namespace WebApp
             // IoC
             services.AddSingleton<IUserRepository, UserRepository>();
             services.AddSingleton<IUserService, UserService>();
+            services.AddSingleton(typeof(IRepository<>), typeof(BaseRepository<>));
+            services.AddSingleton<IBookService, BookService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
