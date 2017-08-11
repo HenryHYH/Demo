@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
 using NLog.Web;
+using WebApp.Configs;
 using WebApp.Repositories;
 using WebApp.Services;
 
@@ -45,6 +46,10 @@ namespace WebApp
             // nlog
             // call this in case you need aspnet-user-authtype/aspnet-user-identity
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            // 配置
+            services.AddOptions();
+            services.Configure<CustomConfig>(Configuration.GetSection("CustomConfig"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -75,6 +80,13 @@ namespace WebApp
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            // 手动获取Config
+            //app.Run(async (context) =>
+            //{
+            //    var url = Configuration["Url"];
+            //    await context.Response.WriteAsync(url);
+            //});
         }
     }
 }
