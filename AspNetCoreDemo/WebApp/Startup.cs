@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using NLog.Extensions.Logging;
+using NLog.Web;
 using WebApp.Repositories;
 using WebApp.Services;
 
@@ -12,6 +15,9 @@ namespace WebApp
     {
         public Startup(IHostingEnvironment env)
         {
+            // nlog
+            env.ConfigureNLog("nlog.xml");
+
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
@@ -28,20 +34,28 @@ namespace WebApp
             // Add framework services.
             services.AddMvc(opt =>
             {
-            }).AddXmlSerializerFormatters();
+            }).AddXmlSerializerFormatters(); // 返回xml
 
             // IoC
             services.AddSingleton<IUserRepository, UserRepository>();
             services.AddSingleton<IUserService, UserService>();
             services.AddSingleton(typeof(IRepository<>), typeof(BaseRepository<>));
             services.AddSingleton<IBookService, BookService>();
+
+            // nlog
+            // call this in case you need aspnet-user-authtype/aspnet-user-identity
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
+            //loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            //loggerFactory.AddDebug();
+            // nlog
+            loggerFactory.AddNLog();
+            // nlog.web
+            app.AddNLogWeb();
 
             if (env.IsDevelopment())
             {
