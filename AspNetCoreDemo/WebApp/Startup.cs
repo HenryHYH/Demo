@@ -8,6 +8,7 @@ using NLog.Extensions.Logging;
 using NLog.Web;
 using WebApp.Configs;
 using WebApp.Filters;
+using WebApp.Middlewares;
 using WebApp.Repositories;
 using WebApp.Services;
 
@@ -45,6 +46,7 @@ namespace WebApp
             services.AddSingleton<IUserService, UserService>();
             services.AddSingleton(typeof(IRepository<>), typeof(BaseRepository<>));
             services.AddSingleton<IBookService, BookService>();
+            services.AddSingleton<ILogService, LogService>();
 
             // nlog
             // call this in case you need aspnet-user-authtype/aspnet-user-identity
@@ -64,6 +66,8 @@ namespace WebApp
             loggerFactory.AddNLog();
             // nlog.web
             app.AddNLogWeb();
+
+            app.UseLogging();
 
             if (env.IsDevelopment())
             {
