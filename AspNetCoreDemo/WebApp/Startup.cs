@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
 using NLog.Web;
 using WebApp.Configs;
+using WebApp.Filters;
 using WebApp.Repositories;
 using WebApp.Services;
 
@@ -35,6 +36,8 @@ namespace WebApp
             // Add framework services.
             services.AddMvc(opt =>
             {
+                opt.Filters.Add(typeof(LoggingFilter));
+
             }).AddXmlSerializerFormatters(); // 返回xml
 
             // IoC

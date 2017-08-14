@@ -14,7 +14,7 @@ namespace WebApp
 
             var host = new WebHostBuilder()
                 .UseConfiguration(config)
-                .UseKestrel()
+                .UseKestrel(opt => opt.AddServerHeader = false)
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
