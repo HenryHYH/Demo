@@ -5,13 +5,13 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using WebApiSdk;
+using WebApiSdk.Common;
 
 namespace ConsoleApp
 {
     class Program
     {
-        static HttpClient client = new HttpClient();
-
         static void Main(string[] args)
         {
             Console.WriteLine("Press any key to start.");
@@ -27,14 +27,11 @@ namespace ConsoleApp
 
         static async Task RunAsync()
         {
-            client.BaseAddress = new Uri("http://localhost:4598/");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
             try
             {
-                var list = await GetAsync<IList<string>>("api/values");
-                Show(list);
+                var req = new ValuesRequest();
+                var res = await req.Execute();
+                Show(res.Result);
             }
             catch (Exception ex)
             {
@@ -48,19 +45,6 @@ namespace ConsoleApp
             {
                 Console.WriteLine(item);
             }
-        }
-
-        static async Task<T> GetAsync<T>(string path)
-        {
-            var result = default(T);
-
-            var response = await client.GetAsync(path);
-            if (response.IsSuccessStatusCode)
-            {
-                result = await response.Content.ReadAsAsync<T>();
-            }
-
-            return result;
         }
     }
 }
