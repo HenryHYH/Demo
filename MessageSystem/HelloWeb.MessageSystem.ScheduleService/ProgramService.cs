@@ -1,4 +1,5 @@
-﻿using Quartz;
+﻿using HelloWeb.MessageSystem.Core.Infrastructure;
+using Quartz;
 using Quartz.Impl;
 
 namespace HelloWeb.MessageSystem.ScheduleService
@@ -10,7 +11,7 @@ namespace HelloWeb.MessageSystem.ScheduleService
         public ProgramService()
         {
             scheduler = StdSchedulerFactory.GetDefaultScheduler();
-            scheduler.JobFactory = new JobFactory(DependencyConfig.Container);
+            scheduler.JobFactory = new JobFactory(DependencyRegistrar.Container);
         }
 
         public void Start()
