@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWeb.MessageSystem.ScheduleService", "HelloWeb.MessageSystem.ScheduleService\HelloWeb.MessageSystem.ScheduleService.csproj", "{FF797A86-88CC-4DC8-ABD6-A64B82B1A832}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWeb.MessageSystem.Core", "HelloWeb.MessageSystem.Core\HelloWeb.MessageSystem.Core.csproj", "{98C91BB2-9717-4629-8C94-65A925A81A48}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF797A86-88CC-4DC8-ABD6-A64B82B1A832}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF797A86-88CC-4DC8-ABD6-A64B82B1A832}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF797A86-88CC-4DC8-ABD6-A64B82B1A832}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF797A86-88CC-4DC8-ABD6-A64B82B1A832}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98C91BB2-9717-4629-8C94-65A925A81A48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98C91BB2-9717-4629-8C94-65A925A81A48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98C91BB2-9717-4629-8C94-65A925A81A48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98C91BB2-9717-4629-8C94-65A925A81A48}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6B47D5B6-9DE5-4D51-A702-8D88C6CAA826}
+	EndGlobalSection
+EndGlobal
