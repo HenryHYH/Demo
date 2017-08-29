@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Specialized;
 using System.Configuration;
 
 namespace HelloWeb.MessageSystem.Core.Setting
@@ -11,6 +12,10 @@ namespace HelloWeb.MessageSystem.Core.Setting
 
             var type = typeof(T);
             var name = type.Name;
+            var values = ConfigurationManager.GetSection(name) as NameValueCollection;
+            if (null == values || 0 == values.Count)
+                return setting;
+
             var props = type.GetProperties();
             if (null != props)
             {
@@ -19,10 +24,11 @@ namespace HelloWeb.MessageSystem.Core.Setting
                     if (!p.CanWrite)
                         continue;
 
-                    var key = $"{name}.{p.Name}";
-                    var value = ConfigurationManager.AppSettings.Get(key);
-                    if (!string.IsNullOrWhiteSpace(value))
-                        p.SetValue(setting, value);
+                    var value = values.Get(p.Name);
+                    if (string.IsNullOrWhiteSpace(value))
+                        continue;
+
+                    p.SetValue(setting, value);
                 }
             }
 
