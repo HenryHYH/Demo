@@ -13,7 +13,7 @@ namespace HelloWeb.MessageSystem.ScheduleService
         {
             var builder = new ContainerBuilder();
 
-            builder.Register(x => SettingHelper.Load<SystemSetting>()).As<SystemSetting>().SingleInstance();
+            builder.Register(x => SettingFactory.Create<SystemSetting>()).As<SystemSetting>().SingleInstance();
             builder.RegisterGeneric(typeof(MongoRepository<>)).As(typeof(IBaseRepository<>)).InstancePerLifetimeScope();
             builder.RegisterType<LogService>().As<ILogService>().InstancePerLifetimeScope();
 

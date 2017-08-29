@@ -3,9 +3,9 @@ using System.Configuration;
 
 namespace HelloWeb.MessageSystem.Core.Setting
 {
-    public static class SettingHelper
+    public static class SettingFactory
     {
-        public static T Load<T>()
+        public static T Create<T>()
         {
             var setting = Activator.CreateInstance<T>();
 

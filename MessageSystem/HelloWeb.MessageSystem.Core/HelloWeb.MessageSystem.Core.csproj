@@ -131,7 +131,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\LogService.cs" />
     <Compile Include="Service\ILogService.cs" />
-    <Compile Include="Setting\SettingHelper.cs" />
+    <Compile Include="Setting\SettingFactory.cs" />
     <Compile Include="Setting\SystemSetting.cs" />
   </ItemGroup>
   <ItemGroup>
