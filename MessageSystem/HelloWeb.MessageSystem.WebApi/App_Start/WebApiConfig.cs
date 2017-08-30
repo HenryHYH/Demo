@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
+﻿using System.Web.Http;
 
 namespace HelloWeb.MessageSystem.WebApi
 {
+    /// <summary>
+    /// WebApi配置
+    /// </summary>
     public static class WebApiConfig
     {
+        /// <summary>
+        /// 注册
+        /// </summary>
+        /// <param name="config"></param>
         public static void Register(HttpConfiguration config)
         {
             // Web API 配置和服务

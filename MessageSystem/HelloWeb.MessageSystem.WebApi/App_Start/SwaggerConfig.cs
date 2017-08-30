@@ -7,11 +7,16 @@ using System.Web.Http.Description;
 using WebActivatorEx;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
-
 namespace HelloWeb.MessageSystem.WebApi
 {
+    /// <summary>
+    /// Swagger≈‰÷√
+    /// </summary>
     public class SwaggerConfig
     {
+        /// <summary>
+        /// ◊¢≤·
+        /// </summary>
         public static void Register()
         {
             var thisAssembly = typeof(SwaggerConfig).Assembly;

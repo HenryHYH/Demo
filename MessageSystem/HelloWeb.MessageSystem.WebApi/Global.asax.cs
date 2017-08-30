@@ -7,8 +7,16 @@ using System.Web.Routing;
 
 namespace HelloWeb.MessageSystem.WebApi
 {
+    /// <summary>
+    /// Global
+    /// </summary>
     public class Global : HttpApplication
     {
+        /// <summary>
+        /// App start
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void Application_Start(object sender, EventArgs e)
         {
             var container = DependencyConfig.Register();

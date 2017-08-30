@@ -1,5 +1,4 @@
-﻿using System;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace HelloWeb.MessageSystem.WebApi.Controllers
 {
@@ -14,7 +13,7 @@ namespace HelloWeb.MessageSystem.WebApi.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            return Content(string.Format("{0:yyyy-MM-dd HH:mm:ss.fff}", DateTime.Now));
+            return View();
         }
     }
 }
