@@ -5,16 +5,17 @@ namespace HelloWeb.MessageSystem.WebApi.Controllers
     /// <summary>
     /// 日志查看
     /// </summary>
-    [Route("log")]
+    [RoutePrefix("log")]
     public class LoggingController : Controller
     {
         /// <summary>
         /// 主页
         /// </summary>
         /// <returns></returns>
+        [Route]
         public ActionResult Index()
         {
-            return Content("Logging");
+            return View();
         }
     }
 }
