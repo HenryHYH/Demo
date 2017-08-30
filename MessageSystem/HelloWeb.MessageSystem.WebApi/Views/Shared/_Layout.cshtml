@@ -34,17 +34,18 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <!-- Google Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet" href="~/Content/googlefont.css" />
+    @RenderSection("Style", false)
 </head>
 <body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
     <div class="wrapper">
         <header class="main-header">
             <!-- Logo -->
-            <a href="index2.html" class="logo">
+            <a href="/" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini"><b>A</b>LT</span>
+                <span class="logo-mini"><b>M</b>s</span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>Admin</b>LTE</span>
+                <span class="logo-lg"><b>Message</b> system</span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top">
@@ -509,9 +510,7 @@
             <!-- /.sidebar -->
         </aside>
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            @RenderBody()
-        </div>
+        @RenderBody()
         <!-- /.content-wrapper -->
         <footer class="main-footer">
             <div class="pull-right hidden-xs">
@@ -724,9 +723,6 @@
     <script src="~/bower_components/fastclick/lib/fastclick.js"></script>
     <!-- AdminLTE App -->
     <script src="~/bower_components/admin-lte/dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="~/bower_components/admin-lte/dist/js/pages/dashboard.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="~/bower_components/admin-lte/dist/js/demo.js"></script>
+    @RenderSection("Script", false)
 </body>
 </html>
