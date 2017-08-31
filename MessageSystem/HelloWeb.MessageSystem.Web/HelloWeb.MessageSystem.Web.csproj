@@ -7611,6 +7611,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BaseResponse.cs" />
+    <Compile Include="Models\Log\LogLevel.cs" />
+    <Compile Include="Models\Log\LogModel.cs" />
+    <Compile Include="Models\Log\LogResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -7637,7 +7641,6 @@
     <Folder Include="bower_components\inputmask\dist\min\inputmask\dependencyLibs\" />
     <Folder Include="bower_components\inputmask\dist\min\inputmask\global\" />
     <Folder Include="bower_components\inputmask\dist\min\inputmask\phone-codes\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HelloWeb.MessageSystem.Core\HelloWeb.MessageSystem.Core.csproj">
