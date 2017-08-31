@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWeb.MessageSystem.Sche
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWeb.MessageSystem.Core", "HelloWeb.MessageSystem.Core\HelloWeb.MessageSystem.Core.csproj", "{98C91BB2-9717-4629-8C94-65A925A81A48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWeb.MessageSystem.WebApi", "HelloWeb.MessageSystem.WebApi\HelloWeb.MessageSystem.WebApi.csproj", "{9ED5D3A7-57B6-4CC8-BD01-6BC3434B5408}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWeb.MessageSystem.Web", "HelloWeb.MessageSystem.Web\HelloWeb.MessageSystem.Web.csproj", "{9ED5D3A7-57B6-4CC8-BD01-6BC3434B5408}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
