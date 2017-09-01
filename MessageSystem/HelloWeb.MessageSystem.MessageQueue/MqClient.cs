@@ -1,10 +1,13 @@
 ﻿using Aliyun.MNS;
 using Aliyun.MNS.Model;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace HelloWeb.MessageSystem.MessageQueue
 {
     public class MqClient<T> : IQueue<T>
+        where T : class
     {
         #region Fields
 
@@ -31,8 +34,11 @@ namespace HelloWeb.MessageSystem.MessageQueue
 
         #region IQueue<T>
 
-        public string Send(T message, uint? delaySeconds = null, uint? priority = null)
+        public bool Send(T message, uint? delaySeconds = null, uint? priority = null)
         {
+            if (null == message)
+                return false;
+
             var json = Serialize(message);
 
             var request = new SendMessageRequest(json);
@@ -44,11 +50,14 @@ namespace HelloWeb.MessageSystem.MessageQueue
             var queue = GetQueue();
             var response = queue.SendMessage(request);
 
-            return response.ToString();
+            return null != response &&
+                    response.HttpStatusCode == System.Net.HttpStatusCode.Created;
         }
 
         public T Receive(uint? waitSeconds = null, bool deleteMessageAfterReceive = true)
         {
+            T message = default(T);
+
             var request = new ReceiveMessageRequest();
             if (waitSeconds.HasValue)
                 request.WaitSeconds = waitSeconds.Value;
@@ -56,25 +65,92 @@ namespace HelloWeb.MessageSystem.MessageQueue
             var queue = GetQueue();
             var response = queue.ReceiveMessage(request);
 
-            // 获取完信息后删除信息
-            if (deleteMessageAfterReceive)
-                queue.DeleteMessage(response.Message.ReceiptHandle);
+            if (null != response)
+            {
+                // 处理数据
+                message = Deserialize(response.Message.Body);
 
-            var json = response.Message.Body;
-            var message = Deserialize(json);
+                // 获取完信息后删除信息
+                if (deleteMessageAfterReceive)
+                    queue.DeleteMessage(response.Message.ReceiptHandle);
+            }
 
             return message;
         }
 
         public T Peek()
         {
+            T message = default(T);
+
             var queue = GetQueue();
             var response = queue.PeekMessage();
 
-            var json = response.Message.Body;
-            var message = Deserialize(json);
+            if (null != response)
+                message = Deserialize(response.Message.Body);
 
             return message;
+        }
+
+        public int BatchSend(ICollection<T> messages, uint? delaySeconds = null, uint? priority = null)
+        {
+            if (null == messages || !messages.Any())
+                throw new System.ArgumentNullException("messages", "messages不能为空");
+            else if (16 < messages.Count)
+                throw new System.ArgumentOutOfRangeException("messages", "messages最大记录数为16");
+
+            var requests = new List<SendMessageRequest>();
+            foreach (var message in messages)
+            {
+                var json = Serialize(message);
+                var item = new SendMessageRequest(json);
+                if (delaySeconds.HasValue)
+                    item.DelaySeconds = delaySeconds.Value;
+                if (priority.HasValue)
+                    item.Priority = priority.Value;
+
+                requests.Add(item);
+            }
+            var request = new BatchSendMessageRequest { Requests = requests };
+
+            var queue = GetQueue();
+            var response = queue.BatchSendMessage(request);
+
+            return null == response ? 0 : response.Responses.Count;
+        }
+
+        public ICollection<T> BatchReceive(uint batchSize, uint? waitSeconds = null, bool deleteMessageAfterReceive = true)
+        {
+            if (16 < batchSize)
+                throw new System.ArgumentOutOfRangeException("batchSize", "batchSize最大为16");
+
+            var list = new List<T>();
+
+            var request = new BatchReceiveMessageRequest(batchSize);
+            if (waitSeconds.HasValue)
+                request.WaitSeconds = waitSeconds.Value;
+
+            var queue = GetQueue();
+            var response = queue.BatchReceiveMessage(request);
+
+            if (null != response &&
+                0 < response.Messages.Count)
+            {
+                // 处理数据
+                list = response.Messages.Select(x => Deserialize(x.Body)).ToList();
+
+                // 获取完信息后删除信息
+                if (deleteMessageAfterReceive)
+                {
+                    var receiptHandles = response.Messages.Select(x => x.ReceiptHandle).ToList();
+                    var deleteRequest = new BatchDeleteMessageRequest
+                    {
+                        ReceiptHandles = receiptHandles
+                    };
+                    queue.BatchDeleteMessage(deleteRequest);
+                }
+            }
+
+            return list;
         }
 
         #endregion
