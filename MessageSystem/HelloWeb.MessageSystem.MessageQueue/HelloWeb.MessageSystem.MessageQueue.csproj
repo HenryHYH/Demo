@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{44151250-6E32-4156-B70F-F941EF13E3EE}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HelloWeb.MessageSystem.MessageQueue</RootNamespace>
     <AssemblyName>HelloWeb.MessageSystem.MessageQueue</AssemblyName>
@@ -52,9 +52,7 @@
     <Compile Include="AliyunMnsSetting.cs" />
     <Compile Include="IQueue.cs" />
     <Compile Include="MqClient.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

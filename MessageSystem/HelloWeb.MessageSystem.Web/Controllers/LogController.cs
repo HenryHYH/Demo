@@ -1,4 +1,7 @@
-﻿using HelloWeb.MessageSystem.WebApi.Models.Log;
+﻿using AutoMapper;
+using HelloWeb.MessageSystem.Core.Domain.Logging;
+using HelloWeb.MessageSystem.Core.Service;
+using HelloWeb.MessageSystem.WebApi.Models.Log;
 using System.Collections.Generic;
 using System.Web.Http;
 
@@ -9,6 +12,16 @@ namespace HelloWeb.MessageSystem.WebApi.Controllers
     /// </summary>
     public class LogController : ApiController
     {
+        private readonly ILogService logService;
+
+        /// <summary>
+        /// <see cref="LogController"/>
+        /// </summary>
+        public LogController(ILogService logService)
+        {
+            this.logService = logService;
+        }
+
         /// <summary>
         /// 获取日志
         /// </summary>
@@ -27,9 +40,12 @@ namespace HelloWeb.MessageSystem.WebApi.Controllers
         [HttpPost]
         public LogResponse Post(LogModel request)
         {
+            var log = Mapper.Map<LogModel, Log>(request);
+            var success = logService.Send(log);
+
             return new LogResponse
             {
-                Success = true
+                Success = success
             };
         }
     }

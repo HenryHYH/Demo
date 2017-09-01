@@ -8,5 +8,9 @@ namespace HelloWeb.MessageSystem.Core.Service
         void Insert(Log log);
 
         IEnumerable<Log> Search(string projectName);
+
+        bool Send(Log log);
+
+        int ReceiveAndSave(uint batchSize);
     }
 }

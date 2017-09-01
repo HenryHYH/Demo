@@ -1,8 +1,6 @@
-﻿using HelloWeb.MessageSystem.Core.Domain.Logging;
-using HelloWeb.MessageSystem.Core.Service;
+﻿using HelloWeb.MessageSystem.Core.Service;
 using Quartz;
 using System;
-using System.Linq;
 
 namespace HelloWeb.MessageSystem.ScheduleService
 {
@@ -20,17 +18,7 @@ namespace HelloWeb.MessageSystem.ScheduleService
         {
             Console.WriteLine("{0:yyyy-MM-dd HH:mm:ss.fff} - Start", DateTime.Now);
 
-            service.Insert(new Log
-            {
-                ProjectName = "HelloWeb",
-                AppName = "MessageSystem",
-                Level = LogLevel.Debug,
-                Message = "Hello world",
-                Exception = new Exception("Hello Exception")
-            });
-
-            var list = service.Search("HelloWeb");
-            var count = list.Count();
+            var count = service.ReceiveAndSave(16);
             Console.WriteLine($"Count = {count}");
 
             Console.WriteLine("{0:yyyy-MM-dd HH:mm:ss.fff} - End", DateTime.Now);

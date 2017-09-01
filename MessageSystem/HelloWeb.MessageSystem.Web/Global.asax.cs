@@ -1,5 +1,5 @@
 ﻿using Autofac.Integration.Mvc;
-using System;
+using Autofac.Integration.WebApi;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -15,17 +15,17 @@ namespace HelloWeb.MessageSystem.WebApi
         /// <summary>
         /// App start
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void Application_Start(object sender, EventArgs e)
+        protected void Application_Start()
         {
-            var container = DependencyConfig.Register();
+            var container = DependencyConfig.Register(GlobalConfiguration.Configuration);
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
             // 在应用程序启动时运行的代码
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            MappingConfig.Register();
         }
 
         /// <summary>

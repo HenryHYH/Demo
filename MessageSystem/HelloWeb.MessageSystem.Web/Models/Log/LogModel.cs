@@ -23,6 +23,16 @@ namespace HelloWeb.MessageSystem.WebApi.Models.Log
         public string UniqueSequence { get; set; }
 
         /// <summary>
+        /// 项目名称
+        /// </summary>
+        public string ProjectName { get; set; }
+
+        /// <summary>
+        /// 应用名称
+        /// </summary>
+        public string AppName { get; set; }
+
+        /// <summary>
         /// 日志信息
         /// </summary>
         public string Message { get; set; }
