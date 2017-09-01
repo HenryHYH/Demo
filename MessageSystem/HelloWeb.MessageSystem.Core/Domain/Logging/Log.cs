@@ -32,7 +32,7 @@ namespace HelloWeb.MessageSystem.Core.Domain.Logging
         /// <summary>
         /// 异常信息
         /// </summary>
-        public Exception Exception { get; set; }
+        public ExceptionMessage Exception { get; set; }
 
         /// <summary>
         /// 创建时间

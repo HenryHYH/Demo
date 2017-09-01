@@ -130,6 +130,7 @@
     <Compile Include="Data\IBaseRepository.cs" />
     <Compile Include="Data\MongoRepository.cs" />
     <Compile Include="Domain\BaseEntity.cs" />
+    <Compile Include="Domain\Logging\ExceptionMessage.cs" />
     <Compile Include="Domain\Logging\Log.cs" />
     <Compile Include="Domain\Logging\LogLevel.cs" />
     <Compile Include="Infrastructure\DependencyRegistrar.cs" />

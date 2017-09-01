@@ -3,6 +3,7 @@ using HelloWeb.MessageSystem.Core.Domain.Logging;
 using HelloWeb.MessageSystem.MessageQueue;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Transactions;
 
 namespace HelloWeb.MessageSystem.Core.Service
@@ -44,8 +45,13 @@ namespace HelloWeb.MessageSystem.Core.Service
 
             using (var trans = new TransactionScope())
             {
-                foreach (var item in list)
-                    Insert(item);
+                Parallel.ForEach(list, new ParallelOptions
+                {
+                    MaxDegreeOfParallelism = 3
+                }, x =>
+                {
+                    Insert(x);
+                });
 
                 trans.Complete();
                 result = list.Count;
