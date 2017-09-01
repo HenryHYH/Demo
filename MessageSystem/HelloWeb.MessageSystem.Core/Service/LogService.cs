@@ -34,14 +34,14 @@ namespace HelloWeb.MessageSystem.Core.Service
             return queue.Send(log);
         }
 
-        public int BatchReceiveAndSave(uint batchSize)
+        public int BatchReceiveAndSave(uint batchSize, uint? waitSeconds = null)
         {
-            var list = queue.BatchReceive(batchSize);
+            var result = 0;
+            var list = queue.BatchReceive(batchSize, waitSeconds);
 
             if (null == list || !list.Any())
-                return 0;
+                return result;
 
-            var result = 0;
             using (var trans = new TransactionScope())
             {
                 foreach (var item in list)

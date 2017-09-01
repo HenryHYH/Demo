@@ -20,7 +20,7 @@
         <group>Test</group>
         <job-name>TestJob</job-name>
         <job-group>Test</job-group>
-        <cron-expression>0/3 * * * * ?</cron-expression>
+        <cron-expression>0/10 * * * * ?</cron-expression>
       </cron>
     </trigger>
   </schedule>

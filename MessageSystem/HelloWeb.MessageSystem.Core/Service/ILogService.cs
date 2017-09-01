@@ -11,6 +11,6 @@ namespace HelloWeb.MessageSystem.Core.Service
 
         bool Send(Log log);
 
-        int BatchReceiveAndSave(uint batchSize);
+        int BatchReceiveAndSave(uint batchSize, uint? waitSeconds = null);
     }
 }
