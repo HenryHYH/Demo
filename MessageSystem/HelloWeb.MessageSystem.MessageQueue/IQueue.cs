@@ -1,9 +1,11 @@
 ﻿namespace HelloWeb.MessageSystem.MessageQueue
 {
-    public interface IQueue
+    public interface IQueue<T>
     {
-        string Send(string queueName, string message);
+        string Send(T message, uint? delaySeconds = null, uint? priority = null);
 
-        string Receive(string queueName);
+        T Receive(uint? waitSeconds = null, bool deleteMessageAfterReceive = true);
+
+        T Peek();
     }
 }
