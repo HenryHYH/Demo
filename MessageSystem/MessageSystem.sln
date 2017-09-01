@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWeb.MessageSystem.Web"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWeb.MessageSystem.MessageQueue", "HelloWeb.MessageSystem.MessageQueue\HelloWeb.MessageSystem.MessageQueue.csproj", "{44151250-6E32-4156-B70F-F941EF13E3EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWeb.MessageSystem.MessageQueue.Tests", "HelloWeb.MessageSystem.MessageQueue.Tests\HelloWeb.MessageSystem.MessageQueue.Tests.csproj", "{98C98501-6D46-4DA2-9024-FEC64075D694}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{44151250-6E32-4156-B70F-F941EF13E3EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44151250-6E32-4156-B70F-F941EF13E3EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44151250-6E32-4156-B70F-F941EF13E3EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98C98501-6D46-4DA2-9024-FEC64075D694}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98C98501-6D46-4DA2-9024-FEC64075D694}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98C98501-6D46-4DA2-9024-FEC64075D694}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98C98501-6D46-4DA2-9024-FEC64075D694}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -18,7 +18,7 @@ namespace HelloWeb.MessageSystem.ScheduleService
         {
             Console.WriteLine("{0:yyyy-MM-dd HH:mm:ss.fff} - Start", DateTime.Now);
 
-            var count = service.ReceiveAndSave(16);
+            var count = service.BatchReceiveAndSave(16);
             Console.WriteLine($"Count = {count}");
 
             Console.WriteLine("{0:yyyy-MM-dd HH:mm:ss.fff} - End", DateTime.Now);

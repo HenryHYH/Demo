@@ -63,7 +63,12 @@ namespace HelloWeb.MessageSystem.MessageQueue
                 request.WaitSeconds = waitSeconds.Value;
 
             var queue = GetQueue();
-            var response = queue.ReceiveMessage(request);
+            ReceiveMessageResponse response = null;
+            try
+            {
+                response = queue.ReceiveMessage(request);
+            }
+            catch (MessageNotExistException) { }
 
             if (null != response)
             {
@@ -130,7 +135,12 @@ namespace HelloWeb.MessageSystem.MessageQueue
                 request.WaitSeconds = waitSeconds.Value;
 
             var queue = GetQueue();
-            var response = queue.BatchReceiveMessage(request);
+            BatchReceiveMessageResponse response = null;
+            try
+            {
+                response = queue.BatchReceiveMessage(request);
+            }
+            catch (MessageNotExistException) { }
 
             if (null != response &&
                 0 < response.Messages.Count)

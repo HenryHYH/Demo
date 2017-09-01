@@ -34,7 +34,7 @@ namespace HelloWeb.MessageSystem.Core.Service
             return queue.Send(log);
         }
 
-        public int ReceiveAndSave(uint batchSize)
+        public int BatchReceiveAndSave(uint batchSize)
         {
             var list = queue.BatchReceive(batchSize);
 
