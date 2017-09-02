@@ -1,0 +1,9 @@
+{
+  "name": "Message System",
+  "resolutions": {
+    "jquery": ">=1.7.0"
+  },
+  "dependencies": {
+    "admin-lte": "v2.4.0-rc"
+  }
+}
