@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace HelloWeb.MessageSystem.WebApi.Models.Log
 {
@@ -12,15 +13,8 @@ namespace HelloWeb.MessageSystem.WebApi.Models.Log
         /// </summary>
         public LogModel()
         {
-            UniqueSequence = Guid.NewGuid().ToString();
-            Level = LogLevel.Info;
-            CTime = DateTime.Now;
+            CreatedOnUtc = DateTime.UtcNow;
         }
-
-        /// <summary>
-        /// 跟踪流水
-        /// </summary>
-        public string UniqueSequence { get; set; }
 
         /// <summary>
         /// 项目名称
@@ -35,21 +29,26 @@ namespace HelloWeb.MessageSystem.WebApi.Models.Log
         /// <summary>
         /// 日志信息
         /// </summary>
-        public string Message { get; set; }
+        public string ShortMessage { get; set; }
 
         /// <summary>
-        /// 日志等级
+        /// 日志异常详细信息
         /// </summary>
-        public LogLevel Level { get; set; }
+        public string FullMessage { get; set; }
 
         /// <summary>
-        /// 异常信息
+        /// 日志等级ID
         /// </summary>
-        public Exception Exception { get; set; }
+        public int LogLevelId { get; set; }
 
         /// <summary>
-        /// 创建时间
+        /// 扩展信息
         /// </summary>
-        public DateTime CTime { get; set; }
+        public IDictionary<string, string> Extended { get; set; }
+
+        /// <summary>
+        /// 创建时间UTC
+        /// </summary>
+        public DateTime CreatedOnUtc { get; set; }
     }
 }

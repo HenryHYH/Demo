@@ -51,11 +51,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnonymousCredential.cs" />
-    <Compile Include="HelloWebMessageSystem.cs" />
-    <Compile Include="IHelloWebMessageSystem.cs" />
+    <Compile Include="MessageSystem.cs" />
+    <Compile Include="IMessageSystem.cs" />
     <Compile Include="ILog.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="LogExtensions.cs" />
+    <Compile Include="MessageSystemFactory.cs" />
     <Compile Include="Models\LogModel.cs" />
     <Compile Include="Models\LogResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

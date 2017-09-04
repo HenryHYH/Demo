@@ -1,14 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace HelloWeb.MessageSystem.Core.Domain.Logging
 {
+    /// <summary>
+    /// 日志信息
+    /// </summary>
     public class Log : BaseEntity
     {
-        /// <summary>
-        /// 跟踪流水
-        /// </summary>
-        public string UniqueSequence { get; set; }
-
         /// <summary>
         /// 项目名称
         /// </summary>
@@ -22,21 +21,26 @@ namespace HelloWeb.MessageSystem.Core.Domain.Logging
         /// <summary>
         /// 日志信息
         /// </summary>
-        public string Message { get; set; }
+        public string ShortMessage { get; set; }
 
         /// <summary>
-        /// 日志等级
+        /// 日志异常详细信息
         /// </summary>
-        public LogLevel Level { get; set; }
+        public string FullMessage { get; set; }
 
         /// <summary>
-        /// 异常信息
+        /// 日志等级ID
         /// </summary>
-        public ExceptionMessage Exception { get; set; }
+        public int LogLevelId { get; set; }
+
+        /// <summary>
+        /// 扩展信息
+        /// </summary>
+        public IDictionary<string, string> Extended { get; set; }
 
         /// <summary>
         /// 创建时间
         /// </summary>
-        public DateTime CTime { get; set; }
+        public DateTime CreatedOnUtc { get; set; }
     }
 }
