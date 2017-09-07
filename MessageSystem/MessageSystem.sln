@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWeb.MessageSystem.Clie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWeb.MessageSystem.LogService", "HelloWeb.MessageSystem.LogService\HelloWeb.MessageSystem.LogService.csproj", "{31E2E0E1-1BE9-40C6-8AA7-1A55942D6BC4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWeb.MessageSystem.OpenSearchClient", "HelloWeb.MessageSystem.OpenSearchClient\HelloWeb.MessageSystem.OpenSearchClient.csproj", "{003C7993-1ADA-4B84-BB12-74A2867ED362}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{31E2E0E1-1BE9-40C6-8AA7-1A55942D6BC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31E2E0E1-1BE9-40C6-8AA7-1A55942D6BC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31E2E0E1-1BE9-40C6-8AA7-1A55942D6BC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{003C7993-1ADA-4B84-BB12-74A2867ED362}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{003C7993-1ADA-4B84-BB12-74A2867ED362}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{003C7993-1ADA-4B84-BB12-74A2867ED362}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{003C7993-1ADA-4B84-BB12-74A2867ED362}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +80,7 @@ Global
 		{1AF54F4D-7C91-4FE6-8E42-C543D6B4C407} = {18B176B0-DECF-4440-8A1B-63E95781BF7B}
 		{CFB238C2-3A1C-4AB5-ABB7-362A5EF9AACB} = {18B176B0-DECF-4440-8A1B-63E95781BF7B}
 		{31E2E0E1-1BE9-40C6-8AA7-1A55942D6BC4} = {18B176B0-DECF-4440-8A1B-63E95781BF7B}
+		{003C7993-1ADA-4B84-BB12-74A2867ED362} = {18B176B0-DECF-4440-8A1B-63E95781BF7B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6B47D5B6-9DE5-4D51-A702-8D88C6CAA826}
