@@ -4,16 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1AF54F4D-7C91-4FE6-8E42-C543D6B4C407}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HelloWeb.MessageSystem.SDK</RootNamespace>
-    <AssemblyName>HelloWeb.MessageSystem.SDK</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <ProjectGuid>{003C7993-1ADA-4B84-BB12-74A2867ED362}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>HelloWeb.MessageSystem.OpenSearchClient</RootNamespace>
+    <AssemblyName>HelloWeb.MessageSystem.OpenSearchClient</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -52,17 +53,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnonymousCredential.cs" />
-    <Compile Include="MessageSystem.cs" />
-    <Compile Include="IMessageSystem.cs" />
-    <Compile Include="ILog.cs" />
-    <Compile Include="Log.cs" />
-    <Compile Include="LogExtensions.cs" />
-    <Compile Include="MessageSystemFactory.cs" />
-    <Compile Include="Models\LogModel.cs" />
-    <Compile Include="Models\LogResponse.cs" />
+    <Compile Include="OpenSearch API\IOpenSearchAPI.cs" />
+    <Compile Include="OpenSearch API\Models\DocumentRequest.cs" />
+    <Compile Include="OpenSearch API\Models\DocumentResponse.cs" />
+    <Compile Include="OpenSearch API\Models\SearchRequest.cs" />
+    <Compile Include="OpenSearch API\Models\SearchResponse.cs" />
+    <Compile Include="OpenSearch API\Models\SuggestRequest.cs" />
+    <Compile Include="OpenSearch API\Models\SuggestResponse.cs" />
+    <Compile Include="OpenSearch API\OpenSearchAPI.cs" />
+    <Compile Include="OpenSearch API\OpenSearchAPIExtensions.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

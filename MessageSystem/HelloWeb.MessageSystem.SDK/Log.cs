@@ -4,25 +4,23 @@
 
 namespace HelloWeb.MessageSystem.SDK
 {
+    using Microsoft.Rest;
+    using Microsoft.Rest.Serialization;
+    using Models;
+    using Newtonsoft.Json;
     using System;
-    using System.Linq;
     using System.Collections.Generic;
     using System.Net;
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Text;
-    using System.Text.RegularExpressions;
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
-    using Newtonsoft.Json;
-    using Models;
 
     /// <summary>
     /// Log operations.
     /// </summary>
-    public partial class Log : IServiceOperations<HelloWebMessageSystem>, ILog
+    public partial class Log : IServiceOperations<MessageSystem>, ILog
     {
         /// <summary>
         /// Initializes a new instance of the Log class.
@@ -30,9 +28,9 @@ namespace HelloWeb.MessageSystem.SDK
         /// <param name='client'>
         /// Reference to the service client.
         /// </param>
-        public Log(HelloWebMessageSystem client)
+        public Log(MessageSystem client)
         {
-            if (client == null) 
+            if (client == null)
             {
                 throw new ArgumentNullException("client");
             }
@@ -40,9 +38,9 @@ namespace HelloWeb.MessageSystem.SDK
         }
 
         /// <summary>
-        /// Gets a reference to the HelloWebMessageSystem
+        /// Gets a reference to the MessageSystem
         /// </summary>
-        public HelloWebMessageSystem Client { get; private set; }
+        public MessageSystem Client { get; private set; }
 
         /// <summary>
         /// 获取日志
@@ -79,7 +77,7 @@ namespace HelloWeb.MessageSystem.SDK
             // Set Headers
             if (customHeaders != null)
             {
-                foreach(var _header in customHeaders)
+                foreach (var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -199,7 +197,7 @@ namespace HelloWeb.MessageSystem.SDK
             // Set Headers
             if (customHeaders != null)
             {
-                foreach(var _header in customHeaders)
+                foreach (var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -211,7 +209,7 @@ namespace HelloWeb.MessageSystem.SDK
 
             // Serialize Request
             string _requestContent = null;
-            if(request != null)
+            if (request != null)
             {
                 _requestContent = SafeJsonConvert.SerializeObject(request, this.Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, Encoding.UTF8);

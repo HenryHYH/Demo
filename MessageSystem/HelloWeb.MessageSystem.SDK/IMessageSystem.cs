@@ -15,7 +15,7 @@ namespace HelloWeb.MessageSystem.SDK
 
     /// <summary>
     /// </summary>
-    public partial interface IHelloWebMessageSystem : IDisposable
+    public partial interface IMessageSystem : IDisposable
     {
         /// <summary>
         /// The base URI of the service.

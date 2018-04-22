@@ -4,12 +4,9 @@
 
 namespace HelloWeb.MessageSystem.SDK.Models
 {
-    using System;
-    using System.Linq;
-    using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
+    using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// 日志信息
@@ -24,22 +21,16 @@ namespace HelloWeb.MessageSystem.SDK.Models
         /// <summary>
         /// Initializes a new instance of the LogModel class.
         /// </summary>
-        public LogModel(string uniqueSequence = default(string), string projectName = default(string), string appName = default(string), string message = default(string), int? level = default(int?), object exception = default(object), DateTime? cTime = default(DateTime?))
+        public LogModel(string projectName = default(string), string appName = default(string), string shortMessage = default(string), string fullMessage = default(string), int? logLevelId = default(int?), IDictionary<string, string> extended = default(IDictionary<string, string>), DateTime? createdOnUtc = default(DateTime?))
         {
-            UniqueSequence = uniqueSequence;
             ProjectName = projectName;
             AppName = appName;
-            Message = message;
-            Level = level;
-            Exception = exception;
-            CTime = cTime;
+            ShortMessage = shortMessage;
+            FullMessage = fullMessage;
+            LogLevelId = logLevelId;
+            Extended = extended;
+            CreatedOnUtc = createdOnUtc;
         }
-
-        /// <summary>
-        /// 跟踪流水
-        /// </summary>
-        [JsonProperty(PropertyName = "UniqueSequence")]
-        public string UniqueSequence { get; set; }
 
         /// <summary>
         /// 项目名称
@@ -56,26 +47,32 @@ namespace HelloWeb.MessageSystem.SDK.Models
         /// <summary>
         /// 日志信息
         /// </summary>
-        [JsonProperty(PropertyName = "Message")]
-        public string Message { get; set; }
+        [JsonProperty(PropertyName = "ShortMessage")]
+        public string ShortMessage { get; set; }
 
         /// <summary>
-        /// 日志等级
+        /// 日志异常详细信息
         /// </summary>
-        [JsonProperty(PropertyName = "Level")]
-        public int? Level { get; set; }
+        [JsonProperty(PropertyName = "FullMessage")]
+        public string FullMessage { get; set; }
 
         /// <summary>
-        /// 异常信息
+        /// 日志等级ID
         /// </summary>
-        [JsonProperty(PropertyName = "Exception")]
-        public object Exception { get; set; }
+        [JsonProperty(PropertyName = "LogLevelId")]
+        public int? LogLevelId { get; set; }
 
         /// <summary>
-        /// 创建时间
+        /// 扩展信息
         /// </summary>
-        [JsonProperty(PropertyName = "CTime")]
-        public DateTime? CTime { get; set; }
+        [JsonProperty(PropertyName = "Extended")]
+        public IDictionary<string, string> Extended { get; set; }
+
+        /// <summary>
+        /// 创建时间UTC
+        /// </summary>
+        [JsonProperty(PropertyName = "CreatedOnUtc")]
+        public DateTime? CreatedOnUtc { get; set; }
 
     }
 }

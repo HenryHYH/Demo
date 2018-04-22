@@ -20,7 +20,7 @@ namespace HelloWeb.MessageSystem.SDK
     using Newtonsoft.Json;
     using Models;
 
-    public partial class HelloWebMessageSystem : ServiceClient<HelloWebMessageSystem>, IHelloWebMessageSystem
+    public partial class MessageSystem : ServiceClient<MessageSystem>, IMessageSystem
     {
         /// <summary>
         /// The base URI of the service.
@@ -53,7 +53,7 @@ namespace HelloWeb.MessageSystem.SDK
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        protected HelloWebMessageSystem(params DelegatingHandler[] handlers) : base(handlers)
+        protected MessageSystem(params DelegatingHandler[] handlers) : base(handlers)
         {
             this.Initialize();
         }
@@ -67,7 +67,7 @@ namespace HelloWeb.MessageSystem.SDK
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        protected HelloWebMessageSystem(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
+        protected MessageSystem(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
         {
             this.Initialize();
         }
@@ -81,7 +81,7 @@ namespace HelloWeb.MessageSystem.SDK
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        protected HelloWebMessageSystem(Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
+        protected MessageSystem(Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
         {
             if (baseUri == null)
             {
@@ -102,7 +102,7 @@ namespace HelloWeb.MessageSystem.SDK
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        protected HelloWebMessageSystem(Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        protected MessageSystem(Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
         {
             if (baseUri == null)
             {
@@ -120,7 +120,7 @@ namespace HelloWeb.MessageSystem.SDK
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        public HelloWebMessageSystem(ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
+        public MessageSystem(ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
         {
             if (credentials == null)
             {
@@ -145,7 +145,7 @@ namespace HelloWeb.MessageSystem.SDK
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        public HelloWebMessageSystem(ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        public MessageSystem(ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
         {
             if (credentials == null)
             {
@@ -170,7 +170,7 @@ namespace HelloWeb.MessageSystem.SDK
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        public HelloWebMessageSystem(Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
+        public MessageSystem(Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
         {
             if (baseUri == null)
             {
@@ -203,7 +203,7 @@ namespace HelloWeb.MessageSystem.SDK
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        public HelloWebMessageSystem(Uri baseUri, ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        public MessageSystem(Uri baseUri, ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
         {
             if (baseUri == null)
             {

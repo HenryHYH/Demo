@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using HelloWeb.MessageSystem.Core.Domain.Logging;
 using HelloWeb.MessageSystem.WebApi.Models.Log;
-using System;
 
 namespace HelloWeb.MessageSystem.WebApi
 {
@@ -17,12 +16,7 @@ namespace HelloWeb.MessageSystem.WebApi
         {
             Mapper.Initialize(c =>
             {
-                c.CreateMap<Exception, ExceptionMessage>()
-                 .ForMember(d => d.FullName, o => o.MapFrom(s => s.GetType().FullName))
-                 .ForMember(d => d.TargetSite, o => o.MapFrom(s => s.TargetSite.ToString()))
-                 .ForMember(d => d.InnerMessage, o => o.MapFrom(s => Mapper.Map<Exception, ExceptionMessage>(s.InnerException)));
-                c.CreateMap<LogModel, Log>()
-                 .ForMember(d => d.Exception, o => o.MapFrom(s => s.Exception));
+                c.CreateMap<LogModel, Log>();
                 c.CreateMap<Log, LogModel>();
             });
         }
