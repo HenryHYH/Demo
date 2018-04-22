@@ -1,4 +1,32 @@
 {
-  "ReRoutes": [],
-  "GlobalConfiguration": {}
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/values",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 9101
+        }
+      ],
+      "UpstreamPathTemplate": "/a",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/values",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 9102
+        }
+      ],
+      "UpstreamPathTemplate": "/b",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+  ],
+  "GlobalConfiguration": {
+    "RequestIdKey": "OcRequestId",
+    "AdministrationPath": "/administration"
+  }
 }

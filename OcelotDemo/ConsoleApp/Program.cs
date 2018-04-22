@@ -19,7 +19,7 @@ namespace ConsoleApp
                     config.SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
                         .AddJsonFile("appsettings.json", true, true)
                         .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
-                        .AddJsonFile("configuration.json")
+                        .AddJsonFile("configuration.json", optional: false, reloadOnChange: true)
                         .AddEnvironmentVariables();
                 })
                 .ConfigureServices(s =>
