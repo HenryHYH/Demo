@@ -1,0 +1,28 @@
+﻿<html>
+<head>
+<title>Hello world</title>
+</head>
+<body>
+	<input type="button" id="btn" value="Go" />
+	<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			alert("Load");
+			
+			$("#btn").click(function() {
+				alert("Click");
+				$.ajax({
+					url: "http://api.henry.com/home/post",
+					type: "POST",
+					error: function (request, status, error) {						
+					},
+					success: function(data){
+						alert(data.Success);
+						alert(data.Url);
+					}
+				});
+			});
+		});
+	</script>
+</body>
+</html>
