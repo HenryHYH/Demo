@@ -1,0 +1,22 @@
+﻿<html>
+<head>
+	<title>Hello world</title>
+</head>
+<body>
+	<h1>Hello world</h1>
+	<button>Notify me!</button>
+	
+	<script>
+		function msg(){
+			var notification = new Notification("Title", {body: "Yore message" });
+			//notification.onshow = function() { setTimeout(notification.close(), 1500); };
+			notification.onclick = function(){
+				window.focus();
+				this.cancel();
+				location.href = "http://www.gaohangip.com/";
+			};
+		}
+		msg();
+	</script>
+</body>
+</html>
