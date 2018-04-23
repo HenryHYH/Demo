@@ -24,7 +24,8 @@ namespace ConsoleApp
                 })
                 .ConfigureServices(s =>
                 {
-                    s.AddOcelot();
+                    s.AddOcelot()
+                        .AddStoreOcelotConfigurationInConsul();
                 })
                 .ConfigureLogging((hostingContext, logging) =>
                 {

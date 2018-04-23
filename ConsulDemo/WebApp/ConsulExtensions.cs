@@ -33,7 +33,7 @@ namespace WebApp
             {
                 ID = $"{consulConfig.Value.ServiceID}-{uri.Port}",
                 Name = consulConfig.Value.ServiceName,
-                Address = $"{uri.Scheme}://{uri.Host}",
+                Address = $"{uri.Host}",
                 Port = uri.Port,
                 Tags = new[] { "A", "B", "C" }
             };

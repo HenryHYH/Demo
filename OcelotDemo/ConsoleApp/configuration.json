@@ -1,32 +1,68 @@
 {
+  //"ReRoutes": [
+  //  {
+  //    "DownstreamPathTemplate": "/api/values",
+  //    "DownstreamScheme": "http",
+  //    "DownstreamHostAndPorts": [
+  //      {
+  //        "Host": "localhost",
+  //        "Port": 9401
+  //      }
+  //    ],
+  //    "UpstreamPathTemplate": "/a",
+  //    "UpstreamHttpMethod": [ "Get" ]
+  //  },
+  //  {
+  //    "DownstreamPathTemplate": "/api/values",
+  //    "DownstreamScheme": "http",
+  //    "DownstreamHostAndPorts": [
+  //      {
+  //        "Host": "localhost",
+  //        "Port": 9402
+  //      }
+  //    ],
+  //    "UpstreamPathTemplate": "/b",
+  //    "UpstreamHttpMethod": [ "Get" ]
+  //  }
+  //],
   "ReRoutes": [
     {
       "DownstreamPathTemplate": "/api/values",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 9401
-        }
-      ],
-      "UpstreamPathTemplate": "/a",
-      "UpstreamHttpMethod": [ "Get" ]
+      "UpstreamPathTemplate": "/c",
+      "UpstreamHttpMethod": [ "Get" ],
+      "ServiceName": "Name:WebAppA",
+      "LoadBalancer": "LeastConnection",
+      "UseServiceDiscovery": true
     },
+    //{
+    //  "DownstreamPathTemplate": "/api/values",
+    //  "DownstreamScheme": "http",
+    //  "UpstreamPathTemplate": "/e",
+    //  "UpstreamHttpMethod": [ "Get" ],
+    //  "ServiceName": "Name:WebAppFw",
+    //  "LoadBalancer": "LeastConnection",
+    //  "UseServiceDiscovery": true
+    //},
     {
       "DownstreamPathTemplate": "/api/values",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 9402
+          "Port": 9201
         }
       ],
-      "UpstreamPathTemplate": "/b",
+      "UpstreamPathTemplate": "/d",
       "UpstreamHttpMethod": [ "Get" ]
     }
   ],
   "GlobalConfiguration": {
     "RequestIdKey": "OcRequestId",
-    "AdministrationPath": "/administration"
+    "AdministrationPath": "/administration",
+    "ServiceDiscoveryProvider": {
+      "Host": "192.168.5.230",
+      "Port": 8500
+    }
   }
 }
