@@ -9,4 +9,10 @@
     <PackageReference Include="Ocelot" Version="5.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="configuration.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

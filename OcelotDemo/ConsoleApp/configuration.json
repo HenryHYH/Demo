@@ -6,7 +6,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 9101
+          "Port": 9401
         }
       ],
       "UpstreamPathTemplate": "/a",
@@ -18,12 +18,12 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 9102
+          "Port": 9402
         }
       ],
       "UpstreamPathTemplate": "/b",
       "UpstreamHttpMethod": [ "Get" ]
-    },
+    }
   ],
   "GlobalConfiguration": {
     "RequestIdKey": "OcRequestId",
