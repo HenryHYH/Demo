@@ -7,10 +7,10 @@ namespace WebAppFW
     {
         public static void RegisterConsul()
         {
-            var consulAddress = "http://192.168.5.230:8500/";
+            var consulAddress = "http://henry.com:8500/";
             using (var client = new ConsulClient(config => config.Address = new Uri(consulAddress)))
             {
-                var uri = new Uri("http://localhost:50992/");
+                var uri = new Uri("http://localhost:50993/");
                 var registration = new AgentServiceRegistration
                 {
                     ID = $"WebAppA-{uri.Port}",

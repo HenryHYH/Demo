@@ -14,7 +14,7 @@ namespace WebConsumer.Controllers
         public IEnumerable<string> Get()
         {
             IList<Uri> serverUrls = new List<Uri>();
-            var consulClient = new ConsulClient(c => c.Address = new Uri("http://192.168.5.230:8500"));
+            var consulClient = new ConsulClient(c => c.Address = new Uri("http://henry.com:8500"));
             var services = consulClient.Agent.Services().Result.Response;
             foreach (var service in services)
             {
