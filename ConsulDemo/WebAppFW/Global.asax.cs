@@ -17,5 +17,10 @@ namespace WebAppFW
 
             ConsulConfig.RegisterConsul();
         }
+
+        protected void Application_End()
+        {
+            ConsulConfig.DeregisterConsul();
+        }
     }
 }
