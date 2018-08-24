@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace WebApp2.Controllers
+namespace WebApp.Controllers
 {
     [Produces("application/json")]
     [Route("api/[controller]/[action]")]
@@ -12,7 +12,7 @@ namespace WebApp2.Controllers
         [HttpGet]
         public string Count()
         {
-            return $"Count {++count} from WebApi2";
+            return $"Count {++count} from WebApi1";
         }
     }
 }
