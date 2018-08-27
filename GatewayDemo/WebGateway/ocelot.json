@@ -1,0 +1,24 @@
+﻿{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/counter/count",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/counter/count",
+      "UpstreamHttpMethod": [ "Get" ],
+      "ServiceName": "Name:WebApp",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "UseServiceDiscovery": true
+    }
+  ],
+  "GlobalConfiguration": {
+    //"BaseUrl": "http://henry.com"
+    "RequestIdKey": "OcRequestId",
+    "ServiceDiscoveryProvider": {
+      "Host": "henry.com",
+      "Port": 8500,
+      "Type": "Consul"
+    }
+  }
+}
