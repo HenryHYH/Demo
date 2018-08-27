@@ -1,9 +1,11 @@
 ﻿using Consul;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Hosting.Server.Features;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using WebApp.Infrastructure;
 
 namespace WebApp
@@ -26,7 +28,10 @@ namespace WebApp
                 var address = Configuration["consulConfig:address"];
                 c.Address = new System.Uri(address);
             }));
+
+            services.AddLogging(c => c.AddConsole());
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddSingleton<Microsoft.Extensions.Hosting.IHostedService, BindingHostedService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,7 +43,8 @@ namespace WebApp
             }
 
             app.UseMvc();
-            app.RegisterWithConsul(lifetime);
+            BindingHostedService.Application = app;
+            BindingHostedService.ServerAddresses = app.ServerFeatures.Get<IServerAddressesFeature>();
         }
     }
 }
