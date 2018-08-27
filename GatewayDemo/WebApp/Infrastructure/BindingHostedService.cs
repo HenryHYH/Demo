@@ -21,12 +21,14 @@ namespace WebApp.Infrastructure
 
         public static IServerAddressesFeature ServerAddresses { get; set; }
 
+        public static Uri Uri { get; set; }
+
         public Task StartAsync(CancellationToken cancellationToken)
         {
             var address = ServerAddresses.Addresses.Single();
-            var uri = new Uri(address);
+            Uri = new Uri(address);
 
-            Application.RegisterWithConsul(uri, lifetime);
+            Application.RegisterWithConsul(Uri, lifetime);
 
             return Task.CompletedTask;
         }
