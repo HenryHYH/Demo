@@ -28,6 +28,14 @@ namespace WebApp.Infrastructure
             var address = ServerAddresses.Addresses.Single();
             Uri = new Uri(address);
 
+            if (Uri.Host == "localhost" || Uri.Host == "[::]")
+            {
+                var hostName = System.Net.Dns.GetHostName();
+                var host = System.Net.Dns.GetHostEntry(hostName);
+                var ip = host.AddressList.First(x => !x.IsIPv6LinkLocal).ToString();
+                Uri = new Uri($"{Uri.Scheme}://{ip}:{Uri.Port}");
+            }
+
             Application.RegisterWithConsul(Uri, lifetime);
 
             return Task.CompletedTask;

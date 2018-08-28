@@ -17,13 +17,28 @@ namespace WebApp.Infrastructure
             var loggingFactory = app.ApplicationServices.GetRequiredService<ILoggerFactory>();
             var logger = loggingFactory.CreateLogger<IApplicationBuilder>();
 
+            var tcpCheck = new AgentServiceCheck()
+            {
+                DeregisterCriticalServiceAfter = TimeSpan.FromMinutes(1),
+                Interval = TimeSpan.FromSeconds(30),
+                TCP = $"{uri.Host}:{uri.Port}"
+            };
+
+            var httpCheck = new AgentServiceCheck()
+            {
+                DeregisterCriticalServiceAfter = TimeSpan.FromMinutes(1),
+                Interval = TimeSpan.FromSeconds(30),
+                HTTP = $"{uri.Scheme}://{uri.Host}:{uri.Port}/healthcheck"
+            };
+
             var registration = new AgentServiceRegistration
             {
                 ID = $"{consulConfig.Value.ServiceId}-{uri.Port}",
                 Name = consulConfig.Value.ServiceName,
-                Address = $"{(uri.Host == "[::]" ? "localhost" : uri.Host)}",
+                Address = $"{uri.Host}",
                 Port = uri.Port,
-                Tags = new[] { "WebApp" }
+                Tags = new[] { "WebApp" },
+                Checks = new[] { tcpCheck, httpCheck }
             };
 
             logger.LogInformation("Registering with Consul");
