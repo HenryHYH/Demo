@@ -5,6 +5,13 @@
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/api/counter/count",
       "UpstreamHttpMethod": [ "Get" ],
+
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 5,
+        "TimeoutValue": 5000
+      },
+
       "ServiceName": "Name:WebApp",
       "LoadBalancerOptions": {
         "Type": "RoundRobin"
@@ -13,7 +20,6 @@
     }
   ],
   "GlobalConfiguration": {
-    //"BaseUrl": "http://henry.com"
     "RequestIdKey": "OcRequestId",
     "ServiceDiscoveryProvider": {
       "Host": "henry.com",

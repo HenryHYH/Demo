@@ -12,6 +12,7 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Ocelot" Version="10.0.4" />
     <PackageReference Include="Ocelot.Provider.Consul" Version="0.1.0" />
+    <PackageReference Include="Ocelot.Provider.Polly" Version="0.1.0" />
   </ItemGroup>
 
   <ItemGroup>

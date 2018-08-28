@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Ocelot.Provider.Consul;
+using Ocelot.Provider.Polly;
 
 namespace WebGateway
 {
@@ -22,7 +23,8 @@ namespace WebGateway
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOcelot()
-                    .AddConsul();
+                    .AddConsul()
+                    .AddPolly();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
