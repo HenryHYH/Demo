@@ -16,7 +16,7 @@ namespace WebGateway
                 .ConfigureAppConfiguration((hostingContext, builder) =>
                 {
                     builder.SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
-                        .AddJsonFile("ocelot.json");
+                        .AddJsonFile("ocelot.json", optional: true, reloadOnChange: true);
                 })
                 .UseStartup<Startup>()
                 .UseUrls("http://*:0");
