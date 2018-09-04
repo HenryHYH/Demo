@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore;
+﻿using Com.Ctrip.Framework.Apollo;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using System.IO;
@@ -18,7 +19,9 @@ namespace WebApp
                 {
                     config.SetBasePath(Directory.GetCurrentDirectory())
                         .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                        .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", optional: true, reloadOnChange: true);
+                        .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", optional: true, reloadOnChange: true)
+                        .AddApollo(config.Build().GetSection("apollo"))
+                        .AddDefault();
                 })
                 .UseStartup<Startup>()
                 .UseUrls("http://*:0");
