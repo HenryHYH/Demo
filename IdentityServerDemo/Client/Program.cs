@@ -1,4 +1,5 @@
 ﻿using IdentityModel.Client;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -7,11 +8,11 @@ namespace Client
 {
     class Program
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
 
-            await Test();
+            Test().GetAwaiter();
 
             Console.ReadKey();
         }
@@ -35,7 +36,10 @@ namespace Client
             if (!response.IsSuccessStatusCode)
                 Console.WriteLine(response.StatusCode);
             else
-                Console.WriteLine($"请求结果：{response.StatusCode}");
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                Console.WriteLine(JArray.Parse(content));
+            }
         }
     }
 }
