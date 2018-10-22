@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Exceptionless;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
 namespace WebApp.Controllers
@@ -14,6 +15,10 @@ namespace WebApp.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
+            // throw new System.Exception("Hello exception");
+            var ex = new System.Exception("Hello Exception");
+            ex.ToExceptionless().Submit();
+
             return new string[] { "value1", "value2" };
         }
 

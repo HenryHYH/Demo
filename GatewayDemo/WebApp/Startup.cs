@@ -1,4 +1,5 @@
 ﻿using Consul;
+using Exceptionless;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Hosting.Server.Features;
@@ -64,6 +65,12 @@ namespace WebApp
             }
 
             app.UseMvc();
+
+            // Exceptionless
+            ExceptionlessClient.Default.Configuration.ApiKey = "jharUELJtv1I5XTLsjBQF1UCV6GNtkQ729033z2K";
+            ExceptionlessClient.Default.Configuration.ServerUrl = "http://192.168.5.209:10080";
+            //ExceptionlessClient.Default.Configuration.UseFileLogger("d:\\exceptionless.log", Exceptionless.Logging.LogLevel.Trace);
+            app.UseExceptionless();
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>
