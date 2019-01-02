@@ -1,7 +1,381 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Tax";
 }
 
 <h2>个人所得税</h2>
 
+<div class="panel panel-primary">
+    <div class="panel-heading">专项附加扣除 - 子女教育</div>
+    <div class="panel-body">
+        <form>
+            <fieldset>
+                <div class="form-group">
+                    <label for="">子女个数</label>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <select class="form-control">
+                                <option value="0">无</option>
+                                <option value="1">1个</option>
+                                <option value="2">2个</option>
+                                <option value="3">3个</option>
+                                <option value="4">4个</option>
+                                <option value="5">5个</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-control">
+                                <option value="1">全额扣除</option>
+                                <option value="2">夫妻分别扣除</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="form-group">
+                    <label for="">第1个</label>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <select class="form-control">
+                                <option value="1">1月开始</option>
+                                <option value="2">2月开始</option>
+                                <option value="3">3月开始</option>
+                                <option value="4">4月开始</option>
+                                <option value="5">5月开始</option>
+                                <option value="6">6月开始</option>
+                                <option value="7">7月开始</option>
+                                <option value="8">8月开始</option>
+                                <option value="9">9月开始</option>
+                                <option value="10">10月开始</option>
+                                <option value="11">11月开始</option>
+                                <option value="12">12月开始</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-control">
+                                <option value="1">1月结束</option>
+                                <option value="2">2月结束</option>
+                                <option value="3">3月结束</option>
+                                <option value="4">4月结束</option>
+                                <option value="5">5月结束</option>
+                                <option value="6">6月结束</option>
+                                <option value="7">7月结束</option>
+                                <option value="8">8月结束</option>
+                                <option value="9">9月结束</option>
+                                <option value="10">10月结束</option>
+                                <option value="11">11月结束</option>
+                                <option value="12">12月结束</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="form-group">
+                    <label for="">第2个</label>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <select class="form-control">
+                                <option value="1">1月开始</option>
+                                <option value="2">2月开始</option>
+                                <option value="3">3月开始</option>
+                                <option value="4">4月开始</option>
+                                <option value="5">5月开始</option>
+                                <option value="6">6月开始</option>
+                                <option value="7">7月开始</option>
+                                <option value="8">8月开始</option>
+                                <option value="9">9月开始</option>
+                                <option value="10">10月开始</option>
+                                <option value="11">11月开始</option>
+                                <option value="12">12月开始</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-control">
+                                <option value="1">1月结束</option>
+                                <option value="2">2月结束</option>
+                                <option value="3">3月结束</option>
+                                <option value="4">4月结束</option>
+                                <option value="5">5月结束</option>
+                                <option value="6">6月结束</option>
+                                <option value="7">7月结束</option>
+                                <option value="8">8月结束</option>
+                                <option value="9">9月结束</option>
+                                <option value="10">10月结束</option>
+                                <option value="11">11月结束</option>
+                                <option value="12">12月结束</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">专项附加扣除 - 继续教育</div>
+    <div class="panel-body">
+        <form>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="" />
+                            学历（学位）继续教育
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-control">
+                        <option value="1">1月开始</option>
+                        <option value="2">2月开始</option>
+                        <option value="3">3月开始</option>
+                        <option value="4">4月开始</option>
+                        <option value="5">5月开始</option>
+                        <option value="6">6月开始</option>
+                        <option value="7">7月开始</option>
+                        <option value="8">8月开始</option>
+                        <option value="9">9月开始</option>
+                        <option value="10">10月开始</option>
+                        <option value="11">11月开始</option>
+                        <option value="12">12月开始</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-control">
+                        <option value="1">1月结束</option>
+                        <option value="2">2月结束</option>
+                        <option value="3">3月结束</option>
+                        <option value="4">4月结束</option>
+                        <option value="5">5月结束</option>
+                        <option value="6">6月结束</option>
+                        <option value="7">7月结束</option>
+                        <option value="8">8月结束</option>
+                        <option value="9">9月结束</option>
+                        <option value="10">10月结束</option>
+                        <option value="11">11月结束</option>
+                        <option value="12">12月结束</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="" />
+                            职业资格继续教育
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">专项附加扣除 - 住房贷款利息</div>
+    <div class="panel-body">
+        <form>
+            <div class="row">
+                <div class="col-md-3">
+                    <select class="form-control">
+                        <option value="0">无</option>
+                        <option value="1000">全额扣除</option>
+                        <option value="500">夫妻分别扣除</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-control">
+                        <option value="1">1月开始</option>
+                        <option value="2">2月开始</option>
+                        <option value="3">3月开始</option>
+                        <option value="4">4月开始</option>
+                        <option value="5">5月开始</option>
+                        <option value="6">6月开始</option>
+                        <option value="7">7月开始</option>
+                        <option value="8">8月开始</option>
+                        <option value="9">9月开始</option>
+                        <option value="10">10月开始</option>
+                        <option value="11">11月开始</option>
+                        <option value="12">12月开始</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-control">
+                        <option value="1">1月结束</option>
+                        <option value="2">2月结束</option>
+                        <option value="3">3月结束</option>
+                        <option value="4">4月结束</option>
+                        <option value="5">5月结束</option>
+                        <option value="6">6月结束</option>
+                        <option value="7">7月结束</option>
+                        <option value="8">8月结束</option>
+                        <option value="9">9月结束</option>
+                        <option value="10">10月结束</option>
+                        <option value="11">11月结束</option>
+                        <option value="12">12月结束</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">专项附加扣除 - 住房租金</div>
+    <div class="panel-body">
+        <form>
+            <div class="row">
+                <div class="col-md-3">
+                    <select class="form-control">
+                        <option value="0">无</option>
+                        <option value="1500">每月1500元</option>
+                        <option value="1100">每月1100元</option>
+                        <option value="800">每月800元</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-control">
+                        <option value="1">1月开始</option>
+                        <option value="2">2月开始</option>
+                        <option value="3">3月开始</option>
+                        <option value="4">4月开始</option>
+                        <option value="5">5月开始</option>
+                        <option value="6">6月开始</option>
+                        <option value="7">7月开始</option>
+                        <option value="8">8月开始</option>
+                        <option value="9">9月开始</option>
+                        <option value="10">10月开始</option>
+                        <option value="11">11月开始</option>
+                        <option value="12">12月开始</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-control">
+                        <option value="1">1月结束</option>
+                        <option value="2">2月结束</option>
+                        <option value="3">3月结束</option>
+                        <option value="4">4月结束</option>
+                        <option value="5">5月结束</option>
+                        <option value="6">6月结束</option>
+                        <option value="7">7月结束</option>
+                        <option value="8">8月结束</option>
+                        <option value="9">9月结束</option>
+                        <option value="10">10月结束</option>
+                        <option value="11">11月结束</option>
+                        <option value="12">12月结束</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">专项附加扣除 - 赡养老人</div>
+    <div class="panel-body">
+        <form>
+            <div class="row">
+                <div class="col-md-3">
+                    <select class="form-control">
+                        <option value="0">无</option>
+                        <option value="1">独生子女</option>
+                        <option value="2">非独生子女</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <input type="number" class="form-control" placeholder="分摊额度" value="1000" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">工资、薪金所得</div>
+    <div class="panel-body">
+        <form>
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="number" class="form-control" placeholder="1月" value="" />
+                </div>
+                <div class="col-md-4">
+                    <input type="number" class="form-control" placeholder="2月" value="" />
+                </div>
+                <div class="col-md-4">
+                    <input type="number" class="form-control" placeholder="3月" value="" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="number" class="form-control" placeholder="4月" value="" />
+                </div>
+                <div class="col-md-4">
+                    <input type="number" class="form-control" placeholder="5月" value="" />
+                </div>
+                <div class="col-md-4">
+                    <input type="number" class="form-control" placeholder="6月" value="" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="number" class="form-control" placeholder="7月" value="" />
+                </div>
+                <div class="col-md-4">
+                    <input type="number" class="form-control" placeholder="8月" value="" />
+                </div>
+                <div class="col-md-4">
+                    <input type="number" class="form-control" placeholder="9月" value="" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="number" class="form-control" placeholder="10月" value="" />
+                </div>
+                <div class="col-md-4">
+                    <input type="number" class="form-control" placeholder="11月" value="" />
+                </div>
+                <div class="col-md-4">
+                    <input type="number" class="form-control" placeholder="12月" value="" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">基本减除费用</div>
+    <div class="panel-body">
+        <form>
+            <div class="form-group">
+                <label for="basic">基本减除费用</label>
+                <input type="number" class="form-control" id="basic" value="5000" readonly="readonly" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">专项扣除</div>
+    <div class="panel-body">
+        <form>
+            <div class="form-group">
+                <label for="">养老 (8%)</label>
+                <input type="number" class="form-control" id="" value="" readonly="readonly" />
+            </div>
+            <div class="form-group">
+                <label for="">医疗 (2%)</label>
+                <input type="number" class="form-control" id="" value="" readonly="readonly" />
+            </div>
+            <div class="form-group">
+                <label for="">失业 (1%)</label>
+                <input type="number" class="form-control" id="" value="" readonly="readonly" />
+            </div>
+            <div class="form-group">
+                <label for="">公积金 (8%)</label>
+                <input type="number" class="form-control" id="" value="" readonly="readonly" />
+            </div>
+        </form>
+    </div>
+</div>
