@@ -26,13 +26,30 @@ namespace Client
                 return;
             }
 
-            var tokenRes = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+            TokenResponse tokenRes = null;
+            Console.WriteLine("输入模式，1为客户端模式，2为用户名密码模式");
+            if ("1" == Console.ReadLine())
             {
-                Address = disco.TokenEndpoint,
-                ClientId = "client",
-                ClientSecret = "secret",
-                Scope = "api1"
-            });
+                tokenRes = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+                {
+                    Address = disco.TokenEndpoint,
+                    ClientId = "client",
+                    ClientSecret = "secret",
+                    Scope = "api1"
+                });
+            }
+            else
+            {
+                tokenRes = await client.RequestPasswordTokenAsync(new PasswordTokenRequest
+                {
+                    Address = disco.TokenEndpoint,
+                    ClientId = "ro.client",
+                    ClientSecret = "secret",
+                    Scope = "api1",
+                    UserName = "henry",
+                    Password = "mytest"
+                });
+            }
             if (tokenRes.IsError)
             {
                 Console.WriteLine(tokenRes.Error);
