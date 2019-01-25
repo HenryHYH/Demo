@@ -2,9 +2,11 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using IdentityServer4;
 using IdentityServer4.Models;
 using IdentityServer4.Test;
 using System.Collections.Generic;
+using System.Security.Claims;
 
 namespace IdentityServer
 {
@@ -14,7 +16,8 @@ namespace IdentityServer
         {
             return new IdentityResource[]
             {
-                new IdentityResources.OpenId()
+                new IdentityResources.OpenId(),
+                new IdentityResources.Profile()
             };
         }
 
@@ -22,7 +25,7 @@ namespace IdentityServer
         {
             return new List<ApiResource>
             {
-                new ApiResource("api1","My API")
+                new ApiResource("api1", "My API")
             };
         }
 
@@ -49,6 +52,19 @@ namespace IdentityServer
                         new Secret("secret".Sha256())
                     },
                     AllowedScopes = { "api1" }
+                },
+                new Client
+                {
+                    ClientId = "mvc",
+                    ClientName = "MVC Client",
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    RedirectUris = { "http://localhost:5002/signin-oidc" },
+                    PostLogoutRedirectUris = { "http://localhost:5002/signout-callback-oidc" },
+                    AllowedScopes =
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile
+                    }
                 }
             };
         }
@@ -61,13 +77,24 @@ namespace IdentityServer
                 {
                     SubjectId = "1",
                     Username = "henry",
-                    Password = "mytest"
+                    Password = "mytest",
+
+                    Claims = new[]
+                    {
+                        new Claim("name", "henry"),
+                        new Claim("website", "http://henry.com")
+                    }
                 },
                 new TestUser
                 {
                     SubjectId = "2",
                     Username = "hello",
-                    Password = "world"
+                    Password = "world",
+                    Claims = new[]
+                    {
+                        new Claim("name", "hello"),
+                        new Claim("website", "http://hello.com")
+                    }
                 }
             };
         }

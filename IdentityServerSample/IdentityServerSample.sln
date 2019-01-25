@@ -5,11 +5,13 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6DB4F589-94D6-4D92-996A-F83D19166218}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer", "src\IdentityServer\IdentityServer.csproj", "{D88FBE61-A1BA-4665-B4BD-B48174A73477}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer", "src\IdentityServer\IdentityServer.csproj", "{D88FBE61-A1BA-4665-B4BD-B48174A73477}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "src\Api\Api.csproj", "{49B1AD7D-3EA8-4665-8BD4-1B90EEA81276}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "src\Api\Api.csproj", "{49B1AD7D-3EA8-4665-8BD4-1B90EEA81276}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "src\Client\Client.csproj", "{98E6827F-D862-4EAA-8270-24917490200B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client", "src\Client\Client.csproj", "{98E6827F-D862-4EAA-8270-24917490200B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCClient", "src\MVCClient\MVCClient.csproj", "{29B4AADD-93FB-42DA-B957-DE0F90019DE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,9 +21,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D88FBE61-A1BA-4665-B4BD-B48174A73477}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -60,10 +59,29 @@ Global
 		{98E6827F-D862-4EAA-8270-24917490200B}.Release|x64.Build.0 = Release|Any CPU
 		{98E6827F-D862-4EAA-8270-24917490200B}.Release|x86.ActiveCfg = Release|Any CPU
 		{98E6827F-D862-4EAA-8270-24917490200B}.Release|x86.Build.0 = Release|Any CPU
+		{29B4AADD-93FB-42DA-B957-DE0F90019DE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29B4AADD-93FB-42DA-B957-DE0F90019DE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29B4AADD-93FB-42DA-B957-DE0F90019DE7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{29B4AADD-93FB-42DA-B957-DE0F90019DE7}.Debug|x64.Build.0 = Debug|Any CPU
+		{29B4AADD-93FB-42DA-B957-DE0F90019DE7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{29B4AADD-93FB-42DA-B957-DE0F90019DE7}.Debug|x86.Build.0 = Debug|Any CPU
+		{29B4AADD-93FB-42DA-B957-DE0F90019DE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29B4AADD-93FB-42DA-B957-DE0F90019DE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29B4AADD-93FB-42DA-B957-DE0F90019DE7}.Release|x64.ActiveCfg = Release|Any CPU
+		{29B4AADD-93FB-42DA-B957-DE0F90019DE7}.Release|x64.Build.0 = Release|Any CPU
+		{29B4AADD-93FB-42DA-B957-DE0F90019DE7}.Release|x86.ActiveCfg = Release|Any CPU
+		{29B4AADD-93FB-42DA-B957-DE0F90019DE7}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D88FBE61-A1BA-4665-B4BD-B48174A73477} = {6DB4F589-94D6-4D92-996A-F83D19166218}
 		{49B1AD7D-3EA8-4665-8BD4-1B90EEA81276} = {6DB4F589-94D6-4D92-996A-F83D19166218}
 		{98E6827F-D862-4EAA-8270-24917490200B} = {6DB4F589-94D6-4D92-996A-F83D19166218}
+		{29B4AADD-93FB-42DA-B957-DE0F90019DE7} = {6DB4F589-94D6-4D92-996A-F83D19166218}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0448BD00-C59E-4877-9B07-3286FA1F1B34}
 	EndGlobalSection
 EndGlobal

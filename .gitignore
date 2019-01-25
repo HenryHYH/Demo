@@ -182,3 +182,5 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+/IdentityServerSample/src/IdentityServer/tempkey.rsa
+/IdentityServerSample/src/IdentityServer/identityserver4_log.txt
