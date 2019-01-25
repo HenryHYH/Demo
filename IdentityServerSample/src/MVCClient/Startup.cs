@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -44,6 +45,14 @@ namespace MVCClient
                 options.RequireHttpsMetadata = false;
                 options.ClientId = "mvc";
                 options.SaveTokens = true;
+
+                options.SignInScheme = "Cookies";
+                options.ClientSecret = "secret";
+                options.ResponseType = "code id_token";
+                options.GetClaimsFromUserInfoEndpoint = true;
+                options.Scope.Add("api1");
+                options.Scope.Add("offline_access");
+                options.ClaimActions.MapJsonKey("website", "website");
             });
         }
 
