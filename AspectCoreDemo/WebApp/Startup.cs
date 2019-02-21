@@ -1,9 +1,11 @@
-﻿using AspectCore.Extensions.DependencyInjection;
+﻿using AspectCore.Configuration;
+using AspectCore.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using WebApp.Infrastructure;
 using WebApp.Services;
 
 namespace WebApp
@@ -24,7 +26,12 @@ namespace WebApp
             services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Latest);
 
             services.AddTransient<ICustomService, CustomService>();
-            services.ConfigureDynamicProxy();
+            services.AddTransient<ITestService, TestService>();
+
+            services.ConfigureDynamicProxy(c =>
+            {
+                c.Interceptors.AddTyped<CustomInterceptor>(Predicates.ForService("*Service"));
+            });
             return services.BuildDynamicProxyServiceProvider();
         }
 
