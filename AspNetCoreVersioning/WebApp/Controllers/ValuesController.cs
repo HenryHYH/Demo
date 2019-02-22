@@ -1,42 +1,43 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
-namespace WebApp.Controllers
+namespace WebApp.Controllers.V1
 {
+    [ApiVersion("1.0", Deprecated = true)]
+    [ApiVersion("3.0")]
     [Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        // GET api/values
+        [HttpGet]
+        [MapToApiVersion("1.0")]
+        public ActionResult<IEnumerable<string>> Get()
+        {
+            return new string[] { "V1", HttpContext.GetRequestedApiVersion().ToString() };
+        }
+
+        [HttpGet]
+        [MapToApiVersion("3.0")]
+        public ActionResult<IEnumerable<string>> Getv3()
+        {
+            return new string[] { "V3", HttpContext.GetRequestedApiVersion().ToString() };
+        }
+    }
+}
+
+namespace WebApp.Controllers.V2
+{
+    [ApiVersion("2.0")]
+    [Route("api/[controller]")] // http://localhost:5000/api/values?api-version=2.0
+    [Route("api/v{version:apiVersion}/[controller]")] // http://localhost:5000/api/v2/values
+    [ApiController]
+    public class ValuesController : ControllerBase
+    {
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return new string[] { "V2", HttpContext.GetRequestedApiVersion().ToString() };
         }
     }
 }
