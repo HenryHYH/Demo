@@ -1,4 +1,4 @@
-﻿using EasyCaching.Redis;
+﻿using EasyCaching.SQLite;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -27,10 +27,15 @@ namespace WebApp
             //    x.MaxRdSecond = 0;
             //});
 
-            services.AddDefaultRedisCache(o =>
+            //services.AddDefaultRedisCache(o =>
+            //{
+            //    o.MaxRdSecond = 0;
+            //    o.DBConfig.Endpoints.Add(new EasyCaching.Core.Configurations.ServerEndPoint("henry.cn", 6379));
+            //});
+
+            services.AddSQLiteCache(o =>
             {
                 o.MaxRdSecond = 0;
-                o.DBConfig.Endpoints.Add(new EasyCaching.Core.Configurations.ServerEndPoint("henry.cn", 6379));
             });
         }
 
@@ -49,6 +54,8 @@ namespace WebApp
 
             app.UseHttpsRedirection();
             app.UseMvc();
+
+            app.UseSQLiteCache();
         }
     }
 }
