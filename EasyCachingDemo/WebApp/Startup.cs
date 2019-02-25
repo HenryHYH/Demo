@@ -1,4 +1,4 @@
-﻿using EasyCaching.InMemory;
+﻿using EasyCaching.Redis;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -22,9 +22,15 @@ namespace WebApp
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             //services.AddDefaultInMemoryCache(Configuration);
-            services.AddDefaultInMemoryCache(x =>
+            //services.AddDefaultInMemoryCache(x =>
+            //{
+            //    x.MaxRdSecond = 0;
+            //});
+
+            services.AddDefaultRedisCache(o =>
             {
-                x.MaxRdSecond = 0;
+                o.MaxRdSecond = 0;
+                o.DBConfig.Endpoints.Add(new EasyCaching.Core.Configurations.ServerEndPoint("henry.cn", 6379));
             });
         }
 
