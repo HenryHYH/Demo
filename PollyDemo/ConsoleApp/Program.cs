@@ -11,7 +11,8 @@ namespace ConsoleApp
 
             try
             {
-                Retry();
+                //Retry();
+                CircuitBreaker();
             }
             catch (Exception ex)
             {
@@ -39,6 +40,36 @@ namespace ConsoleApp
 
                 throw new Exception("Hello exeception");
             });
+        }
+
+        private static void CircuitBreaker()
+        {
+            var policy = Policy.Handle<TimeoutException>()
+                            .CircuitBreaker(3, TimeSpan.FromMinutes(1));
+
+            for (int i = 0; i < 5; i++)
+            {
+                try
+                {
+                    policy.Execute(DoSomething);
+                }
+                catch (Polly.CircuitBreaker.BrokenCircuitException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                catch (TimeoutException)
+                {
+                    Console.WriteLine("timeout");
+                }
+            }
+        }
+
+        private static int index = 0;
+
+        private static int DoSomething()
+        {
+            Console.WriteLine($"DoSomething {index++}");
+            throw new TimeoutException();
         }
     }
 }
