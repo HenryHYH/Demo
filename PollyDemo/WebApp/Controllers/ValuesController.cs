@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
+using WebApp.Services;
 
 namespace WebApp.Controllers
 {
@@ -7,11 +10,27 @@ namespace WebApp.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        // GET api/values
+        private readonly ILogger logger;
+        private readonly ITestService testService;
+
+        public ValuesController(
+            ILogger<ValuesController> logger,
+            ITestService testService)
+        {
+            this.logger = logger;
+            this.testService = testService;
+        }
+
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "value1", "value2" };
+            logger.LogDebug("Start Get");
+
+            testService.Say("Hello Henry");
+
+            var message = $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffff")}";
+
+            return new string[] { message };
         }
     }
 }
