@@ -13,6 +13,21 @@
         }
     }
 
+    public class WrappedUserService : IUserService
+    {
+        private readonly IUserService userService;
+
+        public WrappedUserService(IUserService userService)
+        {
+            this.userService = userService;
+        }
+
+        public string GetName()
+        {
+            return $"Wrapped {userService.GetName()}";
+        }
+    }
+
     public class SelfService
     {
         public string GetMessage()

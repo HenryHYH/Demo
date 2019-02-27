@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using WebApp.Services;
 
 namespace WebApp
 {
@@ -12,12 +13,17 @@ namespace WebApp
         {
             services.AddMvc();
 
+            services.AddTransient<IUserService, UserService>();
+            services.Decorate<IUserService, WrappedUserService>();
+
             services.Scan(s =>
             {
-                s.FromAssemblyOf<Startup>()
+                //s.FromAssemblyOf<Startup>()
+                s.FromCallingAssembly()
                     .AddClasses()
-                    .AsImplementedInterfaces()
                     .AsSelf()
+                    .UsingRegistrationStrategy(Scrutor.RegistrationStrategy.Skip)
+                    .AsImplementedInterfaces()
                     .WithTransientLifetime();
             });
         }
