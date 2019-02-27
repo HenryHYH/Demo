@@ -17,6 +17,7 @@ namespace WebApp
                 s.FromAssemblyOf<Startup>()
                     .AddClasses()
                     .AsImplementedInterfaces()
+                    .AsSelf()
                     .WithTransientLifetime();
             });
         }

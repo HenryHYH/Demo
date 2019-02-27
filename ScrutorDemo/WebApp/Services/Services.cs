@@ -13,6 +13,14 @@
         }
     }
 
+    public class SelfService
+    {
+        public string GetMessage()
+        {
+            return "Hello myself";
+        }
+    }
+
     public interface IUserRepository { }
 
     public class UserRepository : IUserRepository { }
