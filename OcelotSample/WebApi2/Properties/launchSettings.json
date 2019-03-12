@@ -1,13 +1,13 @@
 ﻿{
-  "$schema": "http://json.schemastore.org/launchsettings.json",
   "iisSettings": {
-    "windowsAuthentication": false, 
-    "anonymousAuthentication": true, 
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:6085",
+      "applicationUrl": "http://localhost:6071",
       "sslPort": 0
     }
   },
+  "$schema": "http://json.schemastore.org/launchsettings.json",
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
@@ -19,10 +19,11 @@
     },
     "WebApi2": {
       "commandName": "Project",
-      "applicationUrl": "http://localhost:5002",
       "environmentVariables": {
+        "ASPNETCORE_URLS": "http://*:5002",
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "applicationUrl": ""
     }
   }
 }
