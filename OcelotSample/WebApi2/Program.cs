@@ -13,7 +13,6 @@ namespace WebApi1
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
         {
             return WebHost.CreateDefaultBuilder(args)
-                .UseUrls("http://*:5002")
                 .UseStartup<Startup>();
         }
     }

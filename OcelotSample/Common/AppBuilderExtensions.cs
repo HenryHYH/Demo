@@ -52,7 +52,7 @@ namespace Common
                 ID = $"{serviceName}-{Guid.NewGuid().ToString()}-{serverUri.Port}",
                 Checks = new[] { httpCheck },
                 Name = serviceName,
-                Address = $"{serverUri.Scheme}://{serviceIp}",
+                Address = serviceIp,
                 Port = serverUri.Port,
                 Tags = new[] { $"urlprefix-/{serviceName}" }
             };

@@ -12,7 +12,9 @@ namespace WebApi1.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "WebApi1", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffff") };
+            var host = HttpContext.Request.Host.ToString();
+
+            return new string[] { "WebApi1", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffff"), host };
         }
     }
 }

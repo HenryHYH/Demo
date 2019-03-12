@@ -16,7 +16,7 @@ namespace Gateway
             return WebHost.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration(builder =>
                 {
-                    builder.AddJsonFile("configuration.json")
+                    builder.AddJsonFile("configuration.json", optional: false, reloadOnChange: true)
                         .AddEnvironmentVariables();
                 })
                 .UseStartup<Startup>();

@@ -1,28 +1,51 @@
 {
+  //"ReRoutes": [
+  //  {
+  //    "DownstreamPathTemplate": "/api/values",
+  //    "DownstreamScheme": "http",
+  //    "DownstreamHostAndPorts": [
+  //      {
+  //        "Host": "localhost",
+  //        "Port": 5001
+  //      }
+  //    ],
+  //    "UpstreamPathTemplate": "/api1/values",
+  //    "UpstreamHttpMethod": [ "Get" ]
+  //  },
+  //  {
+  //    "DownstreamPathTemplate": "/api/values",
+  //    "DownstreamScheme": "http",
+  //    "DownstreamHostAndPorts": [
+  //      {
+  //        "Host": "localhost",
+  //        "Port": 5002
+  //      }
+  //    ],
+  //    "UpstreamPathTemplate": "/api2/values",
+  //    "UpstreamHttpMethod": [ "Get" ]
+  //  }
+  //]
+
   "ReRoutes": [
     {
       "DownstreamPathTemplate": "/api/values",
       "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5001
-        }
-      ],
       "UpstreamPathTemplate": "/api1/values",
-      "UpstreamHttpMethod": [ "Get" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/values",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5002
-        }
-      ],
-      "UpstreamPathTemplate": "/api2/values",
-      "UpstreamHttpMethod": [ "Get" ]
+      "UpstreamHttpMethod": [ "Get" ],
+      "ServiceName": "WebApi1",
+      "ReRoutesCaseSensitive": false,
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      }
     }
-  ]
+  ],
+  "GlobalConfiguration": {
+    "ServiceDiscoveryProvider": {
+      "Host": "henry.cn",
+      "Port": 8500,
+      "Type": "Consul",
+      // 如果Consul有此Key的配置，则以Value为准；如果没有，则以此配置文件为准
+      "ConfigurationKey": "OcelotGatewayRoutesSettings"
+    }
+  }
 }
